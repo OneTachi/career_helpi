@@ -25,7 +25,7 @@ export function MultipleChoice(): JSX.Element{
                     value = {answer}
                     checked = {selectedAnswer === answer}
                 >
-                    {selectedAnswer}
+                    {selectedAnswer} 
                 </Form.Check>
             ))}
         </div>

@@ -28,8 +28,9 @@ function App() {
   }
   return (
     <div className="App">
-      <MultipleChoice></MultipleChoice>
-      
+      <MultipleChoice></MultipleChoice> 
+      {/*The above line is for testing and will be deleted*/}
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
