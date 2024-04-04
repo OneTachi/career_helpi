@@ -10,7 +10,6 @@ export function MultipleChoice(): JSX.Element{
     function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
         changeAnswer(event.target.value);
     }
-      
 
     return(
         <div>
@@ -25,9 +24,10 @@ export function MultipleChoice(): JSX.Element{
                     value = {answer}
                     checked = {selectedAnswer === answer}
                 >
-                    {selectedAnswer} 
+                    {} 
                 </Form.Check>
             ))}
+            {selectedAnswer} 
         </div>
     );
 }
