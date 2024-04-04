@@ -1,0 +1,10 @@
+.image {
+    width: 5%;
+    height: 5%;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.bar {
+    background-color: black;
+}
