@@ -11,7 +11,18 @@ export function MultipleChoice(question: string, answers: string[]): JSX.Element
     }
 
     return(
-        <div>
+        <div
+            data-testid="multichoice-question"
+            style={{
+                width: "10%",
+                height: "10%",
+                display: "inline-block",
+                verticalAlign: "bottom",
+                marginLeft: "50px",
+                opacity: 64
+                
+        }}
+        >
             <h3>{question}</h3>
             {answers.map((answer: string) => (
                 <Form.Check
