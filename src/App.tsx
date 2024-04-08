@@ -49,6 +49,9 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      <Button className="Basic-Career-Start ">Take Basic Career Quiz</Button>
+
+      <Button className="Detailed-Career-Start">Take Detailed Career Quiz</Button>
     </div>
   );
 }
