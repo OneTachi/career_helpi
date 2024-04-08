@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
-export function MultipleChoice(): JSX.Element{
+export function MultipleChoice(question: string, answers: string[]): JSX.Element{
     //Temporary values until we have real questions
-    const answers = ["Answer 1", "Answer 2", "Answer 3", "Answer 4"];
     const [selectedAnswer, changeAnswer] = useState<string>("");
 
     function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
@@ -13,7 +12,7 @@ export function MultipleChoice(): JSX.Element{
 
     return(
         <div>
-            <h3>Question</h3>
+            <h3>{question}</h3>
             {answers.map((answer: string) => (
                 <Form.Check
                     key = {answer}
