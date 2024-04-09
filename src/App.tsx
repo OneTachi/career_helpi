@@ -30,12 +30,22 @@ function App() {
     <div className="App">
       <MultipleChoice
         question = "Question"
-        answers = {["Answer 1, Answer 2, Answer 3, Answer 4"]}
+        answers = {["Answer 1", "Answer 2", "Answer 3", "Answer 4"]}
       ></MultipleChoice> 
       {/*The above line is for testing and will be deleted*/}
 
+
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+
+        <MultipleChoice
+          question = "Question"
+          answers = {["Answer 1", "Answer 2", "Answer 3", "Answer 4"]}
+        ></MultipleChoice> 
+        {/*The above tag is for testing and will be deleted*/}
+
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

@@ -13,13 +13,18 @@ export function MultipleChoice({question, answers}: {question: string, answers: 
     return(
         <div
             data-testid="multichoice-question"
+            className = "Multiple-Choice-Question"
             style={{
-                width: "10%",
-                height: "10%",
-                display: "inline-block",
-                verticalAlign: "bottom",
-                marginLeft: "50px",
-                opacity: 64
+                //width: "10%,
+                width: "10% !important", //When this div is placed in a parent element, !important prevents it from taking the css style of that element
+                //height: "10%",
+                //width: "auto",
+                height: "auto",
+                //marginLeft: "45%",  
+                marginLeft: "45% !important",
+                //display: "inline-block",
+                //verticalAlign: "bottom",
+                //opacity: 64
                 
         }}
         >
