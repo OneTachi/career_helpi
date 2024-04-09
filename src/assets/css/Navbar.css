@@ -5,6 +5,7 @@
     max-height: 200px;
     border-radius: 20%;
     background-color: #28282B;
+    background: "./assets/images/spider-logo.png"
 }
 .image:hover {
     background-color: white;

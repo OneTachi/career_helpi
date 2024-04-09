@@ -1,11 +1,21 @@
+import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from "./assets/images/spider-logo.png"
 import "./assets/css/Navbar.css"
+import { Button } from 'react-bootstrap';
 
-export function Navbar() : JSX.Element 
+export function Navbar() : JSX.Element
 {
+    const navigate = useNavigate();
+
+    const linkHome = () =>
+        {
+            navigate("/App");
+        }
+
     return(
         <header className="bar">
-            <img src={logo} alt="spider logo" className="image"/>
+            <Button className="image" onClick={linkHome}/>
         </header>
     )
-}
+} 
