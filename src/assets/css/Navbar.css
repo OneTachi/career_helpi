@@ -1,14 +1,8 @@
 .image {
-    width: 2.5%;
-    height: 2.5%;
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 20%;
-    background-color: #28282B;
-    background: "./assets/images/spider-logo.png"
+    background-color: white;
 }
 .image:hover {
-    background-color: white;
+    background-color: silver;
 }
 
 .bar {
