@@ -28,7 +28,10 @@ function App() {
   }
   return (
     <div className="App">
-      <MultipleChoice></MultipleChoice> 
+      <MultipleChoice
+        question = "Question"
+        answers = {["Answer 1, Answer 2, Answer 3, Answer 4"]}
+      ></MultipleChoice> 
       {/*The above line is for testing and will be deleted*/}
 
       <header className="App-header">

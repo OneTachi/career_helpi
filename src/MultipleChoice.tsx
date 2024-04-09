@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
-export function MultipleChoice(question: string, answers: string[]): JSX.Element{
+export function MultipleChoice({question, answers}: {question: string, answers: string[]}): JSX.Element{
     //Temporary values until we have real questions
     const [selectedAnswer, changeAnswer] = useState<string>("");
 
