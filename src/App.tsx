@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 import { Page } from "./interfaces/page"
 import logo from './logo.svg';
 import { DetailedQ1 } from "./DetailedQ1";
-import "./DetailedQ1.css";
+import "./DetailedQ1.css"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -32,6 +32,7 @@ function App() {
   return (
     <div className="App">
     <Navbar page={page} setPage={setPage}></Navbar>
+    { page === "api" && <>
     <div>Christopher Rasquin</div>
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -62,6 +63,10 @@ function App() {
         </Button>
       </Form>
       }
+      </>}
+
+
+      <DetailedQ1></DetailedQ1>
   </div>
   );
 }
