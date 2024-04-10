@@ -1,0 +1,17 @@
+.DQ1 {
+    text-align: center;
+    width: 120px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .DQ1Header {
+    font-size: 100px
+  }
+
+  .SubmitButton{
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom:auto;
+    margin-top:auto;
+  }
