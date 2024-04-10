@@ -22,6 +22,9 @@ export function DetailedQ1(): JSX.Element {
     return (
         <div>
             <header className="DQ1Header">Location</header>
+
+            <div>Insert Images In empty space above</div>
+
             <Form.Group controlId="selectLocation">
                 <Form.Label>
                 Imagine as a spider you are deciding where to build a new web. 

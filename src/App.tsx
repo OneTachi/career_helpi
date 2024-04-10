@@ -6,6 +6,8 @@ import { Page } from "./interfaces/page"
 import logo from './logo.svg';
 import { DetailedQ1 } from "./DetailedQ1";
 import "./DetailedQ1.css"
+import { DetailedQ2 } from "./DetailedQ2";
+import "./DetailedQ2.css"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -32,13 +34,11 @@ function App() {
   return (
     <div className="App">
     <Navbar page={page} setPage={setPage}></Navbar>
-    { page === "api" && <>
+    {/* page === "api" && <>
     <div>Christopher Rasquin</div>
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h1>Siddharth</h1>
-
-      <DetailedQ1></DetailedQ1>
 
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
@@ -53,6 +53,7 @@ function App() {
         Justin Burger
       </a>
     </header>
+  </>*/}
     { page === "api" &&
       <Form>
         <Form.Label>API Key:</Form.Label>
@@ -63,10 +64,9 @@ function App() {
         </Button>
       </Form>
       }
-      </>}
 
-
-      <DetailedQ1></DetailedQ1>
+    {/*<DetailedQ1></DetailedQ1>*/}
+    <DetailedQ2></DetailedQ2>
   </div>
   );
 }
