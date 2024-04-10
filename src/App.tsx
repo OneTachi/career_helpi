@@ -32,6 +32,17 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Siddharth</h1>
+        <div className="BasicCareerButton">
+      
+      <header>Basic Career Quiz</header>
+      <Button className="Basic-Career-Start ">Take Basic Career Quiz</Button>
+      </div>
+      
+      <div className="DetailedCareerButton">
+      <header>Detailed Career Quiz</header>
+      <Button className="Detailed-Career-Start">Take Detailed Career Quiz</Button>
+      </div>
+      
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -51,16 +62,6 @@ function App() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
-      
-      <div className="BasicCareerButton">
-      <header>Basic Career Quiz</header>
-      <Button className="Basic-Career-Start ">Take Basic Career Quiz</Button>
-      </div>
-      
-      <div className="DetailedCareerButton">
-      <header>Detailed Career Quiz</header>
-      <Button className="Detailed-Career-Start">Take Detailed Career Quiz</Button>
-      </div>
     </div>
   );
 }
