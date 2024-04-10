@@ -1,0 +1,16 @@
+.image {
+    background-color: white;
+}
+.image:hover {
+    background-color: silver;
+}
+
+.bar {
+    background-color: black;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: left;
+}
