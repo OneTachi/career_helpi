@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
     <Navbar page={page} setPage={setPage}></Navbar>
-    {/* page === "api" && <>
+    page === "api" && <>
     <div>Christopher Rasquin</div>
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -57,7 +57,7 @@ function App() {
         Justin Burger
       </a>
     </header>
-  </>*/}
+  </>
     { page === "api" &&
       <Form>
         <Form.Label>API Key:</Form.Label>
@@ -69,10 +69,6 @@ function App() {
       </Form>
       }
 
-    {/*<DetailedQ1></DetailedQ1>*/}
-    {/*<DetailedQ2></DetailedQ2>*/}
-    {<DetailedQ3></DetailedQ3>}
-    {/*<DetailedQ4></DetailedQ4>*/}
   </div>
   );
 }
