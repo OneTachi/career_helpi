@@ -1,0 +1,12 @@
+.Multiple-Choice-Question{
+    width: 10%; 
+    height: auto;
+    margin-Left: 45%;
+    margin-Top: 25%;
+    max-Width: 10%;
+    
+    position: absolute;
+    
+    opacity: .75;
+    background-Color: turquoise;
+}
