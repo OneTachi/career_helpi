@@ -4,6 +4,8 @@ import { Button, Form } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
 
 import forest from "./assets/images/backgrounds/forest.png"
+import insideHouse from "./assets/images/backgrounds/insideHouse.png"
+import waterfall from "./assets/images/backgrounds/waterfall.gif"
 
 
 interface changePageProps{
@@ -15,14 +17,16 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     const [pageNumber, changePageNumber] = useState<number>(1);
     const [backgroundImage, changeBackgroundImage] = useState<string>(forest); //Background image probably doesn't need its own state and could likely just be gotten from a const array using page number
 
-    function updateBackground(){
+    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall]
 
-    }
 
     return(
         <div>
             <MultipleChoice question={"Question"} answers={["Answer 1aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaa aaaaa", "Answer 2", "Answer 3", "Answer 4"]}></MultipleChoice>
-            <img src = {forest} alt = {"Forest background"} className="Background-Image"></img>
+            <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
+            {pageNumber}
+            <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
+            
         </div>
     );
 }
@@ -31,10 +35,10 @@ export function ChangePage({pageNumber, changePageNumber}: changePageProps): JSX
     return(
         <div>
             <Button onClick = {() => pageNumber > 1 ? changePageNumber(pageNumber - 1) : ""}>
-                {"<- Back"}
+                {"< Back"}
             </Button>
             <Button onClick = {() => pageNumber < 7 ? changePageNumber(pageNumber + 1) : ""}>
-                {"Next ->"}
+                {"Next >"}
             </Button>
         </div>
     );
