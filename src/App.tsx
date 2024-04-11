@@ -12,6 +12,7 @@ import { DetailedQ3 } from "./DetailedQ3";
 import "./DetailedQ3.css"
 import { DetailedQ4 } from "./DetailedQ4";
 import "./DetailedQ4.css"
+import { MultipleChoice } from "./MultipleChoice";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -43,7 +44,7 @@ function App() {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h1>Siddharth</h1>
-
+      <DetailedQ3></DetailedQ3>
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
       </p>
