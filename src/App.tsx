@@ -8,6 +8,10 @@ import { DetailedQ1 } from "./DetailedQ1";
 import "./DetailedQ1.css"
 import { DetailedQ2 } from "./DetailedQ2";
 import "./DetailedQ2.css"
+import { DetailedQ3 } from "./DetailedQ3";
+import "./DetailedQ3.css"
+import { DetailedQ4 } from "./DetailedQ4";
+import "./DetailedQ4.css"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -66,7 +70,9 @@ function App() {
       }
 
     {/*<DetailedQ1></DetailedQ1>*/}
-    <DetailedQ2></DetailedQ2>
+    {/*<DetailedQ2></DetailedQ2>*/}
+    {/*<DetailedQ3></DetailedQ3>*/}
+    <DetailedQ4></DetailedQ4>
   </div>
   );
 }
