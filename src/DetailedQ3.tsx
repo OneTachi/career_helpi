@@ -7,7 +7,6 @@ export function DetailedQ3(): JSX.Element {
     return (
         <div>
             <Form.Check
-                inline
                 type="radio"
                 name="response"
                 onChange={(e) => setResponse(e.target.value)}
@@ -17,7 +16,6 @@ export function DetailedQ3(): JSX.Element {
                 checked={response === "good"}
             />
             <Form.Check
-                inline
                 type="radio"
                 name="response"
                 onChange={(e) => setResponse(e.target.value)}
