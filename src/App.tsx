@@ -71,8 +71,8 @@ function App() {
 
     {/*<DetailedQ1></DetailedQ1>*/}
     {/*<DetailedQ2></DetailedQ2>*/}
-    {/*<DetailedQ3></DetailedQ3>*/}
-    <DetailedQ4></DetailedQ4>
+    {<DetailedQ3></DetailedQ3>}
+    {/*<DetailedQ4></DetailedQ4>*/}
   </div>
   );
 }
