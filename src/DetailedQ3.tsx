@@ -22,7 +22,7 @@ export function DetailedQ3(): JSX.Element {
     // This is the View
     return (
         <div>
-            <header className="DQ3Header">Overall Design</header>
+            <header className="DQ3Header">Detailed Question 3: Overall Design</header>
 
             <div>Insert Images In empty space above</div>
 

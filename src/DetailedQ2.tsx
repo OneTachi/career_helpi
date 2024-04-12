@@ -24,7 +24,7 @@ export function DetailedQ2(): JSX.Element {
       return (
           <div>
               
-              <header className="DQ2 Header">Select Your Silks</header>
+              <header className="DQ2-Header">Detailed Question 2: Select Your Silks</header>
 
                 <div className="DQ2">
               <div>Now you must choose the silk you will use to create your web out of.</div>

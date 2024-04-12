@@ -2,19 +2,37 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 
-const LOCATIONS= ["beach", "city", "rainforest", "mountain"]
-
 export function DetailedQ7(): JSX.Element {
     // This is the State (Model)
-    const [location, setLocation] = useState<string>("_____");
-
+    const [answer, setAnswer] = useState<string>("");
+  
     // This is the Control
-    function updateLocation(event: React.ChangeEvent<HTMLSelectElement>) {
-        setLocation(event.target.value);
+    function updateAnswer(event: React.ChangeEvent<HTMLTextAreaElement>) {
+      setAnswer(event.target.value)
     }
-
+  
     // This is the View
-    return (
-        <div></div>
-    );
-}
+    return <div>
+    
+    <header className={"DQ7-Title"}>Detailed Question 7: Looking Forward</header>
+    
+
+    <Form.Text>
+    
+    Looking five years from now, where would you like to be?
+
+    </Form.Text>
+
+
+      <Form.Group controlId="formDQ7">
+        <Form.Control className = "DQ7-Textbox"
+          as="textarea"
+          rows={3}
+          value={answer}
+          onChange={updateAnswer} />
+      </Form.Group>
+      <div>
+        Response: {answer}
+      </div>
+    </div>;
+  }

@@ -13,6 +13,12 @@ import "./DetailedQ3.css"
 import { DetailedQ4 } from "./DetailedQ4";
 import "./DetailedQ4.css"
 import { MultipleChoice } from "./MultipleChoice";
+import { DetailedQ5 } from "./DetailedQ5";
+import "./DetailedQ5"
+import { DetailedQ6 } from "./DetailedQ6";
+import "./DetailedQ6.css"
+import { DetailedQ7 } from "./DetailedQ7";
+import "./DetailedQ7.css"
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -44,7 +50,9 @@ function App() {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h1>Siddharth</h1>
-      <DetailedQ3></DetailedQ3>
+
+    <DetailedQ3></DetailedQ3>
+
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
       </p>

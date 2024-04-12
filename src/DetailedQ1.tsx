@@ -21,7 +21,7 @@ export function DetailedQ1(): JSX.Element {
     // This is the View
     return (
         <div>
-            <header className="DQ1Header">Location</header>
+            <header className="DQ1Header">Detailed Question 1: Location</header>
 
             <div>Insert Images In empty space above</div>
 
