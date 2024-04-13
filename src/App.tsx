@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./assets/App.css";
+import "./assets/css/App.css";
 import { Navbar } from "./Navbar";
 import { Page } from "./interfaces/page";
 import logo from "./logo.svg";
