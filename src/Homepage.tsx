@@ -16,7 +16,7 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
         </p>
       </div>
       <div>
-        <Button>Basic Questions</Button>
+        <Button>Detailed Questions</Button>
         <br />
         <p>
           Our complex quiz consists of open response boxes, sliders, and other

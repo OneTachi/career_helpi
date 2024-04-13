@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./assets/css/App.css";
 import { Navbar } from "./Navbar";
 import { Page } from "./interfaces/page";
-import logo from "./logo.svg";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
 
