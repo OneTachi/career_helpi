@@ -1,10 +1,11 @@
 import React from "react";
 import { PageProps } from "./interfaces/page";
 import { Button } from "react-bootstrap";
+import "./assets/css/Homepage.css";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
-    <div>
+    <body>
       <div>
         <Button>Basic Questions</Button>
         <br />
@@ -26,6 +27,6 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
           first thing that comes to mind. Most importantly, have fun!
         </p>
       </div>
-    </div>
+    </body>
   );
 }
