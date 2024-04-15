@@ -30,3 +30,5 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
     </body>
   );
 }
+
+export default Homepage;
