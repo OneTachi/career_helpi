@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Background.css';
 import { Button, Form } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
+import { questions } from './basicQuestions';
+import { answers } from './basicQuestions';
 
 import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
@@ -22,9 +24,9 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
 
     return(
         <div>
-            <MultipleChoice question={"Question"} answers={["Answer 1aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaa aaaaa", "Answer 2", "Answer 3", "Answer 4"]}></MultipleChoice>
+            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
-            {pageNumber}
+            {/*pageNumber*/}
             <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
             
         </div>
@@ -34,10 +36,10 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
 export function ChangePage({pageNumber, changePageNumber}: changePageProps): JSX.Element{
     return(
         <div>
-            <Button onClick = {() => pageNumber > 1 ? changePageNumber(pageNumber - 1) : ""}>
+            <Button className="Back-Button" onClick={() => pageNumber > 1 ? changePageNumber(pageNumber - 1) : ""}>
                 {"< Back"}
             </Button>
-            <Button onClick = {() => pageNumber < 7 ? changePageNumber(pageNumber + 1) : ""}>
+            <Button className="Next-Button" onClick={() => pageNumber < 7 ? changePageNumber(pageNumber + 1) : ""}>
                 {"Next >"}
             </Button>
         </div>
