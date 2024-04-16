@@ -1,27 +1,25 @@
 .footer {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: silver;
+  background-color: silver;
+  text-align: center;
+  height: 30%;
 }
 
 .item.right {
-    margin-right: 0%;
-    align-self: center;
+  align-self: center;
 }
 
 .item.left {
-    position: absolute;
-    align-self: center;
-    margin-right: 35%;
+  position: absolute;
+  align-self: center;
+  left: 0.5%;
+  height: 30%;
+  width: 4.3%;
 }
 
 .github.logo {
-    max-width: 30%;
+  max-width: 100%;
 }
 
 .github.logo:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-  }
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
