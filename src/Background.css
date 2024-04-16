@@ -5,12 +5,12 @@
 
 .Back-Button{
     left: 10%;
-    top: 5%;
+    top: 10%;
     position: absolute;
 }
 
 .Next-Button{
     left: 90%;
-    top: 5%;
+    top: 10%;
     position: absolute;
 }

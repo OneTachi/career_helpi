@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
 import { questions } from './basicQuestions';
 import { answers } from './basicQuestions';
+import { ProgressBar } from './ProgressBar';
 
 import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
@@ -28,6 +29,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
             {/*pageNumber*/}
             <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
+            <ProgressBar pageNum={pageNumber}></ProgressBar>
             
         </div>
     );
