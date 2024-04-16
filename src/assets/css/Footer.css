@@ -1,0 +1,25 @@
+.footer {
+  background-color: silver;
+  text-align: center;
+  height: 30%;
+}
+
+.item.right {
+  align-self: center;
+}
+
+.item.left {
+  position: absolute;
+  align-self: center;
+  left: 0.5%;
+  height: 30%;
+  width: 4.3%;
+}
+
+.github.logo {
+  max-width: 100%;
+}
+
+.github.logo:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
