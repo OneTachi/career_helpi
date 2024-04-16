@@ -5,7 +5,7 @@ import miniWeb3 from "./assets/images/objects/progress bar/miniWeb3.png";
 import miniWeb4 from "./assets/images/objects/progress bar/miniWeb4.png";
 import miniWeb5 from "./assets/images/objects/progress bar/miniWeb5.png";
 import miniWeb6 from "./assets/images/objects/progress bar/miniWeb6.png";
-import "./ProgressBar.css"
+import "./assets/css/ProgressBar.css"
 
 export function ProgressBar({pageNum}: {pageNum: number}): JSX.Element{
     const progressBarWebs = [miniWeb0, miniWeb1, miniWeb2, miniWeb3, miniWeb4, miniWeb5, miniWeb6];
