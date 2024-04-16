@@ -56,6 +56,7 @@ function App() {
             </Button>
           </Form></>
       }
+
       <Footer page={page} setPage={setPage}></Footer>
   </div>
   );
