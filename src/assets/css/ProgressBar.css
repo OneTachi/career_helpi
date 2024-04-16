@@ -1,0 +1,13 @@
+
+.Progress-Bar{
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    top: 20%;
+    border: 3px solid;
+    border-color: purple;
+    border-radius: 25px;
+    background-color: black;
+    opacity: 90%;
+    position: absolute;
+}
