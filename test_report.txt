@@ -10,7 +10,7 @@ FAIL src/tests/App.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:9:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -40,7 +40,7 @@ FAIL src/tests/App.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:9:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -163,7 +163,7 @@ PASS src/tests/Homepage.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:9:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -193,7 +193,7 @@ PASS src/tests/Homepage.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:9:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -224,9 +224,9 @@ A worker process has failed to exit gracefully and has been force exited. This i
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |    7.89 |        0 |   10.52 |       8 |                   
- src                 |    7.89 |        0 |   10.52 |       8 |                   
-  App.tsx            |     100 |      100 |     100 |     100 |                   
+All files            |    9.75 |        5 |   12.82 |    9.87 |                   
+ src                 |    9.75 |        5 |   12.82 |    9.87 |                   
+  App.tsx            |      50 |       25 |     100 |      50 | 33-43             
   Background.tsx     |       0 |        0 |       0 |       0 | 20-54             
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
   DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 10-36             
@@ -251,5 +251,5 @@ All files            |    7.89 |        0 |   10.52 |       8 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.43 s
+Time:        4.523 s
 Ran all test suites.
