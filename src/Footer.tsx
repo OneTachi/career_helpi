@@ -1,14 +1,16 @@
 import "./assets/css/Footer.css";
-import { PageProps } from "./interfaces/page";
+import { PageProps, PageKeyProps } from "./interfaces/page";
 import { KeyProps } from "./interfaces/key";
 import GithubLogo from "./assets/images/github-mark-white.png";
 import { Button, Form } from "react-bootstrap";
 
-export function Footer(
-  { page, setPage }: PageProps,
-  { key, setKey }: KeyProps,
-  saveKeyData: string
-): JSX.Element {
+export function Footer({
+  page,
+  setPage,
+  key,
+  setKey,
+  saveKeyData,
+}: PageKeyProps): JSX.Element {
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));

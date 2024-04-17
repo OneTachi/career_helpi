@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./assets/css/App.css";
 import { Navbar } from "./Navbar";
-import { Page, PageProps } from "./interfaces/page";
+import { Page, PageProps, PageKeyProps } from "./interfaces/page";
+import { KeyProps } from "./interfaces/key";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
 
@@ -9,7 +10,17 @@ function App() {
   // Hook used for page of website. Does NOT handle individual questions in basic/detailed pages.
   const [page, setPage] = useState<Page>("home");
 
-  return LoadPage({ page, setPage });
+  //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+  let keyData = "";
+  const saveKeyData = "MYKEY";
+  const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+  if (prevKey !== null) {
+    keyData = JSON.parse(prevKey);
+  }
+
+  const [key, setKey] = useState<string>(keyData); //for api key input
+
+  return LoadPage({ page, setPage }, { key, setKey }, saveKeyData);
 }
 
 /**
@@ -17,7 +28,11 @@ function App() {
  * @param { page, setPage} : PageProps => Page state to pass onto UI Components
  * @returns Page shown to user
  */
-function LoadPage({ page, setPage }: PageProps): JSX.Element {
+function LoadPage(
+  { page, setPage }: PageProps,
+  { key, setKey }: KeyProps,
+  saveKeyData: string
+): JSX.Element {
   // Add JSX of page to corresponding page below.
   switch (page) {
     case "home": {
@@ -25,7 +40,13 @@ function LoadPage({ page, setPage }: PageProps): JSX.Element {
         <body>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
-          <Footer page={page} setPage={setPage}></Footer>
+          <Footer
+            page={page}
+            setPage={setPage}
+            key={key}
+            setKey={setKey}
+            saveKeyData={saveKeyData}
+          ></Footer>
         </body>
       );
     }
