@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
+import {Background} from "./Background";
 
 function App() {
   const [page, setpage] = useState<Page>("home");
