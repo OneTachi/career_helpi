@@ -3,12 +3,14 @@ import "./MultipleChoice.css"
 import { Button, Form } from 'react-bootstrap';
 
 
-export function MultipleChoice({question, answers}: {question: string, answers: string[]}): JSX.Element{
+export function MultipleChoice({question, answers, pageNum}: {question: string, answers: string[], pageNum: number}): JSX.Element{
     //Temporary values until we have real questions
-    const [selectedAnswer, changeAnswer] = useState<string>("");
+    const [selectedAnswers, changeAnswer] = useState<string[]>([""]);
 
     function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
-        changeAnswer(event.target.value);
+        let tempArray: string[] = selectedAnswers.map((answer: string) => answer);
+        tempArray[pageNum - 1] = event.target.value;
+        changeAnswer(tempArray);
     }
 
     return(
@@ -25,12 +27,12 @@ export function MultipleChoice({question, answers}: {question: string, answers: 
                     onChange = {updateAnswer}
                     label = {answer}
                     value = {answer}
-                    checked = {selectedAnswer === answer}
+                    checked = {selectedAnswers[pageNum - 1] === answer}
                 >
                     {} 
                 </Form.Check>
             ))}
-            {selectedAnswer} 
+            {selectedAnswers[pageNum - 1]} 
         </div>
     );
 }
