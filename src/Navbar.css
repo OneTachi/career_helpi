@@ -1,0 +1,9 @@
+.image:hover{
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+  }
+  
+  .image{
+    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  }

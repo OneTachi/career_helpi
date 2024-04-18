@@ -31,17 +31,3 @@ body {
   height: 50px;
   background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 }
-
-
-.home-button{
-  background-color: red;
-  border-color: red;
-}
-
-.home-button:hover{
-    width: 170px;
-    height: 50px;
-    background-color: red;
-    border-color: red;
-    color: red;
-}
