@@ -224,8 +224,8 @@ A worker process has failed to exit gracefully and has been force exited. This i
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |    9.75 |        5 |   12.82 |    9.87 |                   
- src                 |    9.75 |        5 |   12.82 |    9.87 |                   
+All files            |    9.41 |        5 |    12.5 |    9.63 |                   
+ src                 |    9.41 |        5 |    12.5 |    9.63 |                   
   App.tsx            |      50 |       25 |     100 |      50 | 33-43             
   Background.tsx     |       0 |        0 |       0 |       0 | 20-54             
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
@@ -238,7 +238,7 @@ All files            |    9.75 |        5 |   12.82 |    9.87 |
   DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 7-15              
   Footer.tsx         |     100 |      100 |     100 |     100 |                   
   Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 10-20             
-  MultipleChoice.tsx |       0 |      100 |       0 |       0 | 8-21              
+  MultipleChoice.tsx |       0 |      100 |       0 |       0 | 8-23              
   Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 9                 
   ProgressBar.tsx    |       0 |      100 |       0 |       0 | 11-12             
   basicQuestions.ts  |       0 |      100 |     100 |       0 | 1-10              
@@ -251,5 +251,5 @@ All files            |    9.75 |        5 |   12.82 |    9.87 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.523 s
+Time:        4.386 s
 Ran all test suites.
