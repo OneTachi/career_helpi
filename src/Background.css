@@ -6,11 +6,25 @@
 .Back-Button{
     left: 10%;
     top: 10%;
+    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
     position: absolute;
+}
+
+.Back-Button:hover{
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 }
 
 .Next-Button{
     left: 90%;
     top: 10%;
+    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
     position: absolute;
+}
+
+.Next-Button:hover{
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 }
