@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
+import {Background} from "./Background";
 
 function App() {
   // Hook used for page of website. Does NOT handle individual questions in basic/detailed pages.
