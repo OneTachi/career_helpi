@@ -25,7 +25,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
 
     return(
         <div>
-            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]}></MultipleChoice> : <div>Detailed</div>}
+            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
             {/*pageNumber*/}
             <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
