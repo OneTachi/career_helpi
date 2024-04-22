@@ -25,12 +25,29 @@ body {
   width: 150px;
   height: 50px;
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  margin-top: 50px;
+  margin-left: 600px;
+}
+
+.basic-text{
+  margin-left: 500px;
+  margin-right: 1000px;
+  margin-bottom: 180px;
+  margin-top: 20px;
 }
 
 .detailed-button{
   width: 150px;
   height: 55px;
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  margin-left: 1110px;
+  margin-top: -670px;
+}
+
+.detailed-text{
+  margin-left: 1000px;
+  margin-right: 500px;
+  margin-top: -300px;
 }
 
 .detailed-button:hover{
