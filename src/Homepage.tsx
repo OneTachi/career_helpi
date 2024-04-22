@@ -6,6 +6,11 @@ import "./assets/css/Homepage.css";
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <body>
+      
+      <div className="heading">8-Legged Career Quest</div>
+
+      <div className="subheading">Spin Your Web, Catch Your Career</div>
+
       <div>
         <Button 
         className="basic-button"
