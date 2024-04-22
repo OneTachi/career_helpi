@@ -34,6 +34,7 @@ body {
   margin-right: 1000px;
   margin-bottom: 180px;
   margin-top: 20px;
+  background-color: lightblue; 
 }
 
 .detailed-button{
@@ -48,6 +49,7 @@ body {
   margin-left: 1000px;
   margin-right: 500px;
   margin-top: -300px;
+  background-color: lightblue; 
 }
 
 .detailed-button:hover{
