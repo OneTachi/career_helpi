@@ -10,7 +10,5 @@ export interface PageKeyProps {
   setPage: (newPage: Page) => void;
   key: string;
   setKey: (newKey: string) => void;
-  saveKeyData: string;
   handleSubmit: () => void;
-  changeKey: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
