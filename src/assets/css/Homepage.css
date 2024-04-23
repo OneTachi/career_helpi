@@ -26,9 +26,15 @@ body {
   position: absolute;
   font-size: 80px;
   top: 70%;
+  font-size: 40px;
+  top: 600px;
   text-align: center;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
   width: 100%;
+}
+
+.background{
+  background-color: #00ff88;
 }
 
 .basic-button:hover{
@@ -66,6 +72,7 @@ body {
   width: 150px;
   height: 55px;
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(270deg, rgba(213,51,105,1) 0%, rgba(218,174,81,1) 100%);
 }
 
 .detailed-text{

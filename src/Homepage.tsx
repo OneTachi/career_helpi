@@ -13,6 +13,8 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
 
       <div className="subheading">Spin Your Web, Catch Your Career</div>
 
+      <div className="background">t</div>
+
       <div>
         <Button 
         className="basic-button"
