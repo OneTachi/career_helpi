@@ -37,7 +37,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
 
 
     return(
-        <div onMouseMove={updateCompletionAmount}>
+        <div onMouseOver={updateCompletionAmount}>
             {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
             
