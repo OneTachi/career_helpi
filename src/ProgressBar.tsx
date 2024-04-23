@@ -20,14 +20,15 @@ export function ProgressBar({pageNum}: {pageNum: number}): JSX.Element{
         changeHovering(false);
     }
 
-    
+    //Progress bar in the form of a spider web that gets bigger as the quiz is completed.
+    // On hover, the amount of the quiz that has been completed so far appears on top of the spider web image.
     return(
         <div className = "Progress-Bar" onMouseOver = {setToHovering} onMouseLeave = {setToNotHovering}>
             <img src={progressBarWebs[pageNum - 1]} alt = {progressBarWebs[pageNum - 1].toString()} className = "Web-Image"></img>
 
             {isHovering ? 
             <div className = "Amount-Completed">{"" + pageNum + "/7"}</div> :
-            <div></div>
+            <div>{/*"Replace this div with the image to have it swap between the image and completion count instead of overlaying them"*/}</div>
             }
         </div>
     )
