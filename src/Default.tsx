@@ -61,7 +61,6 @@ export function Default({ page, setPage }: PageProps) {
           </Form>
         </>
       )}
-      <Footer page={page} setPage={setPage}></Footer>
     </div>
   );
 }
