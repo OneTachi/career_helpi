@@ -8,6 +8,31 @@
     border-color: purple;
     border-radius: 25px;
     background-color: black;
-    opacity: 90%;
+    opacity: 100%;
     position: absolute;
+}
+
+.Web-Image{
+    width: 90% ;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.Amount-Completed{
+    color: purple;
+    font-size: 200%;
+    font-weight: 1000;
+    margin-left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position:absolute;
+
+    background-color: white;
+    border-color: purple;
+    border-radius: 15px;
+    opacity: 90%;
+
+    padding-left: 5px;
+    padding-right: 5px;
 }
