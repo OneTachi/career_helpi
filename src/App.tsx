@@ -36,7 +36,7 @@ function App() {
 
 /**
  * Displays appropriate section of the website (page) to the user
- * @param { page, setPage} : PageProps => Page state to pass onto UI Components
+ * @param { page, setPage, key, setKey, handleSubmit } : PageProps => Page state to pass onto UI Components
  * @returns Page shown to user
  */
 function LoadPage({
