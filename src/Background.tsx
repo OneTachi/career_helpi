@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Background.css';
 import { Button, Form } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
@@ -16,21 +16,40 @@ interface changePageProps{
     changePageNumber: (newPageNumber: number) => void;
 }
 
+export interface basicQuestionProps{
+    question: string;
+    answers: string[];
+    pageNum: number;
+    selectedAnswers: string[];
+    changeAnswer: (newAnswer: string[]) => void;
+
+    completionAmount: number;
+    changeCompletionAmount: (newAmount: number) => void;
+}
+
+//selectedAnswers is an array of the basic question multiple choice answers that have been selected, and is used to save the responses to each quetsion on different pages.
+//pageNumber - 1 in the array is the user's answer to that question.
+//
+//completionAmount is how many questions have been answered so far.
+//pageNumber is the page/question number of the quiz that the user is on.
 export function Background({quizType}: {quizType: string}): JSX.Element{
     const [pageNumber, changePageNumber] = useState<number>(1);
-    const [backgroundImage, changeBackgroundImage] = useState<string>(forest); //Background image probably doesn't need its own state and could likely just be gotten from a const array using page number
+    const [completionAmount, changeCompletionAmount] = useState<number>(0);
+    const [selectedAnswers, changeAnswer] = useState<string[]>(["", "", "", "", "", "", ""]);
 
-    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall]
+    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall];
 
+    function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
+        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
+    }
 
     return(
-        <div>
-            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber}></MultipleChoice> : <div>Detailed</div>}
+        <div onMouseMove={updateCompletionAmount}>
+            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
-            {/*pageNumber*/}
-            <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
-            <ProgressBar pageNum={pageNumber}></ProgressBar>
             
+            <img src = {backgrounds[pageNumber - 1]} alt = "Background image" className="Background-Image"></img>
+            <ProgressBar amountCompleted={completionAmount}></ProgressBar>
         </div>
     );
 }
