@@ -1,6 +1,5 @@
 import "./assets/css/Footer.css";
-import { PageProps, PageKeyProps } from "./interfaces/page";
-import { KeyProps } from "./interfaces/key";
+import { PageKeyProps } from "./interfaces/page";
 import GithubLogo from "./assets/images/github-mark-white.png";
 import { Button, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
@@ -10,10 +9,13 @@ export function Footer({
   setPage,
   key,
   setKey,
-  saveKeyData,
   handleSubmit,
-  changeKey,
 }: PageKeyProps): JSX.Element {
+  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
+    setKey(event.target.value);
+  }
+
   return (
     <footer className="footer">
       <Container>

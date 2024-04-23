@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./assets/css/App.css";
 import { Navbar } from "./Navbar";
-import { Page, PageProps, PageKeyProps } from "./interfaces/page";
-import { KeyProps } from "./interfaces/key";
+import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { Button, Form } from "react-bootstrap";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -27,19 +25,12 @@ function App() {
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
-
   return LoadPage({
     page,
     setPage,
     key,
     setKey,
-    saveKeyData,
     handleSubmit,
-    changeKey,
   });
 }
 
@@ -53,9 +44,7 @@ function LoadPage({
   setPage,
   key,
   setKey,
-  saveKeyData,
   handleSubmit,
-  changeKey,
 }: PageKeyProps): JSX.Element {
   // Add JSX of page to corresponding page below.
   switch (page) {
@@ -69,28 +58,13 @@ function LoadPage({
             setPage,
             key,
             setKey,
-            saveKeyData,
             handleSubmit,
-            changeKey,
           })}
         </body>
       );
     }
     case "basic": {
-      return (
-        <Form>
-          <Form.Label>API Key:</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Insert API Key Here"
-            onChange={changeKey}
-          ></Form.Control>
-          <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Form>
-      );
+      return <body>Basic Page Layout</body>;
     }
     case "detailed": {
       return <body>Detailed Page Layout</body>;
