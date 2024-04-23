@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import "./MultipleChoice.css"
 import { Button, Form } from 'react-bootstrap';
+import { basicQuestionProps } from './Background';
 
 
-export function MultipleChoice({question, answers, pageNum}: {question: string, answers: string[], pageNum: number}): JSX.Element{
-    //Temporary values until we have real questions
-    const [selectedAnswers, changeAnswer] = useState<string[]>([""]);
+export function MultipleChoice({question, answers, pageNum, selectedAnswers, changeAnswer}: basicQuestionProps): JSX.Element{
+    //const [selectedAnswers, changeAnswer] = useState<string[]>([""]);
 
     function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
-        let tempArray: string[] = selectedAnswers.map((answer: string) => answer);
-        tempArray[pageNum - 1] = event.target.value;
+        let tempArray: string[] = [...selectedAnswers];
+        tempArray.splice(pageNum - 1, 1, event.target.value);
         changeAnswer(tempArray);
     }
 

@@ -16,20 +16,33 @@ interface changePageProps{
     changePageNumber: (newPageNumber: number) => void;
 }
 
+export interface basicQuestionProps{
+    question: string;
+    answers: string[];
+    pageNum: number;
+    selectedAnswers: string[];
+    changeAnswer: (newAnswer: string[]) => void;
+}
+
 export function Background({quizType}: {quizType: string}): JSX.Element{
     const [pageNumber, changePageNumber] = useState<number>(1);
-    const [backgroundImage, changeBackgroundImage] = useState<string>(forest); //Background image probably doesn't need its own state and could likely just be gotten from a const array using page number
+    const [completionAmount, changeCompletionAmount] = useState<number>(0);
+    const [selectedAnswers, changeAnswer] = useState<string[]>(["", "", "", "", "", "", ""]);
 
-    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall]
+    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall];
+
+    function updateCompletionAmount(){
+        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
+    }
 
 
     return(
-        <div>
-            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber}></MultipleChoice> : <div>Detailed</div>}
+        <div onMouseMove={updateCompletionAmount}>
+            {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
-            {/*pageNumber*/}
-            <img src = {backgrounds[pageNumber - 1]} alt = {"Background image"} className="Background-Image"></img>
-            <ProgressBar pageNum={pageNumber}></ProgressBar>
+            
+            <img src = {backgrounds[pageNumber - 1]} alt = "Background image" className="Background-Image"></img>
+            <ProgressBar pageNum={completionAmount}></ProgressBar>
             
         </div>
     );

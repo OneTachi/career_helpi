@@ -9,7 +9,7 @@ import miniWeb6 from "./assets/images/objects/progress bar/miniWeb6.png";
 import "./assets/css/ProgressBar.css"
 
 export function ProgressBar({pageNum}: {pageNum: number}): JSX.Element{
-    const progressBarWebs = [miniWeb0, miniWeb1, miniWeb2, miniWeb3, miniWeb4, miniWeb5, miniWeb6];
+    const progressBarWebs = ["", miniWeb0, miniWeb1, miniWeb2, miniWeb3, miniWeb4, miniWeb5, miniWeb6];
     const [isHovering, changeHovering] = useState<boolean>(false);
 
     function setToHovering(){
@@ -24,7 +24,7 @@ export function ProgressBar({pageNum}: {pageNum: number}): JSX.Element{
     // On hover, the amount of the quiz that has been completed so far appears on top of the spider web image.
     return(
         <div className = "Progress-Bar" onMouseOver = {setToHovering} onMouseLeave = {setToNotHovering}>
-            <img src={progressBarWebs[pageNum - 1]} alt = {progressBarWebs[pageNum - 1].toString()} className = "Web-Image"></img>
+            <img src={progressBarWebs[pageNum]} alt = {"web image"} className = "Web-Image"></img>
 
             {isHovering ? 
             <div className = "Amount-Completed">{"" + pageNum + "/7"}</div> :
