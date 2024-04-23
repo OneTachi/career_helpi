@@ -42,7 +42,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
             
             <img src = {backgrounds[pageNumber - 1]} alt = "Background image" className="Background-Image"></img>
-            <ProgressBar pageNum={completionAmount}></ProgressBar>
+            <ProgressBar amountCompleted={completionAmount}></ProgressBar>
             
         </div>
     );
