@@ -65,10 +65,30 @@ function LoadPage({
       );
     }
     case "basic": {
-      return <body>Basic Page Layout</body>;
+      return <div>
+        <Navbar page={page} setPage={setPage}></Navbar>
+        <Background quizType={"basic"}></Background>
+        {Footer({
+            page,
+            setPage,
+            key,
+            setKey,
+            handleSubmit,
+          })}
+        </div>;
     }
     case "detailed": {
-      return <body>Detailed Page Layout</body>;
+      return <div>
+      <Navbar page={page} setPage={setPage}></Navbar>
+      <Background quizType={"detailed"}></Background>
+      {Footer({
+          page,
+          setPage,
+          key,
+          setKey,
+          handleSubmit,
+        })}
+      </div>;
     }
     case "results": {
       return <body>Results Page Layout</body>;
