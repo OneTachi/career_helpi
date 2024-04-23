@@ -7,7 +7,9 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <body>
       <div>
-        <Button onClick={() => setPage("basic")}>Basic Questions</Button>
+        <Button 
+        className="basic-button"
+        onClick={() => setPage("basic")}>Basic Questions</Button>
         <br />
         <p>
           Our basic quiz is a multiple choice assessment that determines your
@@ -17,7 +19,9 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
         </p>
       </div>
       <div>
-        <Button onClick={() => setPage("detailed")}>Detailed Questions</Button>
+        <Button
+        className={"detailed-button"} 
+        onClick={() => setPage("detailed")}>Detailed Questions</Button>
         <br />
         <p>
           Our complex quiz consists of open response boxes, sliders, and other
