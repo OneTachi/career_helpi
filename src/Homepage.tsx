@@ -7,6 +7,8 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <body>
       
+      <div className ="square"></div>
+
       <div className="heading">8-Legged Career Quest</div>
 
       <div className="subheading">Spin Your Web, Catch Your Career</div>
