@@ -32,22 +32,6 @@ function App() {
     setKey(event.target.value);
   }
 
-  const keyForm = (
-    <Form>
-      <Form.Label>API Key:</Form.Label>
-      <Form.Control
-        type="password"
-        placeholder="Insert API Key Here"
-        onChange={changeKey}
-        value={key}
-      ></Form.Control>
-      <br></br>
-      <Button className="Submit-Button" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Form>
-  );
-
   return LoadPage({
     page,
     setPage,
@@ -56,7 +40,6 @@ function App() {
     saveKeyData,
     handleSubmit,
     changeKey,
-    keyForm,
   });
 }
 
@@ -73,7 +56,6 @@ function LoadPage({
   saveKeyData,
   handleSubmit,
   changeKey,
-  keyForm,
 }: PageKeyProps): JSX.Element {
   // Add JSX of page to corresponding page below.
   switch (page) {
@@ -82,16 +64,15 @@ function LoadPage({
         <body>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
-          <Footer
-            page={page}
-            setPage={setPage}
-            key={key}
-            setKey={setKey}
-            saveKeyData={saveKeyData}
-            handleSubmit={handleSubmit}
-            changeKey={changeKey}
-            keyForm={keyForm}
-          ></Footer>
+          {Footer({
+            page,
+            setPage,
+            key,
+            setKey,
+            saveKeyData,
+            handleSubmit,
+            changeKey,
+          })}
         </body>
       );
     }

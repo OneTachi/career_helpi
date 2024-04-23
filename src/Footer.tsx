@@ -13,7 +13,6 @@ export function Footer({
   saveKeyData,
   handleSubmit,
   changeKey,
-  keyForm,
 }: PageKeyProps): JSX.Element {
   return (
     <footer className="footer">
@@ -33,7 +32,19 @@ export function Footer({
               <p>Siddharth Lokula | Justin Burger | Christopher Rasquin</p>
             </span>
           </Col>
-          <Col>{keyForm}</Col>
+          <Col>
+            <Form>
+              <Form.Control
+                type="password"
+                placeholder="Insert API Key Here"
+                onChange={changeKey}
+                value={key}
+              ></Form.Control>
+              <Button className="Submit-Button" onClick={handleSubmit}>
+                Submit
+              </Button>
+            </Form>
+          </Col>
         </Row>
       </Container>
     </footer>
