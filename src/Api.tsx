@@ -50,11 +50,11 @@ export function getPoints(attr: string): number {
   return attribute[attr];
 }
 
-export function TestApiRequest({ key }: test): JSX.Element {
+export function TestApiRequest({ apikey }: test): JSX.Element {
   const [buttonText, setButtonText] = useState<string>("Next");
   let newKey: string = "";
-  if (key !== null) {
-    newKey = key;
+  if (apikey !== null) {
+    newKey = apikey;
   }
   // async () => setButtonText(await requestMessage(props.key))
   return (

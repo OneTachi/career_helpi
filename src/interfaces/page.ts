@@ -14,5 +14,5 @@ export interface PageKeyProps {
 }
 
 export interface test {
-  key: string | null;
+  apikey: string | null;
 }
