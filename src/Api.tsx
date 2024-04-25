@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { PageKeyProps, test } from "./interfaces/page";
+import { test } from "./interfaces/page";
 
 let attribute: Record<string, number> = {
   "problem solving": 0,
@@ -22,11 +22,9 @@ let attribute: Record<string, number> = {
 
 async function requestMessage(key: string): Promise<string> {
   const openai = new OpenAI({
-    apiKey: "",
+    apiKey: key,
     dangerouslyAllowBrowser: true,
   });
-
-  openai.apiKey = key;
 
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: "user", content: "Say this is a test" }],

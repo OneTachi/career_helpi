@@ -4,18 +4,20 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
+import { TestApiRequest } from "./Api";
+import { Background } from "./Background";
 
 function App() {
   // Hook used for page of website. Does NOT handle individual questions in basic/detailed pages.
   const [page, setPage] = useState<Page>("home");
+
+  //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+  let keyData = "";
+  const saveKeyData = "MYKEY";
+  const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+  if (prevKey !== null) {
+    keyData = JSON.parse(prevKey);
+  }
 
   const [key, setKey] = useState<string>(keyData); //for api key input
 
@@ -25,13 +27,16 @@ function App() {
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
 
-  return LoadPage({
-    page,
-    setPage,
-    key,
-    setKey,
-    handleSubmit,
-  });
+  return LoadPage(
+    {
+      page,
+      setPage,
+      key,
+      setKey,
+      handleSubmit,
+    },
+    keyData
+  );
 }
 
 /**
@@ -39,13 +44,10 @@ function App() {
  * @param { page, setPage, key, setKey, handleSubmit } : PageProps => Page state to pass onto UI Components
  * @returns Page shown to user
  */
-function LoadPage({
-  page,
-  setPage,
-  key,
-  setKey,
-  handleSubmit,
-}: PageKeyProps): JSX.Element {
+function LoadPage(
+  { page, setPage, key, setKey, handleSubmit }: PageKeyProps,
+  localKey: string
+): JSX.Element {
   // Add JSX of page to corresponding page below.
   switch (page) {
     case "home": {
@@ -53,6 +55,7 @@ function LoadPage({
         <body>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
+          <TestApiRequest apikey={localKey} />
           {Footer({
             page,
             setPage,
@@ -64,7 +67,11 @@ function LoadPage({
       );
     }
     case "basic": {
-      return <body>Basic Page Layout</body>;
+      return (
+        <body>
+          <Background quizType={"basic"}></Background>
+        </body>
+      );
     }
     case "detailed": {
       return <body>Detailed Page Layout</body>;
