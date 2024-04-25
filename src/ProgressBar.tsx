@@ -25,7 +25,7 @@ export function ProgressBar({amountCompleted}: {amountCompleted: number}): JSX.E
     // On hover, the amount of the quiz that has been completed so far appears on top of the spider web image.
     return(
         <div className = "Progress-Bar" onMouseOver = {setToHovering} onMouseLeave = {setToNotHovering}>
-            <img src={progressBarWebs[amountCompleted]} alt = "Progress Bar Web Image" className = "Web-Image"></img>
+            <img src={progressBarWebs[amountCompleted]} alt = "Progress Bar Web Img" className = "Web-Image"></img>
 
             {isHovering ? 
             <div className = "Amount-Completed">{"" + amountCompleted + "/7"}</div> :
