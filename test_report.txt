@@ -10,7 +10,7 @@ FAIL src/tests/App.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -40,7 +40,7 @@ FAIL src/tests/App.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -86,56 +86,120 @@ FAIL src/tests/App.test.tsx
             [36m</button>[39m
           [36m</header>[39m
           [36m<body>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"square"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"heading"[39m
+            [36m>[39m
+              [0m8-Legged Career Quest[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"subheading"[39m
+            [36m>[39m
+              [0mSpin Your Web, Catch Your Career[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"background"[39m
+            [36m>[39m
+              [0mt[0m
+            [36m</div>[39m
             [36m<div>[39m
               [36m<button[39m
-                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mclass[39m=[32m"basic-button btn btn-primary"[39m
                 [33mtype[39m=[32m"button"[39m
               [36m>[39m
                 [0mBasic Questions[0m
               [36m</button>[39m
               [36m<br />[39m
-              [36m<p>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"basic-text"[39m
+              [36m>[39m
                 [0mOur basic quiz is a multiple choice assessment that determines your strengths to find what you would be best at. Remember, there are no wrong answers. Follow your heart, and you will get the results that are best for you![0m
               [36m</p>[39m
             [36m</div>[39m
             [36m<div>[39m
               [36m<button[39m
-                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mclass[39m=[32m"detailed-button btn btn-primary"[39m
                 [33mtype[39m=[32m"button"[39m
               [36m>[39m
                 [0mDetailed Questions[0m
               [36m</button>[39m
               [36m<br />[39m
-              [36m<p>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"detailed-text"[39m
+              [36m>[39m
                 [0mOur complex quiz consists of open response boxes, sliders, and other inputs. It allows you to truly unleash your inner creativity and be yourself! You can answer questions with anything you want, and do what you think is best in each situation. Just trust yourself and do the first thing that comes to mind. Most importantly, have fun![0m
               [36m</p>[39m
             [36m</div>[39m
           [36m</body>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mNext[0m
+          [36m</button>[39m
           [36m<footer[39m
             [33mclass[39m=[32m"footer"[39m
           [36m>[39m
-            [36m<a[39m
-              [33mclass[39m=[32m"item left"[39m
-              [33mhref[39m=[32m"https://github.com/OneTachi/career_helpi"[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"container"[39m
             [36m>[39m
-              [36m<img[39m
-                [33malt[39m=[32m"Github"[39m
-                [33mclass[39m=[32m"github logo"[39m
-                [33msrc[39m=[32m"github-mark-white.png"[39m
-              [36m/>[39m
-            [36m</a>[39m
-            [36m<span[39m
-              [33mclass[39m=[32m"item right"[39m
-            [36m>[39m
-              [36m<h3[39m
-                [33mstyle[39m=[32m"text-decoration-line: underline;"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"row"[39m
               [36m>[39m
-                [0mCreated By[0m
-              [36m</h3>[39m
-              [36m<p>[39m
-                [0mSiddharth Lokula | Justin Burger | Christopher Rasquin[0m
-              [36m</p>[39m
-            [36m</span>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<a[39m
+                    [33mclass[39m=[32m"item left"[39m
+                    [33mhref[39m=[32m"https://github.com/OneTachi/career_helpi"[39m
+                  [36m>[39m
+                    [36m<img[39m
+                      [33malt[39m=[32m"Github"[39m
+                      [33mclass[39m=[32m"github logo"[39m
+                      [33msrc[39m=[32m"github-mark-white.png"[39m
+                    [36m/>[39m
+                  [36m</a>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"item right"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mstyle[39m=[32m"text-decoration-line: underline;"[39m
+                    [36m>[39m
+                      [0mCreated By[0m
+                    [36m</h3>[39m
+                    [36m<p>[39m
+                      [0mSiddharth Lokula | Justin Burger | Christopher Rasquin[0m
+                    [36m</p>[39m
+                  [36m</span>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<form[39m
+                    [33mclass[39m=[32m""[39m
+                  [36m>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"form-control"[39m
+                      [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                      [33mtype[39m=[32m"password"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mSubmit[0m
+                    [36m</button>[39m
+                  [36m</form>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
           [36m</footer>[39m
         [36m</body>[39m
       [36m</div>[39m
@@ -163,7 +227,7 @@ PASS src/tests/Homepage.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -193,7 +257,7 @@ PASS src/tests/Homepage.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:10:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -224,10 +288,11 @@ A worker process has failed to exit gracefully and has been force exited. This i
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |    9.41 |        5 |    12.5 |    9.63 |                   
- src                 |    9.41 |        5 |    12.5 |    9.63 |                   
-  App.tsx            |      50 |       25 |     100 |      50 | 33-43             
-  Background.tsx     |       0 |        0 |       0 |       0 | 20-54             
+All files            |    18.1 |     9.37 |   11.76 |   18.58 |                   
+ src                 |    18.1 |     9.37 |   11.76 |   18.58 |                   
+  Api.tsx            |   35.29 |    16.66 |   16.66 |    37.5 | 24-48,59          
+  App.tsx            |   56.25 |    33.33 |   66.66 |   56.25 | 19,26-27,70-100   
+  Background.tsx     |       0 |        0 |       0 |       0 | 36-73             
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
   DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 10-36             
   DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 6-24              
@@ -236,12 +301,12 @@ All files            |    9.41 |        5 |    12.5 |    9.63 |
   DetailedQ5.tsx     |       0 |      100 |       0 |       0 | 7-15              
   DetailedQ6.tsx     |       0 |      100 |       0 |       0 | 7-15              
   DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 7-15              
-  Footer.tsx         |     100 |      100 |     100 |     100 |                   
-  Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 10-20             
-  MultipleChoice.tsx |       0 |      100 |       0 |       0 | 8-23              
+  Footer.tsx         |      50 |      100 |      50 |      50 | 16                
+  Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 21-33             
+  MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30             
   Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 9                 
-  ProgressBar.tsx    |       0 |      100 |       0 |       0 | 11-12             
-  basicQuestions.ts  |       0 |      100 |     100 |       0 | 1-10              
+  ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26             
+  basicQuestions.ts  |     100 |      100 |     100 |     100 |                   
   index.tsx          |       0 |      100 |     100 |       0 | 8-20              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
  src/interfaces      |       0 |        0 |       0 |       0 |                   
@@ -251,5 +316,5 @@ All files            |    9.41 |        5 |    12.5 |    9.63 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.386 s
+Time:        4.652 s
 Ran all test suites.
