@@ -12,3 +12,7 @@ export interface PageKeyProps {
   setKey: (newKey: string) => void;
   handleSubmit: () => void;
 }
+
+export interface test {
+  apikey: string | null;
+}
