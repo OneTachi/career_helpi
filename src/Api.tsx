@@ -1,4 +1,7 @@
 import OpenAI from "openai";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+import { PageKeyProps, test } from "./interfaces/page";
 
 let attribute: Record<string, number> = {
   "problem solving": 0,
@@ -17,17 +20,23 @@ let attribute: Record<string, number> = {
   analytics: 0,
 };
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 async function requestMessage(key: string): Promise<string> {
+  const openai = new OpenAI({
+    apiKey: "",
+    dangerouslyAllowBrowser: true,
+  });
+
   openai.apiKey = key;
+
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: "user", content: "Say this is a test" }],
     model: "gpt-3.5-turbo",
   });
-  return chatCompletion.choices[0].toString();
+
+  if (chatCompletion.choices[0].message.content === null) {
+    return "";
+  }
+  return chatCompletion.choices[0].message.content;
 }
 
 export function addPoints(attr: string[], points: number[]): void {
@@ -39,4 +48,18 @@ export function addPoints(attr: string[], points: number[]): void {
 
 export function getPoints(attr: string): number {
   return attribute[attr];
+}
+
+export function TestApiRequest({ key }: test): JSX.Element {
+  const [buttonText, setButtonText] = useState<string>("Next");
+  let newKey: string = "";
+  if (key !== null) {
+    newKey = key;
+  }
+  // async () => setButtonText(await requestMessage(props.key))
+  return (
+    <Button onClick={async () => setButtonText(await requestMessage(newKey))}>
+      {buttonText}
+    </Button>
+  );
 }
