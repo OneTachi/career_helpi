@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
 import "./MultipleChoice.css"
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { basicQuestionProps } from './Background';
 
 

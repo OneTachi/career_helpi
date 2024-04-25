@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Background.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
 import { questions } from './basicQuestions';
 import { answers } from './basicQuestions';
@@ -48,7 +48,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             {quizType === "basic" ? <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> : <div>Detailed</div>}
             <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage>
             
-            <img src = {backgrounds[pageNumber - 1]} alt = "Background image" className="Background-Image"></img>
+            <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img>
             <ProgressBar amountCompleted={completionAmount}></ProgressBar>
         </div>
     );
@@ -68,7 +68,7 @@ export function ChangePage({pageNumber, changePageNumber}: changePageProps): JSX
 }
 
 export function Spider(): JSX.Element{
-    const spiderImg = "";
+    //const spiderImg = "";
     
     return(
         <div
