@@ -7,7 +7,13 @@ import React, { useState } from 'react';
 
 //selectedField: The career field that the user is currently hovering over.
 interface selectedFieldProps{
+    selectedField: string;
+    changeSelectedField: (newField: string) => void;
+}
 
+interface selectedJobProps{
+    selectedJob: string;
+    changeSelectedJob: (newJob: string) => void;
 }
 
 
@@ -31,7 +37,7 @@ export function careerSpiders({field, jobs, descriptions}: {field: string, jobs:
     );
 }
 
-export function jobFlies(): JSX.Element{
+export function jobFlies({job, description}: {job: string, description: string}): JSX.Element{
     return(
         <div>
 
