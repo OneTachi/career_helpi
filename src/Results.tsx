@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import mainSpider from "assets/images/characters/main/walking(main).gif"
 
 
 interface selectedFieldProps{
@@ -37,7 +38,7 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     }
 
     function updateSelectedJob(newJob: string){
-        changeSelectedField(newJob);
+        changeSelectedJob(newJob);
     }
 
     
@@ -51,9 +52,14 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
 
 
 export function CareerSpider({field, jobs, descriptions, selectedField, updateSelectedField}: selectedFieldProps): JSX.Element{
+    let xRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
+    let yRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
+
+
     return(
         <div onMouseEnter={() => updateSelectedField(field)} onMouseLeave={() => updateSelectedField("")}>
-
+            <h2>Career</h2>
+            <img src = {mainSpider} alt = "result spider img" style = {{left: xRand, top: yRand, width: "50%", height: "50%"}}></img>
         </div>
     );
 }
@@ -61,7 +67,7 @@ export function CareerSpider({field, jobs, descriptions, selectedField, updateSe
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
         <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")}>
-            
+            import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png";
         </div>
     );
 }
