@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import mainSpider from "assets/images/characters/main/walking(main).gif"
+import mainSpider from "./assets/images/characters/main/walking (main).gif";
 
+import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png"; //Delete me!!!!
 
 interface selectedFieldProps{
     field: string;
@@ -9,6 +10,9 @@ interface selectedFieldProps{
 
     selectedField: string;
     updateSelectedField: (newField: string) => void;
+
+    selectedJob: string;
+    updateSelectedJob: (newJob: string) => void;
 }
 
 interface selectedJobProps{
@@ -45,29 +49,33 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     
     return(
         <div>
-            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField}></CareerSpider>)}
+            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></CareerSpider>)}
         </div>
     );
 }
 
 
-export function CareerSpider({field, jobs, descriptions, selectedField, updateSelectedField}: selectedFieldProps): JSX.Element{
+export function CareerSpider({field, jobs, descriptions, selectedField, updateSelectedField, selectedJob, updateSelectedJob}: selectedFieldProps): JSX.Element{
     let xRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
     let yRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
 
 
     return(
         <div onMouseEnter={() => updateSelectedField(field)} onMouseLeave={() => updateSelectedField("")}>
-            <h2>Career</h2>
-            <img src = {mainSpider} alt = "result spider img" style = {{left: xRand, top: yRand, width: "50%", height: "50%"}}></img>
+            <h3>{field}</h3>
+            <img src = {mainSpider} alt = "result spider img" style = {{left: xRand, top: yRand, width: "10%", height: "10%", position: "absolute"}}></img>
+            {field === selectedField && jobs.map((job: string) => <JobFly job={jobs[jobs.indexOf(job)]} description={descriptions[jobs.indexOf(job)]} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></JobFly>)}
         </div>
     );
 }
 
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
-        <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")}>
-            import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png";
+        <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")} style = {{backgroundColor: "purple"}}>
+            <h2>{job}</h2>
+            <h2>{selectedJob}</h2>
+            <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%", width: "10%", height: "10%", position: "absolute"}}></img>
+            <div>{description}</div>
         </div>
     );
 }
