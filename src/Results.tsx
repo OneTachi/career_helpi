@@ -9,6 +9,8 @@ interface selectedFieldProps{
     jobs: string[];
     descriptions: string[];
 
+    spiderNum: number;
+
     selectedField: string;
     updateSelectedField: (newField: string) => void;
 
@@ -49,32 +51,26 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     
     
     return(
-        <div>
-            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></CareerSpider>)}
+        <div onClick={() => updateSelectedField("")} className="Results-Click-Box">
+            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field) + 1}></CareerSpider>)}
         </div>
     );
 }
 
 
-export function CareerSpider({field, jobs, descriptions, selectedField, updateSelectedField, selectedJob, updateSelectedJob}: selectedFieldProps): JSX.Element{
-    let xRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
-    let yRand = Math.floor(Math.random() * (70 - 30 + 1) + 30);
-
-
-    return(
-        <div onMouseEnter={() => updateSelectedField(field)} onMouseLeave={() => updateSelectedField("")} style = {{marginLeft: xRand.toString() + "%", marginTop: yRand.toString() + "%"}} className="Career-Spider">
+export function CareerSpider({field, jobs, descriptions, selectedField, updateSelectedField, selectedJob, updateSelectedJob, spiderNum}: selectedFieldProps): JSX.Element{
+ return(
+        <div onMouseDown={() => updateSelectedField(field)} key={field} className={"Career-Spider Spider-" + spiderNum.toString()}>
             <h3>{field}</h3>
             <img src = {mainSpider} alt = "result spider img" className="Spider-Image"></img>
             {field === selectedField && jobs.map((job: string) => <JobFly job={jobs[jobs.indexOf(job)]} description={descriptions[jobs.indexOf(job)]} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></JobFly>)}
-            {xRand}
-            {yRand}
         </div>
     );
 }
 
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
-        <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")} style = {{backgroundColor: "purple"}} className="Job-Fly">
+        <div onMouseDown={() => updateSelectedJob(job)} key={job} style = {{backgroundColor: "purple"}} className="Job-Fly">
             <h2>{job}</h2>
             <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
             <div>{description}</div>
