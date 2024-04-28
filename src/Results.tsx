@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./assets/css/Results.css"
 import mainSpider from "./assets/images/characters/main/walking (main).gif";
 
 import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png"; //Delete me!!!!
@@ -61,20 +62,21 @@ export function CareerSpider({field, jobs, descriptions, selectedField, updateSe
 
 
     return(
-        <div onMouseEnter={() => updateSelectedField(field)} onMouseLeave={() => updateSelectedField("")}>
+        <div onMouseEnter={() => updateSelectedField(field)} onMouseLeave={() => updateSelectedField("")} style = {{marginLeft: xRand.toString() + "%", marginTop: yRand.toString() + "%"}} className="Career-Spider">
             <h3>{field}</h3>
-            <img src = {mainSpider} alt = "result spider img" style = {{left: xRand, top: yRand, width: "10%", height: "10%", position: "absolute"}}></img>
+            <img src = {mainSpider} alt = "result spider img" className="Spider-Image"></img>
             {field === selectedField && jobs.map((job: string) => <JobFly job={jobs[jobs.indexOf(job)]} description={descriptions[jobs.indexOf(job)]} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></JobFly>)}
+            {xRand}
+            {yRand}
         </div>
     );
 }
 
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
-        <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")} style = {{backgroundColor: "purple"}}>
+        <div onMouseEnter={() => updateSelectedJob(job)} onMouseLeave={() => updateSelectedJob("")} style = {{backgroundColor: "purple"}} className="Job-Fly">
             <h2>{job}</h2>
-            <h2>{selectedJob}</h2>
-            <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%", width: "10%", height: "10%", position: "absolute"}}></img>
+            <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
             <div>{description}</div>
         </div>
     );
