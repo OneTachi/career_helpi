@@ -2,6 +2,7 @@ import React from "react";
 import { PageProps } from "./interfaces/page";
 import { Button } from "react-bootstrap";
 import "./assets/css/Homepage.css";
+import { VisualFeedback } from "./VisualFeedBack";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
@@ -12,6 +13,8 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
       <div className="heading">8-Legged Career Quest</div>
 
       <div className="subheading">Spin Your Web, Catch Your Career</div>
+
+      <div className ="visualFeedback"><VisualFeedback></VisualFeedback></div>
 
       <div className="background">t</div>
 

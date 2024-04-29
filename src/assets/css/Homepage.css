@@ -12,6 +12,13 @@ body {
   flex: 1 0 auto;
 }
 
+.visualFeedback{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  background: #0700b8;
+}
+
 .heading{
   position: absolute;
   font-size: 80px;

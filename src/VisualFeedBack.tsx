@@ -11,7 +11,7 @@ export function VisualFeedback(): JSX.Element{
         setfeedbackRecieved(true)
       }
     // This is the View
-    return <div hidden={!feedbackRecieved}>
+    return <div className = "feedback">
         Your Answers have been submitted To ChatGPT
         
         </div>
