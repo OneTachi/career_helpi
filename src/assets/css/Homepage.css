@@ -15,7 +15,7 @@ body {
 .heading{
   position: absolute;
   font-size: 80px;
-  top: 8%;
+  top: 7%;
   text-align: center;
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   width: 100%;
