@@ -1,18 +1,23 @@
 import { useState } from "react";
+import {Button} from "react-bootstrap";
 
 export function VisualFeedback(): JSX.Element{
     // This is the State (Model)
-    const [feedbackRecieved, setfeedbackRecieved] = useState<boolean>(false);
+    const [submitted, setSubmitted] = useState<boolean>(false);
 
     // This is the Control
-    function updateFeedbackRecieved(event: React.ChangeEvent<{}>) {
+    function updateSubmitted(event: React.ChangeEvent<{}>) {
         //im assuming that once we have the submit questions button operational
         //that will be the event it references
-        setfeedbackRecieved(true)
+        setSubmitted(true)
       }
     // This is the View
-    return <div className = "feedback">
-        Your Answers have been submitted To ChatGPT
-        
-        </div>
+    return <div>
+
+      <Button onClick={updateSubmitted} hidden={submitted}>Submit Answers</Button>
+
+    <div hidden={!submitted}>Your Answers have been submitted To ChatGPT</div>
+
+
+    </div>
 }
