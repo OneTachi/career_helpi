@@ -5,6 +5,7 @@ import "./assets/css/Homepage.css";
 import { VisualFeedback } from "./VisualFeedBack";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
+  
   return (
     <body>
       

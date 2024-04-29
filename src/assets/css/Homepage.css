@@ -15,8 +15,16 @@ body {
 .visualFeedback{
   text-align: center;
   position: absolute;
-  top: 50%;
-  background: #0700b8;
+  top: 80%;
+  right: 47%;
+}
+
+.visualFeedback:active{
+  text-align: center;
+  position: absolute;
+  top: 80%;
+  right: 47%;
+  background: #daae51;
 }
 
 .heading{

@@ -14,7 +14,7 @@ export function VisualFeedback(): JSX.Element{
     // This is the View
     return <div>
 
-      <Button onClick={updateSubmitted} hidden={submitted}>Submit Answers</Button>
+      {<Button onClick={updateSubmitted} hidden={submitted}>Submit Answers</Button>}
 
     <div hidden={!submitted}>Your Answers have been submitted To ChatGPT</div>
 
