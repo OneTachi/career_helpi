@@ -43,7 +43,7 @@
     font-weight: 1000;
     margin-left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -350%);
     position: absolute;
 
     background-color: white;
@@ -65,6 +65,7 @@
     border-radius: 25px;
     background-color: grey;
     opacity: 100%;
+    position: relative;
 }
 
 .Fly-Image{
