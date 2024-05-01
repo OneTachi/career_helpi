@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { TestApiRequest } from "./Api";
+import { TestApiRequest, initializeAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
 
+  initializeAttributes();
   return LoadPage(
     {
       page,

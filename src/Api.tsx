@@ -2,23 +2,7 @@ import OpenAI from "openai";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { test } from "./interfaces/page";
-
-let attribute: Record<string, number> = {
-  "problem solving": 0,
-  protectiveness: 0,
-  creativity: 0,
-  empthay: 0,
-  leadership: 0,
-  communication: 0,
-  teamwork: 0,
-  patience: 0,
-  organization: 0,
-  "decision making": 0,
-  adaptability: 0,
-  independence: 0,
-  ethics: 0,
-  analytics: 0,
-};
+import { QuizType } from "./interfaces/page";
 
 /**
  * Requests career data from ChatGPT based on attributes listed in the JSON files
@@ -43,17 +27,6 @@ async function requestCareer(key: string, basicQ: boolean): Promise<string> {
   return chatCompletion.choices[0].message.content;
 }
 
-export function addPoints(attr: string[], points: number[]): void {
-  if (attr.length !== points.length) {
-    throw new Error("Attribute list does not match point list");
-  }
-  [...attr].map((att: string) => (attribute[att] += points[attr.indexOf(att)]));
-}
-
-export function getPoints(attr: string): number {
-  return attribute[attr];
-}
-
 /**
  * A Component (Button) that requests a message from ChatGPT and posts it to the Button Text
  * @param apikey The most updated api key provided by the user
@@ -73,4 +46,41 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
       {buttonText}
     </Button>
   );
+}
+
+export function incrementAttributes(
+  attr: string[],
+  points: number[],
+  quizType: QuizType
+): void {
+  if (attr.length !== points.length) {
+    throw new Error("Attribute list does not match point list");
+  }
+  // Get data from JSON
+  //const quiz = JSON.parse()
+  //[...attr].map((att: string) => (attribute[att] += points[attr.indexOf(att)]));
+}
+
+export function initializeAttributes(): void {
+  const quiz_format: Record<string, number> = {
+    "problem solving": 0,
+    protectiveness: 0,
+    creativity: 0,
+    empthay: 0,
+    leadership: 0,
+    communication: 0,
+    teamwork: 0,
+    patience: 0,
+    organization: 0,
+    "decision making": 0,
+    adaptability: 0,
+    independence: 0,
+    ethics: 0,
+    analytics: 0,
+  };
+
+  localStorage.getItem("basic-quiz-results");
+  localStorage.getItem("detailed-quiz-results");
+  localStorage.setItem("basic-quiz-results", JSON.stringify(quiz_format));
+  localStorage.setItem("detailed-quiz-results", JSON.stringify(quiz_format));
 }
