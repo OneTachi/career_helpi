@@ -60,7 +60,9 @@ export function incrementAttributes(
   //const quiz = JSON.parse()
   //[...attr].map((att: string) => (attribute[att] += points[attr.indexOf(att)]));
 }
-
+/**
+ * Creates attributes to track in local storage
+ */
 export function initializeAttributes(): void {
   const quiz_format: Record<string, number> = {
     "problem solving": 0,
