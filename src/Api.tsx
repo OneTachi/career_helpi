@@ -56,9 +56,16 @@ export function incrementAttributes(
   if (attr.length !== points.length) {
     throw new Error("Attribute list does not match point list");
   }
-  // Get data from JSON
-  //const quiz = JSON.parse()
-  //[...attr].map((att: string) => (attribute[att] += points[attr.indexOf(att)]));
+  // Get data from Local Storage
+  let quizKey = localStorage.getItem(quizType + "-quiz-results");
+  let quiz: Record<string, number>;
+  if (quizKey === null) {
+    return;
+  }
+  quiz = JSON.parse(quizKey);
+
+  [...attr].map((att: string) => (quiz[att] += points[attr.indexOf(att)]));
+  localStorage.setItem(quizType + "-quiz-results", JSON.stringify(quiz));
 }
 /**
  * Creates attributes to track in local storage
