@@ -20,7 +20,13 @@ let attribute: Record<string, number> = {
   analytics: 0,
 };
 
-async function requestMessage(key: string): Promise<string> {
+/**
+ * Requests career data from ChatGPT based on attributes listed in the JSON files
+ * @param key The API Key for ChatGPT provided by the user
+ * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
+ * @returns
+ */
+async function requestCareer(key: string, basicQ: boolean): Promise<string> {
   const openai = new OpenAI({
     apiKey: key,
     dangerouslyAllowBrowser: true,
@@ -48,6 +54,11 @@ export function getPoints(attr: string): number {
   return attribute[attr];
 }
 
+/**
+ * A Component (Button) that requests a message from ChatGPT and posts it to the Button Text
+ * @param apikey The most updated api key provided by the user
+ * @returns
+ */
 export function TestApiRequest({ apikey }: test): JSX.Element {
   const [buttonText, setButtonText] = useState<string>("Next");
   let newKey: string = "";
@@ -56,7 +67,9 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   }
   // async () => setButtonText(await requestMessage(props.key))
   return (
-    <Button onClick={async () => setButtonText(await requestMessage(newKey))}>
+    <Button
+      onClick={async () => setButtonText(await requestCareer(newKey, true))}
+    >
       {buttonText}
     </Button>
   );
