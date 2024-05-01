@@ -4,7 +4,11 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { TestApiRequest, initializeAttributes } from "./Api";
+import {
+  TestApiRequest,
+  initializeAttributes,
+  incrementAttributes,
+} from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -28,6 +32,7 @@ function App() {
   }
 
   initializeAttributes();
+  incrementAttributes(["ethics"], [1], "basic");
   return LoadPage(
     {
       page,
