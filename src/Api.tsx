@@ -88,13 +88,17 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   if (apikey !== null) {
     newKey = apikey;
   }
+
+  const response = async () => {
+    if (buttonText === "Test Text") {
+      setButtonText(await requestInitialCareer(newKey, "basic"));
+    } else {
+      setButtonText(await requestAnotherCareer(newKey));
+    }
+  };
   return (
     <div>
-      <Button
-        onClick={async () =>
-          setButtonText(await requestInitialCareer(newKey, "basic"))
-        }
-      ></Button>
+      <Button onClick={response}></Button>
       <p>{buttonText}</p>
     </div>
   );
