@@ -18,7 +18,7 @@ let message_history: ChatCompletionMessageParam[] = [];
  * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
  * @returns ChatGPT's response
  */
-export async function requestCareer(
+export async function requestInitialCareer(
   key: string,
   quizType: QuizType
 ): Promise<string> {
@@ -52,6 +52,11 @@ export async function requestCareer(
   return content;
 }
 
+/**
+ * Requests 1 additional career for the career results page.
+ * @param key The API Key provided by the User
+ * @returns ChatGPT Response
+ */
 export async function requestAnotherCareer(key: string) {
   openai.apiKey = key;
   // Pushing new command for completion
@@ -87,7 +92,7 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
     <div>
       <Button
         onClick={async () =>
-          setButtonText(await requestCareer(newKey, "basic"))
+          setButtonText(await requestInitialCareer(newKey, "basic"))
         }
       ></Button>
       <p>{buttonText}</p>
