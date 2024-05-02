@@ -53,7 +53,7 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     
     
     return(
-        <div className="Results-Click-Box">
+        <div>
             <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
             {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
         </div>
