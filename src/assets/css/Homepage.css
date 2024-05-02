@@ -56,7 +56,7 @@ body {
   background: linear-gradient(270deg, rgba(213,51,105,1) 0%, rgba(218,174,81,1) 100%);
 }
 
-.basic-text{
+/*.basic-text{
   position: absolute;
   left: 50%;
   top: 35%;
@@ -64,10 +64,24 @@ body {
   padding: 3%;
   border-radius: 100%;
   background-color: lightblue; 
+}*/
+
+.basic-text{
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  margin-right: 25%;
+  padding: 3%;
+  border-radius: 100%;
+  background-color: black;
+  box-shadow: inset 0 0 0 0 black;
+  color: white;
+  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
 }
 
 .basic-text:hover{
-  border: green;
+  color: black;
+  box-shadow: inset 5000px 0 0 0 gold;
 }
 
 .detailed-button{
