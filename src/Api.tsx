@@ -33,7 +33,7 @@ export async function requestInitialCareer(
   }
 
   const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
-   what 3 careers would you recommend in a single occupation field? Please include a job description, the average salary for the position, and why you think this is best. 
+   what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
    Have the first line have just the career. Please indicate the field. Please include new lines in response.`;
 
   let quiz: string = message + getStorageData;
@@ -50,7 +50,6 @@ export async function requestInitialCareer(
   message_history.push({ role: "user", content: quiz });
   message_history.push({ role: "assistant", content: content });
   careers.push(content);
-  careers.push;
 
   return content;
 }
@@ -97,7 +96,7 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
     if (buttonText === "Test Text") {
       setButtonText(await requestInitialCareer(newKey, "basic"));
     } else {
-      setButtonText(await requestAnotherCareer(newKey));
+      setButtonText(await requestAnotherCareerInField(newKey));
     }
   };
   return (
