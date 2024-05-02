@@ -48,11 +48,12 @@ body {
 
 .basic-button{
   position: absolute;
-  left: 25.5%;
+  left: 58%;
   top: 27%;
   width: 150px;
-  height: 50px;
+  height: 55px;
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(270deg, rgba(213,51,105,1) 0%, rgba(218,174,81,1) 100%);
 }
 
 .basic-text{
@@ -65,14 +66,17 @@ body {
   background-color: lightblue; 
 }
 
+.basic-text:hover{
+  border: green;
+}
+
 .detailed-button{
   position: absolute;
-  left: 58%;
+  left: 25.5%;
   top: 27%;
   width: 150px;
   height: 55px;
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-  background: linear-gradient(270deg, rgba(213,51,105,1) 0%, rgba(218,174,81,1) 100%);
 }
 
 .detailed-text{
@@ -83,6 +87,10 @@ body {
   padding: 1%;
   border-radius: 5%;
   background-color: lightblue; 
+}
+
+.detailed-text:hover{
+  width: 10%;
 }
 
 .detailed-button:hover{
