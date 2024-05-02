@@ -4,6 +4,11 @@ import { Button } from "react-bootstrap";
 import { test } from "./interfaces/page";
 import { QuizType } from "./interfaces/page";
 
+const openai = new OpenAI({
+  apiKey: "",
+  dangerouslyAllowBrowser: true,
+});
+
 /**
  * Requests career data from ChatGPT based on attributes listed in the JSON files
  * @param key The API Key for ChatGPT provided by the user
@@ -14,10 +19,7 @@ export async function requestCareer(
   key: string,
   quizType: QuizType
 ): Promise<string> {
-  const openai = new OpenAI({
-    apiKey: key,
-    dangerouslyAllowBrowser: true,
-  });
+  openai.apiKey = key;
 
   const getStorageData: string | null = localStorage.getItem(
     quizType + "-quiz-results"
@@ -25,16 +27,15 @@ export async function requestCareer(
   if (getStorageData === null) {
     return "ERROR";
   }
-  const quiz: Record<string, number> = JSON.parse(getStorageData);
 
   const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career.\n`;
+   Have the first line have just the career.\n Please do not include any of the following careers: `;
 
-  let storageData: string = message + getStorageData;
+  let quiz: string = message + getStorageData;
 
   const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: storageData }],
+    messages: [{ role: "user", content: quiz }],
     model: "gpt-3.5-turbo",
   });
 
@@ -50,12 +51,11 @@ export async function requestCareer(
  * @returns The Component
  */
 export function TestApiRequest({ apikey }: test): JSX.Element {
-  const [buttonText, setButtonText] = useState<string>("Next");
+  const [buttonText, setButtonText] = useState<string>(givenCareers.toString());
   let newKey: string = "";
   if (apikey !== null) {
     newKey = apikey;
   }
-  // async () => setButtonText(await requestMessage(props.key))
   return (
     <div>
       <Button
@@ -93,6 +93,7 @@ export function incrementAttributes(
   [...attr].map((att: string) => (quiz[att] += points[attr.indexOf(att)]));
   localStorage.setItem(quizType + "-quiz-results", JSON.stringify(quiz));
 }
+
 /**
  * Creates attributes to track in local storage
  */
