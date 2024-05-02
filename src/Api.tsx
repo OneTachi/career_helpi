@@ -30,7 +30,7 @@ async function requestCareer(key: string, basicQ: boolean): Promise<string> {
 /**
  * A Component (Button) that requests a message from ChatGPT and posts it to the Button Text
  * @param apikey The most updated api key provided by the user
- * @returns
+ * @returns The Component
  */
 export function TestApiRequest({ apikey }: test): JSX.Element {
   const [buttonText, setButtonText] = useState<string>("Next");
@@ -47,7 +47,12 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
     </Button>
   );
 }
-
+/**
+ * Increases elements of quiz result data
+ * @param attr A list of attributes to increment. MUST equal the length of points parameter.
+ * @param points The number of points to increment the attributes. It's order must reflect the order of attr paramater.
+ * @param quizType Whether to alter the basic question results or detailed question results
+ */
 export function incrementAttributes(
   attr: string[],
   points: number[],
