@@ -34,7 +34,7 @@ export async function requestInitialCareer(
 
   const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career. Please indicate the field. Please include new lines in response.`;
+   Have the first line have just the career. Please indicate the field.`;
 
   let quiz: string = message + getStorageData;
 
@@ -49,9 +49,15 @@ export async function requestInitialCareer(
   }
   message_history.push({ role: "user", content: quiz });
   message_history.push({ role: "assistant", content: content });
+  const career: string[] = content.split("\n");
+  localStorage.getItem("career");
+  localStorage.setItem("career", JSON.stringify(career));
   careers.push(content);
 
-  return content;
+  if (localStorage.getItem("career") !== null) {
+    return career.length.toString();
+  }
+  return "";
 }
 
 /**
@@ -66,7 +72,7 @@ async function requestAnotherCareerInField(key: string) {
   message_history.push({
     role: "user",
     content:
-      "Give me another career with those attributes in the same field. If you cannot, give me another related career.",
+      "Give me another career with those attributes in the same field. If you cannot, give me another related career. Please exclude the Occupation Field.",
   });
   const chatCompletion = await openai.chat.completions.create({
     messages: message_history,
