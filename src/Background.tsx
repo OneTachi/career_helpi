@@ -10,6 +10,7 @@ import { Results } from './Results';
 import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
 import waterfall from "./assets/images/backgrounds/waterfall.gif"
+import garden from "./assets/images/backgrounds/garden.png"
 
 
 interface changePageProps{
@@ -47,13 +48,13 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     return(
         <div onMouseMove={updateCompletionAmount}>
             {quizType === "results" ? 
-                <Results fields={["a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
+                <Results fields={["a aaaaaaaaaaaaa a a a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
                 : quizType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
                     : <div>Detailed</div>
             }
             
-            {quizType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {forest} alt = "Background Img" className="Background-Image"></img>}
+            {quizType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
             {quizType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage> : ""}
             {quizType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
         </div>
