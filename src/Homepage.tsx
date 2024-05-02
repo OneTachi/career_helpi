@@ -5,20 +5,15 @@ import "./assets/css/Homepage.css";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
-    <body>
-      
-      <div className ="square"></div>
-
+    <div className="background">
       <div className="heading">8-Legged Career Quest</div>
 
       <div className="subheading">Spin Your Web, Catch Your Career</div>
 
-      <div className="background">t</div>
-
       <div>
-        <Button 
-        className="basic-button"
-        onClick={() => setPage("basic")}>Basic Questions</Button>
+        <Button className="basic-button" onClick={() => setPage("basic")}>
+          Basic Questions
+        </Button>
         <br />
         <p className="basic-text">
           Our basic quiz is a multiple choice assessment that determines your
@@ -29,8 +24,11 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
       </div>
       <div>
         <Button
-        className={"detailed-button"} 
-        onClick={() => setPage("detailed")}>Detailed Questions</Button>
+          className={"detailed-button"}
+          onClick={() => setPage("detailed")}
+        >
+          Detailed Questions
+        </Button>
         <br />
         <p className="detailed-text">
           Our complex quiz consists of open response boxes, sliders, and other
@@ -40,7 +38,7 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
           first thing that comes to mind. Most importantly, have fun!
         </p>
       </div>
-    </body>
+    </div>
   );
 }
 
