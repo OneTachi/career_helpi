@@ -13,7 +13,7 @@ const openai = new OpenAI({
 let message_history: ChatCompletionMessageParam[] = [];
 
 /**
- * Requests first time career data from ChatGPT based on attributes listed in the JSON files
+ * Requests first time career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
  * @param key The API Key for ChatGPT provided by the user
  * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
  * @returns ChatGPT's response
@@ -33,8 +33,8 @@ export async function requestInitialCareer(
   }
 
   const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
-   what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career.\n`;
+   what 3 careers would you recommend in a single occupation field? Please include a job description, the average salary for the position, and why you think this is best. 
+   Have the first line have just the career. Please indicate the field. Please include new lines in response.`;
 
   let quiz: string = message + getStorageData;
 
@@ -42,28 +42,32 @@ export async function requestInitialCareer(
     messages: [{ role: "user", content: quiz }],
     model: "gpt-3.5-turbo",
   });
-
+  let careers: string[] = [];
   const content = chatCompletion.choices[0].message.content;
   if (content === null) {
     return "";
   }
   message_history.push({ role: "user", content: quiz });
   message_history.push({ role: "assistant", content: content });
+  careers.push(content);
+  careers.push;
+
   return content;
 }
 
 /**
  * Requests 1 additional career for the career results page.
  * @param key The API Key provided by the User
+ * @param field The occupation field of the job requested
  * @returns ChatGPT Response
  */
-export async function requestAnotherCareer(key: string) {
+async function requestAnotherCareerInField(key: string) {
   openai.apiKey = key;
   // Pushing new command for completion
   message_history.push({
     role: "user",
     content:
-      "Give me another career with those attributes. If you cannot, give me another related career.",
+      "Give me another career with those attributes in the same field. If you cannot, give me another related career.",
   });
   const chatCompletion = await openai.chat.completions.create({
     messages: message_history,
