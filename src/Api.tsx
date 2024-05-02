@@ -8,16 +8,33 @@ import { QuizType } from "./interfaces/page";
  * Requests career data from ChatGPT based on attributes listed in the JSON files
  * @param key The API Key for ChatGPT provided by the user
  * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
- * @returns
+ * @returns ChatGPT's response
  */
-async function requestCareer(key: string, basicQ: boolean): Promise<string> {
+export async function requestCareer(
+  key: string,
+  quizType: QuizType
+): Promise<string> {
   const openai = new OpenAI({
     apiKey: key,
     dangerouslyAllowBrowser: true,
   });
 
+  const getStorageData: string | null = localStorage.getItem(
+    quizType + "-quiz-results"
+  );
+  if (getStorageData === null) {
+    return "ERROR";
+  }
+  const quiz: Record<string, number> = JSON.parse(getStorageData);
+
+  const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
+   what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
+   Have the first line have just the career.\n`;
+
+  let storageData: string = message + getStorageData;
+
   const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: "Say this is a test" }],
+    messages: [{ role: "user", content: storageData }],
     model: "gpt-3.5-turbo",
   });
 
@@ -41,7 +58,7 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   // async () => setButtonText(await requestMessage(props.key))
   return (
     <Button
-      onClick={async () => setButtonText(await requestCareer(newKey, true))}
+      onClick={async () => setButtonText(await requestCareer(newKey, "basic"))}
     >
       {buttonText}
     </Button>
@@ -80,7 +97,7 @@ export function initializeAttributes(): void {
     "problem solving": 0,
     protectiveness: 0,
     creativity: 0,
-    empthay: 0,
+    empathy: 0,
     leadership: 0,
     communication: 0,
     teamwork: 0,

@@ -8,6 +8,7 @@ import {
   TestApiRequest,
   initializeAttributes,
   incrementAttributes,
+  requestCareer,
 } from "./Api";
 import { Background } from "./Background";
 
@@ -32,7 +33,18 @@ function App() {
   }
 
   initializeAttributes();
-  incrementAttributes(["ethics"], [1], "basic");
+  incrementAttributes(
+    [
+      "ethics",
+      "problem solving",
+      "protectiveness",
+      "creativity",
+      "empathy",
+      "leadership",
+    ],
+    [1, 5, 7, 4, 6, 9, 9],
+    "basic"
+  );
   return LoadPage(
     {
       page,
