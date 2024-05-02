@@ -1,10 +1,10 @@
 //import React, { useState } from 'react';
 import "./MultipleChoice.css"
 import { Form } from 'react-bootstrap';
-import { questionProps } from './Background';
+import { basicQuestionProps } from './Background';
 
 
-export function MultipleChoice({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: questionProps): JSX.Element{
+export function MultipleChoice({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: basicQuestionProps): JSX.Element{
 
     function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
         //Replace the current answer in selectedAnswer with the newly selected answer, at the index tat corresponds to the page number.
