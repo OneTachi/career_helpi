@@ -57,13 +57,17 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   }
   // async () => setButtonText(await requestMessage(props.key))
   return (
-    <Button
-      onClick={async () => setButtonText(await requestCareer(newKey, "basic"))}
-    >
-      {buttonText}
-    </Button>
+    <div>
+      <Button
+        onClick={async () =>
+          setButtonText(await requestCareer(newKey, "basic"))
+        }
+      ></Button>
+      <p>{buttonText}</p>
+    </div>
   );
 }
+
 /**
  * Increases elements of quiz result data
  * @param attr A list of attributes to increment. MUST equal the length of points parameter.

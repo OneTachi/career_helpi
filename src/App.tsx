@@ -8,7 +8,6 @@ import {
   TestApiRequest,
   initializeAttributes,
   incrementAttributes,
-  requestCareer,
 } from "./Api";
 import { Background } from "./Background";
 
@@ -42,9 +41,10 @@ function App() {
       "empathy",
       "leadership",
     ],
-    [1, 5, 7, 4, 6, 9, 9],
+    [9, 5, 7, 4, 6, 9],
     "basic"
   );
+
   return LoadPage(
     {
       page,
