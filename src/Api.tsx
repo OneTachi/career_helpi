@@ -30,7 +30,7 @@ export async function requestCareer(
 
   const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career.\n Please do not include any of the following careers: `;
+   Have the first line have just the career.\n`;
 
   let quiz: string = message + getStorageData;
 
