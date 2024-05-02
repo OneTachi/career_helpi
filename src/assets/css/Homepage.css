@@ -12,6 +12,10 @@ body {
   flex: 1 0 auto;
 }
 
+.background{
+  background-color: #00ff88;
+}
+
 .heading{
   position: absolute;
   font-size: 80px;
@@ -33,10 +37,6 @@ body {
   width: 100%;
 }
 
-.background{
-  background-color: #00ff88;
-}
-
 .basic-button:hover{
   width: 200px;
   height: 50px;
@@ -55,16 +55,6 @@ body {
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
   background: linear-gradient(270deg, rgba(213,51,105,1) 0%, rgba(218,174,81,1) 100%);
 }
-
-/*.basic-text{
-  position: absolute;
-  left: 50%;
-  top: 35%;
-  margin-right: 25%;
-  padding: 3%;
-  border-radius: 100%;
-  background-color: lightblue; 
-}*/
 
 .basic-text{
   position: absolute;
@@ -97,14 +87,18 @@ body {
   position: absolute;
   left: 20%;
   top: 35%;
+  color: white;
   margin-right: 60%;
   padding: 1%;
   border-radius: 5%;
-  background-color: lightblue; 
+  background-color: black; 
 }
 
 .detailed-text:hover{
-  width: 10%;
+  color: black;
+  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
+  box-shadow: inset 5000px 0 0 0 gold;
+
 }
 
 .detailed-button:hover{
