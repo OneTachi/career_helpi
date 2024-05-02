@@ -65,10 +65,18 @@ export function CareerSpider({field, jobs, descriptions, selectedField, updateSe
     const spiders = [spider0, spider1, spider2];
 
     return(
-        <div onMouseDown={() => updateSelectedField(field)} key={field} className={"Career-Spider Spider-" + spiderNum.toString()}>
+        <div onMouseDown={() => updateSelectedField(field)} key={field} className = {"Career-Spider Spider-" + spiderNum.toString()}>
             <h3 className={"Field-Text"}>{field}</h3>
-            <img src = {spiders[spiderNum]} alt = "result spider img" className="Spider-Image"></img>
+            <div className={"Career-Spider-Border"}>
+                <img src = {spiders[spiderNum]} alt = "result spider img" className="Spider-Image"></img>
+            </div>
+
+            
+            <img src = {spiders[spiderNum]} alt = "invis-push-spider" className="Spider-Image" style={{opacity:"0%", marginBottom: "5%", position: "relative"}}></img>
+            {/*This is here because the Career-spider-border has abolsute positioning and the flies appear on top of it instead of being pushed by it, so a non-absolute invisible image of the same size should push the flies to the right spot*/}
+          
             {field === selectedField && jobs.map((job: string) => <JobFly job={jobs[jobs.indexOf(job)]} description={descriptions[jobs.indexOf(job)]} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob}></JobFly>)}
+            
         </div>
     );
 }

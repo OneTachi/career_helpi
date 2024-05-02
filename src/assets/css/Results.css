@@ -6,17 +6,24 @@
 
 .Career-Spider{
     width: 12.5%;
-    height: 10%;
+    height: auto;
+    position: absolute
+}
+
+.Career-Spider-Border{
+    width: 100%;
+    height: auto;
+    padding: 1%;
     border: 3px solid;
     border-color: purple;
     border-radius: 25px;
     opacity: 100%;
-    position:absolute;
+    position: absolute;
 }
 
 .Spider-0{
-    margin-left: 10%;
-    top: 10%;
+    left: 10%;
+    top: 15%;
 }
 
 .Spider-1{
@@ -34,7 +41,6 @@
     width: 90% ;
     height: 90%;
     margin-left: 5%;
-    margin-top: 5%;
 }
 
 .Field-Text{
@@ -42,9 +48,11 @@
     font-size: 100%;
     font-weight: 1000;
     margin-left: 50%;
-    top: 50%;
-    transform: translate(-50%, -350%);
-    position: absolute;
+
+    height: auto;
+
+    transform: translate(-50%);
+   
 
     background-color: white;
     border-color: purple;
@@ -72,7 +80,7 @@
     width: 90% ;
     height: 90%;
     margin-left: 5%;
-    margin-top: 5%;
+    top: 5%;
 }
 
 .Job-Text{
