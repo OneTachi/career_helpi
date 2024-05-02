@@ -53,7 +53,8 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     
     
     return(
-        <div onClick={() => updateSelectedField("")} className="Results-Click-Box">
+        <div className="Results-Click-Box">
+            <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
             {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
         </div>
     );
@@ -77,7 +78,7 @@ export function JobFly({job, description, selectedJob, updateSelectedJob}: selec
         <div onMouseDown={() => updateSelectedJob(job)} key={job} style = {{backgroundColor: "purple"}} className="Job-Fly">
             <h2 className={"Job-Text"}>{job}</h2>
             <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
-            <div>{description}</div>
+            {job === selectedJob && <div>{description}</div>}
         </div>
     );
 }
