@@ -12,13 +12,21 @@ import insideHouse from "./assets/images/backgrounds/insideHouse.png"
 import waterfall from "./assets/images/backgrounds/waterfall.gif"
 import garden from "./assets/images/backgrounds/garden.png"
 
+import { DetailedQ1 } from './DetailedQ1';
+import { DetailedQ2 } from './DetailedQ2';
+import { DetailedQ3 } from './DetailedQ3';
+import { DetailedQ4 } from './DetailedQ4';
+import { DetailedQ5 } from './DetailedQ5';
+import { DetailedQ6 } from './DetailedQ6';
+import { DetailedQ7 } from './DetailedQ7';
+
 
 interface changePageProps{
     pageNumber: number;
     changePageNumber: (newPageNumber: number) => void;
 }
 
-export interface basicQuestionProps{
+export interface questionProps{
     question: string;
     answers: string[];
     pageNum: number;
@@ -48,10 +56,10 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     return(
         <div onMouseMove={updateCompletionAmount}>
             {quizType === "results" ? 
-                <Results fields={["a aaaaaaaaaaaaa a a a a a a a a  a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
+                <Results fields={["a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
                 : quizType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
-                    : <div>Detailed</div>
+                    : <div>{""}</div>
             }
             
             {quizType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
