@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { test } from "./interfaces/page";
 import { QuizType } from "./interfaces/page";
+import { ChatCompletionMessageParam } from "openai/resources";
 
 const openai = new OpenAI({
   apiKey: "",
   dangerouslyAllowBrowser: true,
 });
 
-let message_history = [];
+let message_history: ChatCompletionMessageParam[] = [];
 
 /**
  * Requests first time career data from ChatGPT based on attributes listed in the JSON files
@@ -51,13 +52,33 @@ export async function requestCareer(
   return content;
 }
 
+export async function requestAnotherCareer(key: string) {
+  openai.apiKey = key;
+  // Pushing new command for completion
+  message_history.push({
+    role: "user",
+    content:
+      "Give me another career with those attributes. If you cannot, give me another related career.",
+  });
+  const chatCompletion = await openai.chat.completions.create({
+    messages: message_history,
+    model: "gpt-3.5-turbo",
+  });
+  const content = chatCompletion.choices[0].message.content;
+  if (content === null) {
+    return "";
+  }
+  message_history.push({ role: "assistant", content: content });
+  return content;
+}
+
 /**
  * A Component (Button) that requests a message from ChatGPT and posts it to the Button Text
  * @param apikey The most updated api key provided by the user
  * @returns The Component
  */
 export function TestApiRequest({ apikey }: test): JSX.Element {
-  const [buttonText, setButtonText] = useState<string>(givenCareers.toString());
+  const [buttonText, setButtonText] = useState<string>("Test Text");
   let newKey: string = "";
   if (apikey !== null) {
     newKey = apikey;
