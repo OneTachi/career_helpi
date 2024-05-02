@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import { questionProps } from "./Background";
 
-export function DetailedQ6(): JSX.Element {
+export function DetailedQ6({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: questionProps): JSX.Element {
     // This is the State (Model)
     const [answer, setAnswer] = useState<string>("");
   

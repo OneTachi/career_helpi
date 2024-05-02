@@ -59,9 +59,8 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
                 <Results fields={["a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
                 : quizType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
-                    : <div>{""}</div>
+                    : <div>detailed</div>
             }
-            
             {quizType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
             {quizType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber}></ChangePage> : ""}
             {quizType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
@@ -91,4 +90,21 @@ export function Spider(): JSX.Element{
         >
         </div>
     );
+}
+
+function getDetailedPage({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: questionProps): JSX.Element{
+    switch(pageNum){
+        case 1: {return(<DetailedQ1 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ1>)}
+        case 2: {return(<DetailedQ2 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ2>)}
+        case 3: {return(<DetailedQ3 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ3>)}
+        case 4: {return(<DetailedQ4 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ4>)}
+        case 5: {return(<DetailedQ5 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ5>)}
+        case 6: {return(<DetailedQ6 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ6>)}
+        case 7: {return(<DetailedQ7 question={questions[pageNum - 1]} answers={answers} pageNum = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ7>)}
+    }
+
+    return<div>ERROR</div> //Should never occur
+        
+         
+
 }

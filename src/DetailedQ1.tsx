@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import { questionProps } from "./Background";
 
 /*
 Imagine as a spider you are deciding where to build a new web. 
@@ -9,7 +10,7 @@ Where would it be?
 */
 const LOCATIONS= ["beach", "city", "rainforest", "mountain"]
 
-export function DetailedQ1(): JSX.Element {
+export function DetailedQ1({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: questionProps): JSX.Element {
     // This is the State (Model)
     const [location, setLocation] = useState<string>("_____");
 

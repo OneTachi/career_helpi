@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import { questionProps } from "./Background";
 const RANKINGS= 
 ["Visual Appeal: 5, Functionality: 0", 
 "Visual Appeal: 4, Functionality: 1", 
@@ -10,7 +11,7 @@ const RANKINGS=
 "Visual Appeal: 0, Functionality: 5",
 ]
 
-export function DetailedQ3(): JSX.Element {
+export function DetailedQ3({question, answers, pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: questionProps): JSX.Element {
     // This is the State (Model)
     const [rank, setRank] = useState<string>("_____");
 
