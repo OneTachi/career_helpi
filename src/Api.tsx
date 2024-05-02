@@ -9,8 +9,10 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
+let message_history = [];
+
 /**
- * Requests career data from ChatGPT based on attributes listed in the JSON files
+ * Requests first time career data from ChatGPT based on attributes listed in the JSON files
  * @param key The API Key for ChatGPT provided by the user
  * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
  * @returns ChatGPT's response
@@ -19,6 +21,7 @@ export async function requestCareer(
   key: string,
   quizType: QuizType
 ): Promise<string> {
+  message_history = [];
   openai.apiKey = key;
 
   const getStorageData: string | null = localStorage.getItem(
@@ -39,10 +42,13 @@ export async function requestCareer(
     model: "gpt-3.5-turbo",
   });
 
-  if (chatCompletion.choices[0].message.content === null) {
+  const content = chatCompletion.choices[0].message.content;
+  if (content === null) {
     return "";
   }
-  return chatCompletion.choices[0].message.content;
+  message_history.push({ role: "user", content: quiz });
+  message_history.push({ role: "assistant", content: content });
+  return content;
 }
 
 /**
