@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import "career_helpi\src\assets\css\DetailedQ3.css";
 const RANKINGS= 
 ["Visual Appeal: 5, Functionality: 0", 
 "Visual Appeal: 4, Functionality: 1", 

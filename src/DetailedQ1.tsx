@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import "career_helpi\src\assets\css\DetailedQ1.css"
 
 /*
 Imagine as a spider you are deciding where to build a new web. 
