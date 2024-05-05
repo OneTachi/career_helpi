@@ -105,6 +105,29 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   );
 }
 
+export async function incrementAttributesByMessage(
+  quizType: QuizType,
+  message: string
+): Promise<void> {
+  const question: string =
+    `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
+  Please only include the three attributes as your response separated by commas. Do not include anything outside the attribute list.\n
+  Attributes: problem solving, protectiveness, creativity, empathy, leadership, communication, 
+  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n
+  Message: ` + message;
+
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: question }],
+    model: "gpt-3.5-turbo",
+  });
+  const content = chatCompletion.choices[0].message.content;
+  if (content === null) {
+    throw new Error(
+      "Reponse from ChatGPT is empty for increment by message function"
+    );
+  }
+}
+
 /**
  * Increases elements of quiz result data
  * @param attr A list of attributes to increment. MUST equal the length of points parameter.
