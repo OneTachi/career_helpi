@@ -106,9 +106,12 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
 }
 
 export async function incrementAttributesByMessage(
+  message: string,
   quizType: QuizType,
-  message: string
 ): Promise<void> {
+  // Validate Message
+  
+  // Create Question
   const question: string =
     `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
   Please only include the three attributes as your response separated by commas. Do not include anything outside the attribute list.\n
@@ -120,12 +123,29 @@ export async function incrementAttributesByMessage(
     messages: [{ role: "user", content: question }],
     model: "gpt-3.5-turbo",
   });
-  const content = chatCompletion.choices[0].message.content;
-  if (content === null) {
+  const response = chatCompletion.choices[0].message.content;
+  if (response === null) {
     throw new Error(
       "Reponse from ChatGPT is empty for increment by message function"
     );
   }
+
+  // Handle Incrementation
+  handleResponseAttribution(response, quizType);
+}
+
+function handleResponseAttribution(response: string, quizType: QuizType,): void {
+  const separated_response: string[] =  response.split(",");
+  const getStorageData: string | null = localStorage.getItem(
+    quizType + "-quiz-results"
+  );
+  if (getStorageData === null) {
+    throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
+  }
+
+  [...separated_response].map((resp: string) => {
+    if (resp in )
+  })
 }
 
 /**
