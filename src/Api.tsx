@@ -13,7 +13,7 @@ const openai = new OpenAI({
 let message_history: ChatCompletionMessageParam[] = [];
 
 /**
- * Requests first time career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
+ * Requests career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
  * @param key The API Key for ChatGPT provided by the user
  * @param quizType Whether you want ChatGPT to use data collected from the basic or detailed quiz
  * @returns Three careers within the same occupation field
