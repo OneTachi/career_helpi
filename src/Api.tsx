@@ -15,13 +15,13 @@ let message_history: ChatCompletionMessageParam[] = [];
 /**
  * Requests first time career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
  * @param key The API Key for ChatGPT provided by the user
- * @param basicQ Whether you want ChatGPT to use data collected from the basic or detailed quiz
- * @returns ChatGPT's response
+ * @param quizType Whether you want ChatGPT to use data collected from the basic or detailed quiz
+ * @returns Three careers within the same occupation field
  */
-export async function requestInitialCareer(
+export async function requestCareers(
   key: string,
   quizType: QuizType
-): Promise<string> {
+): Promise<string[]> {
   message_history = [];
   openai.apiKey = key;
 
@@ -29,59 +29,51 @@ export async function requestInitialCareer(
     quizType + "-quiz-results"
   );
   if (getStorageData === null) {
-    return "ERROR";
+    throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
   }
 
-  const message: string = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
+  // Create messages to ask ChatGPT
+  let message: string =
+    "Please give me another career with the attributes below but in a different occupation field.\n";
+  // First time setup.
+  if (message_history.length === 0) {
+    message = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career. Please indicate the field.`;
-
-  let quiz: string = message + getStorageData;
-
-  const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: quiz }],
-    model: "gpt-3.5-turbo",
-  });
-  let careers: string[] = [];
-  const content = chatCompletion.choices[0].message.content;
-  if (content === null) {
-    return "";
+   Have the first line have just the career. Please indicate the field.\n`;
   }
-  message_history.push({ role: "user", content: quiz });
-  message_history.push({ role: "assistant", content: content });
-  const career: string[] = content.split("\n");
-  localStorage.getItem("career");
-  localStorage.setItem("career", JSON.stringify(career));
-  careers.push(content);
 
-  if (localStorage.getItem("career") !== null) {
-    return career.length.toString();
-  }
-  return "";
+  const initial_message: string = message + getStorageData; // Combine message with data from quiz
+  const following_message: string =
+    "Give me another career with those attributes in the same field. If you cannot, give me another related career.";
+
+  let careers: string[] = []; // List of careers we will return
+
+  // Creating our responses
+  careers.push(await requestCareerHelper(initial_message));
+  careers.push(await requestCareerHelper(following_message));
+  careers.push(await requestCareerHelper(following_message));
+
+  return careers;
 }
 
 /**
  * Requests 1 additional career for the career results page.
- * @param key The API Key provided by the User
- * @param field The occupation field of the job requested
+ * @param message The desired messaage to send to ChatGPT
  * @returns ChatGPT Response
  */
-async function requestAnotherCareerInField(key: string) {
-  openai.apiKey = key;
-  // Pushing new command for completion
-  message_history.push({
-    role: "user",
-    content:
-      "Give me another career with those attributes in the same field. If you cannot, give me another related career. Please exclude the Occupation Field.",
-  });
+async function requestCareerHelper(message: string) {
+  // Add message to history so we can use just that variable to create response
+  message_history.push({ role: "user", content: message });
   const chatCompletion = await openai.chat.completions.create({
     messages: message_history,
     model: "gpt-3.5-turbo",
   });
   const content = chatCompletion.choices[0].message.content;
   if (content === null) {
-    return "";
+    throw new Error("Reponse from ChatGPT is empty");
   }
+
+  // Add messages to history
   message_history.push({ role: "assistant", content: content });
   return content;
 }
