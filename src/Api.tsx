@@ -84,23 +84,23 @@ async function requestCareerHelper(message: string) {
  * @returns The Component
  */
 export function TestApiRequest({ apikey }: test): JSX.Element {
-  const [buttonText, setButtonText] = useState<string>("Test Text");
+  const [buttonText, setButtonText] = useState<string[]>(["Test Text"]);
   let newKey: string = "";
   if (apikey !== null) {
     newKey = apikey;
   }
 
   const response = async () => {
-    if (buttonText === "Test Text") {
-      setButtonText(await requestInitialCareer(newKey, "basic"));
+    if (buttonText.length === 1) {
+      setButtonText(await requestCareers(newKey, "basic"));
     } else {
-      setButtonText(await requestAnotherCareerInField(newKey));
+      setButtonText(await requestCareers(newKey, "basic"));
     }
   };
   return (
     <div>
       <Button onClick={response}></Button>
-      <p>{buttonText}</p>
+      <p>{[...buttonText].toString()}</p>
     </div>
   );
 }
