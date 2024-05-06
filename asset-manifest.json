@@ -1,20 +1,25 @@
 {
   "files": {
-    "main.css": "/career_helpi/static/css/main.8449ccb8.css",
-    "main.js": "/career_helpi/static/js/main.216303b7.js",
+    "main.css": "/career_helpi/static/css/main.edf7fb43.css",
+    "main.js": "/career_helpi/static/js/main.b5365b66.js",
     "static/js/453.bad6c33a.chunk.js": "/career_helpi/static/js/453.bad6c33a.chunk.js",
+    "static/media/result web.png": "/career_helpi/static/media/result web.19e2eca5a25b83e3a727.png",
+    "static/media/garden.png": "/career_helpi/static/media/garden.8a7381717d3da8d5bf3b.png",
+    "static/media/idle (blue).gif": "/career_helpi/static/media/idle (blue).58693b7b7d9dfe89efe1.gif",
+    "static/media/idle (main).gif": "/career_helpi/static/media/idle (main).175b5b12f093b618e0c4.gif",
+    "static/media/idle (orange).gif": "/career_helpi/static/media/idle (orange).1ce9298ae91e788f5af3.gif",
     "static/media/waterfall.gif": "/career_helpi/static/media/waterfall.97f5226cb691bdb5e775.gif",
     "static/media/forest.png": "/career_helpi/static/media/forest.28633d227a6bc2dfdafe.png",
     "static/media/insideHouse.png": "/career_helpi/static/media/insideHouse.59dd05d793589c7e536b.png",
     "static/media/progressWeb7.png": "/career_helpi/static/media/progressWeb7.633eb4e53e605ed517e1.png",
     "static/media/progressWeb6.png": "/career_helpi/static/media/progressWeb6.289c9eba9c277ddf6eac.png",
     "index.html": "/career_helpi/index.html",
-    "main.8449ccb8.css.map": "/career_helpi/static/css/main.8449ccb8.css.map",
-    "main.216303b7.js.map": "/career_helpi/static/js/main.216303b7.js.map",
+    "main.edf7fb43.css.map": "/career_helpi/static/css/main.edf7fb43.css.map",
+    "main.b5365b66.js.map": "/career_helpi/static/js/main.b5365b66.js.map",
     "453.bad6c33a.chunk.js.map": "/career_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8449ccb8.css",
-    "static/js/main.216303b7.js"
+    "static/css/main.edf7fb43.css",
+    "static/js/main.b5365b66.js"
   ]
 }

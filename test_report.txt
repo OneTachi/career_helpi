@@ -288,11 +288,11 @@ A worker process has failed to exit gracefully and has been force exited. This i
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |    18.1 |     9.37 |   11.76 |   18.58 |                   
- src                 |    18.1 |     9.37 |   11.76 |   18.58 |                   
+All files            |   15.55 |     6.52 |    9.37 |   16.15 |                   
+ src                 |   15.55 |     6.52 |    9.37 |   16.15 |                   
   Api.tsx            |   35.29 |    16.66 |   16.66 |    37.5 | 24-48,59          
   App.tsx            |   56.25 |    33.33 |   66.66 |   56.25 | 19,26-27,70-100   
-  Background.tsx     |       0 |        0 |       0 |       0 | 36-73             
+  Background.tsx     |       0 |        0 |       0 |       0 | 38-80             
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
   DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 11-37             
   DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-25              
@@ -306,6 +306,7 @@ All files            |    18.1 |     9.37 |   11.76 |   18.58 |
   MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30             
   Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 9                 
   ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26             
+  Results.tsx        |       0 |        0 |       0 |       0 | 39-88             
   basicQuestions.ts  |     100 |      100 |     100 |     100 |                   
   index.tsx          |       0 |      100 |     100 |       0 | 8-20              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
@@ -316,5 +317,5 @@ All files            |    18.1 |     9.37 |   11.76 |   18.58 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.675 s
+Time:        4.937 s
 Ran all test suites.
