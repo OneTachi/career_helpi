@@ -107,10 +107,10 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
 
 export async function incrementAttributesByMessage(
   message: string,
-  quizType: QuizType,
+  quizType: QuizType
 ): Promise<void> {
   // Validate Message
-  
+
   // Create Question
   const question: string =
     `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
@@ -134,18 +134,26 @@ export async function incrementAttributesByMessage(
   handleResponseAttribution(response, quizType);
 }
 
-function handleResponseAttribution(response: string, quizType: QuizType,): void {
-  const separated_response: string[] =  response.split(",");
+function handleResponseAttribution(response: string, quizType: QuizType): void {
+  // Get Data
+  const separated_response: string[] = response.split(",");
   const getStorageData: string | null = localStorage.getItem(
     quizType + "-quiz-results"
   );
   if (getStorageData === null) {
     throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
   }
-
+  // Increase attributes as long as attribute is correct.
+  const quiz_data: Record<string, number> = JSON.parse(getStorageData);
   [...separated_response].map((resp: string) => {
-    if (resp in )
-  })
+    if (resp in quiz_data) {
+      quiz_data[resp] = Math.min(10, quiz_data[resp] + 1); // We want to have a max of 10 points in any attribute
+    }
+  });
+
+  // Set new data in local storage
+  const formatted_data = JSON.stringify(quiz_data);
+  localStorage.setItem(quizType + "-quiz-results", formatted_data);
 }
 
 /**
