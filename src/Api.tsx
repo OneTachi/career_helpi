@@ -155,7 +155,10 @@ export async function incrementAttributesByMessage(
  * @param response ChatGPT's three choices of attributes to increment. MUST be comma separated
  * @param quizType The type of quiz to alter the data for
  */
-function handleResponseAttribution(response: string, quizType: QuizType): void {
+export function handleResponseAttribution(
+  response: string,
+  quizType: QuizType
+): void {
   // Get Data
   const separated_response: string[] = response.split(",");
   const getStorageData: string | null = localStorage.getItem(
@@ -202,6 +205,22 @@ export function incrementAttributes(
 
   [...attr].map((att: string) => (quiz[att] += points[attr.indexOf(att)]));
   localStorage.setItem(quizType + "-quiz-results", JSON.stringify(quiz));
+}
+/**
+ * Primarily used for testing purposes.
+ * @param quizType The type of quiz
+ * @returns Record of quiz data
+ */
+export function getAttributes(quizType: QuizType): Record<string, number> {
+  const getStorageData: string | null = localStorage.getItem(
+    quizType + "-quiz-results"
+  );
+  if (getStorageData === null) {
+    throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
+  }
+
+  const quiz_data: Record<string, number> = JSON.parse(getStorageData);
+  return quiz_data;
 }
 
 /**

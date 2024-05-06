@@ -32,18 +32,6 @@ function App() {
   }
 
   initializeAttributes();
-  incrementAttributes(
-    [
-      "ethics",
-      "problem solving",
-      "protectiveness",
-      "creativity",
-      "empathy",
-      "leadership",
-    ],
-    [9, 5, 7, 4, 6, 9],
-    "basic"
-  );
 
   return LoadPage(
     {
