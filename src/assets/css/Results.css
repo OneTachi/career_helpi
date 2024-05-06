@@ -1,0 +1,102 @@
+.Results-Click-Box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.Career-Spider{
+    width: 12.5%;
+    height: auto;
+    position: absolute
+}
+
+.Career-Spider-Border{
+    width: 100%;
+    height: auto;
+    padding: 1%;
+    border: 3px solid;
+    border-color: purple;
+    border-radius: 25px;
+    opacity: 100%;
+    position: absolute;
+}
+
+.Spider-0{
+    left: 10%;
+    top: 15%;
+}
+
+.Spider-1{
+    left: 75%;
+    top: 45%;
+}
+
+.Spider-2{
+    left: 50%;
+    top: 60%;
+}
+
+
+.Spider-Image{
+    width: 90% ;
+    height: 90%;
+    margin-left: 5%;
+}
+
+.Field-Text{
+    color: purple;
+    font-size: 100%;
+    font-weight: 1000;
+    margin-left: 50%;
+    max-width: 100% !important;
+    width: max-content;
+
+    transform: translate(-50%);
+    position: relative;
+
+    background-color: white;
+    border-color: purple;
+    border-radius: 15px;
+    opacity: 90%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Job-Fly{
+    width: 50px;
+    height: 50px;
+    left: 40%;
+    top: 20%;
+    border: 3px solid;
+    border-color: blue;
+    border-radius: 25px;
+    background-color: grey;
+    opacity: 100%;
+    position: relative;
+}
+
+.Fly-Image{
+    width: 90% ;
+    height: 90%;
+    margin-left: 5%;
+    top: 5%;
+}
+
+.Job-Text{
+    color: purple;
+    font-size: 100%;
+    font-weight: 1000;
+    margin-left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    background-color: white;
+    border-color: purple;
+    border-radius: 15px;
+    opacity: 90%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
