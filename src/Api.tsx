@@ -105,6 +105,11 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   );
 }
 
+/**
+ * Increases the attributes based on a user prompt.
+ * @param message User's response to text prompt
+ * @param quizType Type of quiz we want to change attributes for
+ */
 export async function incrementAttributesByMessage(
   message: string,
   quizType: QuizType
@@ -134,6 +139,11 @@ export async function incrementAttributesByMessage(
   handleResponseAttribution(response, quizType);
 }
 
+/**
+ * Increases the attributes of a given message containing the names of the attributes it wants to increase. Comma separated message
+ * @param response ChatGPT's three choices of attributes to increment. MUST be comma separated
+ * @param quizType The type of quiz to alter the data for
+ */
 function handleResponseAttribution(response: string, quizType: QuizType): void {
   // Get Data
   const separated_response: string[] = response.split(",");
@@ -145,7 +155,8 @@ function handleResponseAttribution(response: string, quizType: QuizType): void {
   }
   // Increase attributes as long as attribute is correct.
   const quiz_data: Record<string, number> = JSON.parse(getStorageData);
-  [...separated_response].map((resp: string) => {
+
+  [...separated_response].forEach((resp: string) => {
     if (resp in quiz_data) {
       quiz_data[resp] = Math.min(10, quiz_data[resp] + 1); // We want to have a max of 10 points in any attribute
     }
