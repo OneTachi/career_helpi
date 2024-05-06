@@ -105,6 +105,19 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   );
 }
 
+export function validateUserResponse(message: string): {
+  validity: boolean;
+  errorMessage: string;
+} {
+  if (message.length <= 10) {
+    return { validity: false, errorMessage: "Response too short!" };
+  }
+  if (message.includes("Do not") || message.includes("do not")) {
+    return { validity: false, errorMessage: "Response includes commands" };
+  }
+  return { validity: true, errorMessage: "All good!" };
+}
+
 /**
  * Increases the attributes based on a user prompt.
  * @param message User's response to text prompt
@@ -114,8 +127,6 @@ export async function incrementAttributesByMessage(
   message: string,
   quizType: QuizType
 ): Promise<void> {
-  // Validate Message
-
   // Create Question
   const question: string =
     `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
