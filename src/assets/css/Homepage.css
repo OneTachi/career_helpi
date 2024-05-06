@@ -41,7 +41,7 @@ body {
   font-size: 20px;
 	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
 	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
 }
 
 .basic-button{
@@ -50,7 +50,7 @@ body {
   top: 27%;
   width: 150px;
   height: 55px;
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(131,58,180,1) 100%);
 }
 
 .basic-text{
@@ -77,7 +77,7 @@ body {
   top: 27%;
   width: 150px;
   height: 55px;
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(131,58,180,1) 100%);
 }
 
 .detailed-text{
@@ -104,7 +104,7 @@ body {
   font-size: 20px;
 	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
 	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
 }
 
 .square{
