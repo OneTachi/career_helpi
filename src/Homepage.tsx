@@ -2,16 +2,19 @@ import React from "react";
 import { PageProps } from "./interfaces/page";
 import { Button } from "react-bootstrap";
 import "./assets/css/Homepage.css";
+import { VisualFeedback } from "./VisualFeedBack";
+import {DetailedFeedback} from "./DetailedFeedback";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <body>
       
-      <div className ="square"></div>
 
       <div className="heading">8-Legged Career Quest</div>
 
       <div className="subheading">Spin Your Web, Catch Your Career</div>
+
+      <div className ="DetailedFeedback"><DetailedFeedback></DetailedFeedback></div>
 
       <div className="background">t</div>
 

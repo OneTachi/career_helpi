@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Button} from "react-bootstrap";
-
-export function VisualFeedback(): JSX.Element{
+import "./assets/css/DetailedFeedback.css";
+export function DetailedFeedback(): JSX.Element{
     // This is the State (Model)
     const [submitted, setSubmitted] = useState<boolean>(false);
 
@@ -14,9 +14,9 @@ export function VisualFeedback(): JSX.Element{
     // This is the View
     return <div>
 
-      {<Button onClick={updateSubmitted} hidden={submitted}>Submit Answers</Button>}
+      {<Button className="SubmitDetailed" onClick={updateSubmitted} hidden={submitted}>Submit Answers</Button>}
 
-    <div hidden={!submitted}>Your Answers have been submitted To ChatGPT</div>
+    <div className="SubmittedMessage" hidden={!submitted}>Your Detailed Answers have been submitted To ChatGPT</div>
 
 
     </div>
