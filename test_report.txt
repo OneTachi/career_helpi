@@ -294,13 +294,13 @@ All files            |    18.1 |     9.37 |   11.76 |   18.58 |
   App.tsx            |   56.25 |    33.33 |   66.66 |   56.25 | 19,26-27,70-100   
   Background.tsx     |       0 |        0 |       0 |       0 | 36-73             
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
-  DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 10-36             
-  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 6-24              
-  DetailedQ3.tsx     |       0 |      100 |       0 |       0 | 5-38              
-  DetailedQ4.tsx     |       0 |      100 |       0 |       0 | 7-15              
-  DetailedQ5.tsx     |       0 |      100 |       0 |       0 | 7-15              
-  DetailedQ6.tsx     |       0 |      100 |       0 |       0 | 7-15              
-  DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 7-15              
+  DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 11-37             
+  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-25              
+  DetailedQ3.tsx     |       0 |      100 |       0 |       0 | 6-39              
+  DetailedQ4.tsx     |       0 |      100 |       0 |       0 | 8-16              
+  DetailedQ5.tsx     |       0 |      100 |       0 |       0 | 8-16              
+  DetailedQ6.tsx     |       0 |      100 |       0 |       0 | 8-16              
+  DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 8-16              
   Footer.tsx         |      50 |      100 |      50 |      50 | 16                
   Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 21-33             
   MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30             
@@ -316,5 +316,5 @@ All files            |    18.1 |     9.37 |   11.76 |   18.58 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.652 s
+Time:        4.675 s
 Ran all test suites.
