@@ -10,7 +10,7 @@ FAIL src/tests/App.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:16:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -40,7 +40,7 @@ FAIL src/tests/App.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:16:35)
 
       4 |
       5 | test("renders learn react link", () => {
@@ -133,12 +133,15 @@ FAIL src/tests/App.test.tsx
               [36m</p>[39m
             [36m</div>[39m
           [36m</body>[39m
-          [36m<button[39m
-            [33mclass[39m=[32m"btn btn-primary"[39m
-            [33mtype[39m=[32m"button"[39m
-          [36m>[39m
-            [0mNext[0m
-          [36m</button>[39m
+          [36m<div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m/>[39m
+            [36m<p>[39m
+              [0mTest Text[0m
+            [36m</p>[39m
+          [36m</div>[39m
           [36m<footer[39m
             [33mclass[39m=[32m"footer"[39m
           [36m>[39m
@@ -227,7 +230,7 @@ PASS src/tests/Homepage.test.tsx
           at body
           at Homepage (/home/runner/work/career_helpi/career_helpi/src/Homepage.tsx:6:28)
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:16:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -257,7 +260,7 @@ PASS src/tests/Homepage.test.tsx
     console.error
       Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
           at body
-          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:12:35)
+          at App (/home/runner/work/career_helpi/career_helpi/src/App.tsx:16:35)
 
        5 |
        6 | test("Renders buttons to homepage", () => {
@@ -285,37 +288,37 @@ PASS src/tests/Homepage.test.tsx
       at Object.<anonymous> (src/tests/Homepage.test.tsx:7:9)
 
 A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
----------------------|---------|----------|---------|---------|-------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
----------------------|---------|----------|---------|---------|-------------------
-All files            |   15.55 |     6.52 |    9.37 |   16.15 |                   
- src                 |   15.55 |     6.52 |    9.37 |   16.15 |                   
-  Api.tsx            |   35.29 |    16.66 |   16.66 |    37.5 | 24-48,59          
-  App.tsx            |   56.25 |    33.33 |   66.66 |   56.25 | 19,26-27,70-100   
-  Background.tsx     |       0 |        0 |       0 |       0 | 38-80             
-  Default.tsx        |       0 |        0 |       0 |       0 | 10-29             
-  DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 11-37             
-  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-25              
-  DetailedQ3.tsx     |       0 |      100 |       0 |       0 | 6-39              
-  DetailedQ4.tsx     |       0 |      100 |       0 |       0 | 8-16              
-  DetailedQ5.tsx     |       0 |      100 |       0 |       0 | 8-16              
-  DetailedQ6.tsx     |       0 |      100 |       0 |       0 | 8-16              
-  DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 8-16              
-  Footer.tsx         |      50 |      100 |      50 |      50 | 16                
-  Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 21-33             
-  MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30             
-  Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 9                 
-  ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26             
-  Results.tsx        |       0 |        0 |       0 |       0 | 39-88             
-  basicQuestions.ts  |     100 |      100 |     100 |     100 |                   
-  index.tsx          |       0 |      100 |     100 |       0 | 8-20              
-  reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
- src/interfaces      |       0 |        0 |       0 |       0 |                   
-  page.ts            |       0 |        0 |       0 |       0 |                   
----------------------|---------|----------|---------|---------|-------------------
+---------------------|---------|----------|---------|---------|---------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
+---------------------|---------|----------|---------|---------|---------------------
+All files            |   22.15 |     9.25 |   13.84 |   22.22 |                     
+ src                 |   22.15 |     9.25 |   13.84 |   22.22 |                     
+  Api.tsx            |   42.55 |    21.42 |   57.14 |    41.3 | 25-78,94-97,120,126 
+  App.tsx            |   61.11 |    33.33 |   66.66 |   61.11 | 23,30-31,88-118     
+  Background.tsx     |       0 |        0 |       0 |       0 | 38-80               
+  Default.tsx        |       0 |        0 |       0 |       0 | 10-29               
+  DetailedQ1.tsx     |       0 |      100 |       0 |       0 | 11-37               
+  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-25                
+  DetailedQ3.tsx     |       0 |      100 |       0 |       0 | 6-39                
+  DetailedQ4.tsx     |       0 |      100 |       0 |       0 | 8-16                
+  DetailedQ5.tsx     |       0 |      100 |       0 |       0 | 8-16                
+  DetailedQ6.tsx     |       0 |      100 |       0 |       0 | 8-16                
+  DetailedQ7.tsx     |       0 |      100 |       0 |       0 | 8-16                
+  Footer.tsx         |      50 |      100 |      50 |      50 | 16                  
+  Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 21-33               
+  MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30               
+  Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 9                   
+  ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26               
+  Results.tsx        |       0 |        0 |       0 |       0 | 39-88               
+  basicQuestions.ts  |     100 |      100 |     100 |     100 |                     
+  index.tsx          |       0 |      100 |     100 |       0 | 8-20                
+  reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10                
+ src/interfaces      |       0 |        0 |       0 |       0 |                     
+  page.ts            |       0 |        0 |       0 |       0 |                     
+---------------------|---------|----------|---------|---------|---------------------
 
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        4.937 s
+Time:        4.904 s
 Ran all test suites.
