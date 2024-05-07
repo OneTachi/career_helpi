@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
@@ -13,7 +12,7 @@ Where would it be?
 const LOCATIONS= ["beach", "city", "rainforest", "mountain"]
 
 export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
-  // This is the Control
+// This is the Control
     function updateLocation(event: React.ChangeEvent<HTMLSelectElement>) {
         let tempArray: string[] = [...selectedAnswers];
         tempArray.splice(pageNum - 1, 1, event.target.value);
