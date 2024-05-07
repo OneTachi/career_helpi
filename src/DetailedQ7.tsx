@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
+import "./assets/css/detailed.css"
 
 export function DetailedQ7({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
     // This is the State (Model)
@@ -13,9 +14,9 @@ export function DetailedQ7({pageNumber: pageNum, selectedAnswers, changeAnswer, 
     }
   
     // This is the View
-    return <div>
+    return <div className = "Detailed-Question">
     
-    <header className={"DQ7-Title"}>Detailed Question 7: Looking Forward</header>
+    <h3 className={"DQ7-Title"}>Looking Forward</h3>
     
 
     <Form.Text>

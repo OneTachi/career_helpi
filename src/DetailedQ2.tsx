@@ -1,31 +1,53 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
+import "./assets/css/detailed.css"
+
 export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
-    // This is the State (Model)
-      const [qualities, setQualities] = useState<string[]>([]);
-  
-      // This is the Control
+    const [numSelected, changeNumSelected] = useState<number>(0);
+
+    // This is the Control
       function updateQualities(event: React.ChangeEvent<HTMLInputElement>) {
-          const quality = event.target.value;
-          // Check if the emotion is already present
-          if (qualities.includes(quality)) {
-              //If its already in the array, meaning it is checked, it will be removed, 
-              //since after the click it will be unchecked
-              setQualities(qualities.filter((qual) => qual !== quality));
-          } else {
-              //If its not in the array, meaning it is unchecked, it will be added, 
-              //since after the click it will be checked
-              setQualities([...qualities, quality]);
-          }
+            const quality = event.target.value;
+            let qualities: string[] = selectedAnswers[pageNum - 1].split(",");
+            // Check if the emotion is already present
+            if (qualities.includes(quality)) {
+                //If its already in the array, meaning it is checked, it will be removed, 
+                //since after the click it will be unchecked
+                
+                let tempArray: string[] = [...selectedAnswers];
+                tempArray.splice(pageNum - 1, 1, qualities.filter((qual) => qual !== quality).toString());
+                changeAnswer(tempArray);
+                updateNumSelected(-1);
+            } else if(numSelected < 3){
+                //If its not in the array, meaning it is unchecked, it will be added, 
+                //since after the click it will be checked
+
+                let tempArray: string[] = [...selectedAnswers];
+                if(qualities.length === 1 && qualities[0] === ""){
+                    qualities = [quality];
+                    tempArray.splice(pageNum - 1, 1, [...qualities].toString());
+                }
+                else{
+                    tempArray.splice(pageNum - 1, 1, [...qualities, quality].toString());
+                }
+
+                changeAnswer(tempArray);
+                updateNumSelected(1);
+            }
+
+
+      }
+
+      function updateNumSelected(amount: number){
+        changeNumSelected(numSelected + amount);
       }
   
       // This is the View
       return (
-          <div>
+          <div className = "Detailed-Question">
               
-              <header className="DQ2-Header">Detailed Question 2: Select Your Silks</header>
+              <h3 className="DQ2-Header">Select Your Silks</h3>
 
                 <div className="DQ2">
               <div>Now you must choose the silk you will use to create your web out of.</div>
@@ -39,7 +61,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Strength" //what shows up next to the checkbox
                   name="qualities"
                   value="strength" //what shows up when the checkbox is selected
-                  checked={qualities.includes("strength")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("strength")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -48,7 +70,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Durability"
                   name="qualities"
                   value="durability"
-                  checked={qualities.includes("durability")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("durability")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -57,7 +79,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Repairability"
                   name="qualities"
                   value="repairability"
-                  checked={qualities.includes("repairability")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("repairability")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -66,7 +88,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Prey Capture Ability"
                   name="qualities"
                   value="prey capture ability"
-                  checked={qualities.includes("prey capture ability")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("prey capture ability")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -75,7 +97,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Flexibility"//uppercase
                   name="qualities"
                   value="flexibility"
-                  checked={qualities.includes("flexibility")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("flexibility")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -84,7 +106,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Biodegradability"//uppercase
                   name="qualities"
                   value="biodegradability"
-                  checked={qualities.includes("biodegradability")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("biodegradability")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -93,7 +115,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Camouflage"//uppercase
                   name="qualities"
                   value="camouflage"
-                  checked={qualities.includes("camouflage")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("camouflage")}
                   onChange={updateQualities}
               />
               <Form.Check
@@ -102,17 +124,16 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                   label="Stickiness"//uppercase
                   name="qualities"
                   value="stickiness"
-                  checked={qualities.includes("stickiness")}
+                  checked={selectedAnswers[pageNum - 1].split(",").includes("stickiness")}
                   onChange={updateQualities}
               />
               </div>
-              
-              <div>Qualities Selected So Far: {qualities.length}</div>
-              
+                            
               <div>
-                The top 3 most important web qualities to me are: {qualities.join(" and ")}.
+                The top 3 most important web qualities to me are: {selectedAnswers[pageNum - 1].split(",").join(" and ")}.
               </div>
-              <Button disabled = {qualities.length > 3}>Submit</Button>
+
+              <div className ="TEMP">{selectedAnswers[pageNum - 1]}</div>
           </div>
       );
   }

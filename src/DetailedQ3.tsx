@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
+import "./assets/css/detailed.css"
 const RANKINGS= 
 ["Visual Appeal: 5, Functionality: 0", 
 "Visual Appeal: 4, Functionality: 1", 
@@ -22,17 +23,17 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
 
     // This is the View
     return (
-        <div>
-            <header className="DQ3Header">Detailed Question 3: Overall Design</header>
+        <div className = "Detailed-Question">
+            <h3 className="DQ3Header">Web Construction</h3>
 
             <div>Insert Images In empty space above</div>
 
             <Form.Group controlId="selectRank">
-                <Form.Label>
+                <Form.Text>
                 Now you are going to determine how you are going to design your web.
                 You are given 5 resource points that gain be put towards either functionality or 
                 visual appeal. How you choose to distribute your resources is up to you.
-                </Form.Label>
+                </Form.Text>
                 
                 <Form.Select className = "DQ3"value={rank} onChange={updateRank}>
                   { RANKINGS.map((rank: string) =>
