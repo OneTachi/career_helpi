@@ -132,8 +132,6 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
               <div>
                 The top 3 most important web qualities to me are: {selectedAnswers[pageNum - 1].split(",").join(" and ")}.
               </div>
-
-              <div className ="TEMP">{selectedAnswers[pageNum - 1]}</div>
           </div>
       );
   }
