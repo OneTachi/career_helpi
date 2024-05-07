@@ -6,9 +6,8 @@ import "./assets/css/Homepage.css";
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
+      
       <div className="heading">8-Legged Career Quest</div>
-
-      <div className="subheading">Spin Your Web, Catch Your Career</div>
 
       <div>
         <Button className="basic-button" onClick={() => setPage("basic")}>
@@ -22,6 +21,9 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
           are best for you!
         </p>
       </div>
+
+      <div className="Break"></div>
+
       <div>
         <Button
           className={"detailed-button"}
@@ -37,6 +39,10 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
           you think is best in each situation. Just trust yourself and do the
           first thing that comes to mind. Most importantly, have fun!
         </p>
+
+        <div className="subheading">Spin Your Web, Catch Your Career</div>
+
+
       </div>
     </div>
   );

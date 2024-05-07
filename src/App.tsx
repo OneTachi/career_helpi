@@ -55,7 +55,6 @@ function LoadPage(
         <body>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
-          <TestApiRequest apikey={localKey} />
           {Footer({
             page,
             setPage,
