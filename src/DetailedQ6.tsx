@@ -7,6 +7,14 @@ export function DetailedQ6({pageNumber: pageNum, selectedAnswers, changeAnswer, 
     let tempArray: string[] = [...selectedAnswers];
     tempArray.splice(pageNum - 1, 1, event.target.value);
     changeAnswer(tempArray);
+
+    //the array still has the empty string for this question if it hasn't been answered before now, and can be used to increase the progress amount.
+    if(selectedAnswers[pageNum - 1] === ""){
+      changeCompletionAmount(completionAmount + 1);
+    }
+    else if(event.target.value === ""){ //Else if the text box just became the empty string instead of changing from the empty string to any other string, the text box is empty and the question is unanswered again.
+      changeCompletionAmount(completionAmount - 1);
+    }
   }
   
     // This is the View

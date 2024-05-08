@@ -4,7 +4,9 @@ import { detailedQuestionProps } from "./Background";
 import "./assets/css/detailed.css"
 
 export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
-    const [numSelected, changeNumSelected] = useState<number>(0);
+    const [numSelected, changeNumSelected] = useState<number>(selectedAnswers[pageNum - 1].split(",").length * Number(selectedAnswers[pageNum - 1] !== ""));
+    //Initial value of the state for number of selected options is the length of the stringified array of options in selectedAnswers at the index for this question.
+    //This is multiplied by the binary value of whether selectedAnswers contains "" there (its initial value before anything is picked), because if so then the stringified array length is technically 1 due to "" being an element of the array, and it would be counted towards the number of options selected already even though "" is not an option. So the total will be multiplied by 0 and become 0 if "" is the value in the stringified array and nothing is picked yet.
 
     // This is the Control
       function updateQualities(event: React.ChangeEvent<HTMLInputElement>) {
@@ -18,7 +20,13 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 let tempArray: string[] = [...selectedAnswers];
                 tempArray.splice(pageNum - 1, 1, qualities.filter((qual) => qual !== quality).toString());
                 changeAnswer(tempArray);
+
                 updateNumSelected(-1);
+                
+                //State doesn't update until the end of function scope, so if the number of selected options is 3 and this part of the if statement is reached, the number selected will become 2. But the state has not yet updated so it will still be stored as 3 in the state until the function ends, so if we are here and the state equals 3, not enough answers have been selected and the question is incomplete.
+                if(numSelected === 3){
+                    changeCompletionAmount(completionAmount - 1);
+                }
             } else if(numSelected < 3){
                 //If its not in the array, meaning it is unchecked, it will be added, 
                 //since after the click it will be checked
@@ -31,10 +39,16 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 else{
                     tempArray.splice(pageNum - 1, 1, [...qualities, quality].toString());
                 }
-
                 changeAnswer(tempArray);
+
+                //State doesn't update until the end of function scope, so if the number of selected options is 2 and this part of the if statement is reached, the number selected will become 3. So, this question is completed since 3 boxes have been checked and you need to choose 3 options.
                 updateNumSelected(1);
+                if(numSelected === 2){
+                    changeCompletionAmount(completionAmount + 1);
+                }
             }
+
+            
       }
 
       function updateNumSelected(amount: number){

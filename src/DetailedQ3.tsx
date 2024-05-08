@@ -16,6 +16,10 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
         let tempArray: string[] = [...selectedAnswers];
         tempArray.splice(pageNum - 1, 1, event.target.value);
         changeAnswer(tempArray);
+
+        if(selectedAnswers[pageNum - 1] === ""){
+            changeCompletionAmount(completionAmount + 1);
+        }
     }
 
     // This is the View
