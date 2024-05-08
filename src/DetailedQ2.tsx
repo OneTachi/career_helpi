@@ -52,7 +52,6 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
             prnt += qualities.join(", ").toString();
             prnt = prnt.substring(0, prnt.lastIndexOf(",") + 1) + " and " + prnt.substring(prnt.lastIndexOf(",") + 1);
         }
-
         return(prnt);
       }
   
@@ -60,14 +59,14 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
       return (
           <div className = "Detailed-Question">
               
-              <h3 className="DQ2-Header">Select Your Silks</h3>
+              <h3>Select Your Silks</h3>
 
-                <div className="DQ2">
+                <div>
               <div>Now you must choose the silk you will use to create your web out of.</div>
               <div>Of the options provided, check the three qualities that appeal to you the most.</div>
               </div>
 
-              <div className="DQ2-CheckBox">
+              <div>
               <Form.Check
                   type="checkbox"
                   id="quality-check-strength"

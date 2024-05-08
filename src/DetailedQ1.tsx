@@ -1,5 +1,4 @@
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
 
 import "./assets/css/detailed.css"
@@ -22,7 +21,7 @@ export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, 
     // This is the View
     return (
         <div className = "Detailed-Question">
-            <h3 className="DQ1Header">Location</h3>
+            <h3>Location</h3>
 
             <div>Insert Images In empty space above</div>
 
@@ -32,7 +31,7 @@ export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 Where would it be?   
                 </Form.Text>
                 
-                <Form.Select className = "DQ1"value={selectedAnswers[pageNum - 1]} onChange={updateLocation}>
+                <Form.Select value={selectedAnswers[pageNum - 1]} onChange={updateLocation}>
                     {selectedAnswers[pageNum - 1] === "" && <option key={"blank"} value={""}>{"<select an option>"}</option>}
                     { LOCATIONS.map((location: string) =>
                         <option key={location} value={location}>{location}</option>

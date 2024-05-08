@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
 import "./assets/css/detailed.css"
 const RANKINGS= 
@@ -23,16 +21,14 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
     // This is the View
     return (
         <div className = "Detailed-Question">
-            <h3 className="DQ3Header">Web Construction</h3>
-
-            <div>Insert Images In empty space above</div>
+            <h3>Web Construction</h3>
 
             <Form.Group controlId="selectRank">
-                <Form.Text>
+                <div>
                 Now you are going to determine how you are going to design your web.
                 You are given 5 resource points that gain be put towards either functionality or 
                 visual appeal. How you choose to distribute your resources is up to you.
-                </Form.Text>
+                </div>
                 
                 <Form.Select className = "DQ3"value={selectedAnswers[pageNum - 1]} onChange={updateRank}>
                     {selectedAnswers[pageNum - 1] === "" && <option key={"blank"} value={""}>{"<select an option>"}</option>}

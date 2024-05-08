@@ -58,6 +58,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
 
     const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall];
 
+    //Call this to update the completion amount
     function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
         changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
     }

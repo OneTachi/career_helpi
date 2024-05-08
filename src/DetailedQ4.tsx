@@ -1,41 +1,35 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
 import { detailedQuestionProps } from "./Background";
 import "./assets/css/detailed.css"
 
 export function DetailedQ4({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
-    // This is the State (Model)
-    const [answer, setAnswer] = useState<string>("");
-  
-    // This is the Control
     function updateAnswer(event: React.ChangeEvent<HTMLTextAreaElement>) {
-      setAnswer(event.target.value)
+      let tempArray: string[] = [...selectedAnswers];
+      tempArray.splice(pageNum - 1, 1, event.target.value);
+      changeAnswer(tempArray);
     }
   
     // This is the View
     return <div className = "Detailed-Question">
     
-    <h3 className={"DQ4-Title"}>Preferred Employment Tasks</h3>
+    <h3>Preferred Employment Tasks</h3>
     
 
-    <Form.Text>
-    
+    <div>
     In your dream job, how often would you want to work on different projects and tasks? 
     Also, what would these tasks be?
-
-    </Form.Text>
+    </div>
 
 
       <Form.Group controlId="formDQ4">
-        <Form.Control className = "DQ4-Textbox"
+        <Form.Control
           as="textarea"
           rows={3}
-          value={answer}
+          value={selectedAnswers[pageNum - 1]}
           onChange={updateAnswer} />
       </Form.Group>
       <div>
-        Response: {answer}
+        Response: {selectedAnswers[pageNum - 1]}
       </div>
     </div>;
   }
