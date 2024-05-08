@@ -6,6 +6,10 @@ import "./assets/css/Homepage.css";
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
+      <link href="https://fonts.cdnfonts.com/css/spacetype" rel="stylesheet"></link>
+      <style>
+      @import url('https://fonts.cdnfonts.com/css/spacetype');
+      </style>
       
       <div className="heading">8-Legged Career Quest</div>
 

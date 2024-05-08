@@ -15,6 +15,7 @@ body {
 .heading{
   position: relative;
   font-size: 80px;
+  font-family: "SpaceType", sans-serif;
   color: rgba(245, 245, 245, 0.781);
   margin-top: 0px;
   text-align: center;
@@ -27,6 +28,7 @@ body {
   position: relative;
   margin-top: 50px;
   font-size: 80px;
+  font-family: "SpaceType", sans-serif;
   color: rgba(245, 245, 245, 0.781);
   font-size: 40px;
   text-align: center;
@@ -46,6 +48,7 @@ body {
 .basic-button{
   position: relative;
   margin-top: 150px;
+  font-family: "SpaceType", sans-serif;
   left: 50%;
   width: 150px;
   height: 55px;
@@ -56,6 +59,7 @@ body {
   position: relative;
   color: white;
   margin-top: 10px;
+  font-family: "SpaceType", sans-serif;
   left: 33%;
   margin-right: 60%;
   padding: 1%;
@@ -72,6 +76,7 @@ body {
 .detailed-button{
   position: relative;
   margin-top: 200px;
+  font-family: "SpaceType", sans-serif;
   left: 50%;
   width: 150px;
   height: 55px;
@@ -82,6 +87,7 @@ body {
   position: relative;
   color: white;
   margin-top: 10px;
+  font-family: "SpaceType", sans-serif;
   left: 33%;
   margin-right: 60%;
   padding: 1%;
