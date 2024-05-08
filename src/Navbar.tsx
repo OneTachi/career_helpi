@@ -10,7 +10,7 @@ export function Navbar({page, setPage} : PageProps) : JSX.Element
         }
     return(
         <header className="bar">
-            <Button className="image" onClick={linkHome} > Homebutton </Button> 
+            <Button className="image" style={{fontFamily:"SpaceType, sans-serif"}} onClick={linkHome} > Homebutton </Button> 
         </header>
     )
 } 

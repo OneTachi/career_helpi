@@ -14,7 +14,11 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
       <div className="heading">8-Legged Career Quest</div>
 
       <div>
-        <Button className="basic-button" onClick={() => setPage("basic")}>
+        <Button 
+        className="basic-button" 
+        style={{fontFamily:"SpaceType, sans-serif"}} 
+        onClick={() => setPage("basic")}
+        >
           Basic Questions
         </Button>
         <br />
@@ -31,6 +35,7 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
       <div>
         <Button
           className={"detailed-button"}
+          style={{fontFamily:"SpaceType, sans-serif"}}
           onClick={() => setPage("detailed")}
         >
           Detailed Questions
