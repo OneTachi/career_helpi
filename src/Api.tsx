@@ -105,6 +105,11 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
   );
 }
 
+/**
+ * Verifies whether the User entered a response valid enough to send to ChatGPT
+ * @param message The User Response
+ * @returns Whether the response is valid or not.
+ */
 export function validateUserResponse(message: string): {
   validity: boolean;
   errorMessage: string;
