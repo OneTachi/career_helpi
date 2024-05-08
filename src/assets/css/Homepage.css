@@ -36,23 +36,23 @@ body {
   width: 100%;
 }
 
-.basic-button:hover{
-  width: 200px;
-  height: 55px;
-  font-size: 20px;
-	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
-	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
-}
-
 .basic-button{
   position: relative;
   margin-top: 150px;
   font-family: "SpaceType", sans-serif;
   left: 50%;
   width: 150px;
-  height: 55px;
+  height: 65px;
   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(131,58,180,1) 100%);
+}
+
+.basic-button:hover{
+  width: 200px;
+  height: 65px;
+  font-size: 20px;
+	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
+	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
 }
 
 .basic-text{
@@ -79,8 +79,17 @@ body {
   font-family: "SpaceType", sans-serif;
   left: 50%;
   width: 150px;
-  height: 55px;
+  height: 65px;
   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(131,58,180,1) 100%);
+}
+
+.detailed-button:hover{
+  width: 200px;
+  height: 65px;
+  font-size: 20px;
+	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
+	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
 }
 
 .detailed-text{
@@ -100,15 +109,6 @@ body {
   transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
   box-shadow: inset 5000px 0 0 0 gold;
 
-}
-
-.detailed-button:hover{
-  width: 200px;
-  height: 55px;
-  font-size: 20px;
-	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
-	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-  background: linear-gradient(90deg, rgba(58,99,180,1) 0%, rgba(131,58,180,1) 50%, rgba(58,99,180,1) 100%);
 }
 
 .square{
