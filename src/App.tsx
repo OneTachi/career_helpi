@@ -4,11 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import {
-  TestApiRequest,
-  initializeAttributes,
-  incrementAttributes,
-} from "./Api";
+import { TestApiRequest, initializeAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -58,7 +54,7 @@ function LoadPage(
   switch (page) {
     case "home": {
       return (
-        <body>
+        <div>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
           <TestApiRequest apikey={localKey} />
@@ -69,21 +65,21 @@ function LoadPage(
             setKey,
             handleSubmit,
           })}
-        </body>
+        </div>
       );
     }
     case "basic": {
       return (
-        <body>
+        <div>
           <Background quizType={"basic"}></Background>
-        </body>
+        </div>
       );
     }
     case "detailed": {
-      return <body>Detailed Page Layout</body>;
+      return <div>Detailed Page Layout</div>;
     }
     case "results": {
-      return <body>Results Page Layout</body>;
+      return <div>Results Page Layout</div>;
     }
   }
   // This error should never occur.

@@ -161,6 +161,9 @@ export function handleResponseAttribution(
 ): void {
   // Get Data
   const separated_response: string[] = response.split(",");
+  const formatted_response = separated_response.map((resp: string) => {
+    return resp.trim();
+  });
   const getStorageData: string | null = localStorage.getItem(
     quizType + "-quiz-results"
   );
@@ -170,7 +173,7 @@ export function handleResponseAttribution(
   // Increase attributes as long as attribute is correct.
   const quiz_data: Record<string, number> = JSON.parse(getStorageData);
 
-  [...separated_response].forEach((resp: string) => {
+  [...formatted_response].forEach((resp: string) => {
     if (resp in quiz_data) {
       quiz_data[resp] = Math.min(10, quiz_data[resp] + 1); // We want to have a max of 10 points in any attribute
     }
