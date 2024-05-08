@@ -2,12 +2,14 @@ import React from "react";
 import { PageProps } from "./interfaces/page";
 import { Button } from "react-bootstrap";
 import "./assets/css/Homepage.css";
+import pixel from "./assets/videos/pixel_rain.gif";
 
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
-      
       <div className="heading">8-Legged Career Quest</div>
+
+      <img src={pixel} alt="rain pouring" className="basic-background" />
 
       <div>
         <Button className="basic-button" onClick={() => setPage("basic")}>
@@ -41,8 +43,6 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
         </p>
 
         <div className="subheading">Spin Your Web, Catch Your Career</div>
-
-
       </div>
     </div>
   );

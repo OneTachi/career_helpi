@@ -4,11 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import {
-  TestApiRequest,
-  initializeAttributes,
-  incrementAttributes,
-} from "./Api";
+import { initializeAttributes, incrementAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -84,30 +80,34 @@ function LoadPage(
       );
     }
     case "basic": {
-      return <div>
-        <Navbar page={page} setPage={setPage}></Navbar>
-        <Background quizType={"basic"}></Background>
-        {Footer({
+      return (
+        <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
+          <Background quizType={"basic"}></Background>
+          {Footer({
             page,
             setPage,
             key,
             setKey,
             handleSubmit,
           })}
-        </div>;
+        </div>
+      );
     }
     case "detailed": {
-      return <div>
-      <Navbar page={page} setPage={setPage}></Navbar>
-      <Background quizType={"detailed"}></Background>
-      {Footer({
-          page,
-          setPage,
-          key,
-          setKey,
-          handleSubmit,
-        })}
-      </div>;
+      return (
+        <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
+          <Background quizType={"detailed"}></Background>
+          {Footer({
+            page,
+            setPage,
+            key,
+            setKey,
+            handleSubmit,
+          })}
+        </div>
+      );
     }
     case "results": {
       return <body>Results Page Layout</body>;
