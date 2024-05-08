@@ -16,7 +16,7 @@ let message_history: ChatCompletionMessageParam[] = [];
  * Requests career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
  * @param key The API Key for ChatGPT provided by the user
  * @param quizType Whether you want ChatGPT to use data collected from the basic or detailed quiz
- * @returns Three careers within the same occupation field
+ * @returns Three careers within the same occupation field. The last element is the occupation field.
  */
 export async function requestCareers(
   key: string,
@@ -52,6 +52,11 @@ export async function requestCareers(
   careers.push(await requestCareerHelper(initial_message));
   careers.push(await requestCareerHelper(following_message));
   careers.push(await requestCareerHelper(following_message));
+  careers.push(
+    await requestCareerHelper(
+      "What is the Occupation Field? Only include the title in the next response"
+    )
+  );
 
   return careers;
 }
