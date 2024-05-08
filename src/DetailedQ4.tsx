@@ -1,40 +1,41 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
-import "career_helpi\src\assets\css\DetailedQ4.css";
+import { detailedQuestionProps } from "./Background";
+import "./assets/css/detailed.css"
 
-export function DetailedQ4(): JSX.Element {
-    // This is the State (Model)
-    const [answer, setAnswer] = useState<string>("");
-  
-    // This is the Control
-    function updateAnswer(event: React.ChangeEvent<HTMLTextAreaElement>) {
-      setAnswer(event.target.value)
+export function DetailedQ4({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
+  function updateAnswer(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    let tempArray: string[] = [...selectedAnswers];
+    tempArray.splice(pageNum - 1, 1, event.target.value);
+    changeAnswer(tempArray);
+
+    //Note that because the answered questions array is a state, and state is not re-rendered until the end of the scope of the function it is changed in (in this case updateAnswer), 
+    //the array still has the empty string for this question if it hasn't been answered before now, and can be used to increase the progress amount.
+    if(selectedAnswers[pageNum - 1] === ""){
+      changeCompletionAmount(completionAmount + 1);
     }
-  
-    // This is the View
-    return <div>
-    
-    <header className={"DQ4-Title"}>Detailed Question 4: Preferred Employment Tasks</header>
-    
-
-    <Form.Text>
-    
-    In your dream job, how often would you want to work on different projects and tasks? 
-    Also, what would these tasks be?
-
-    </Form.Text>
-
-
-      <Form.Group controlId="formDQ4">
-        <Form.Control className = "DQ4-Textbox"
-          as="textarea"
-          rows={3}
-          value={answer}
-          onChange={updateAnswer} />
-      </Form.Group>
-      <div>
-        Response: {answer}
-      </div>
-    </div>;
+    else if(event.target.value === ""){ //Else if the text box just became the empty string instead of changing from the empty string to any other string, the text box is empty and the question is unanswered again.
+      changeCompletionAmount(completionAmount - 1);
+    }
   }
+
+  // This is the View
+  return <div className = "Detailed-Question">
+  
+  <h3>Preferred Employment Tasks</h3>
+  
+
+  <div>
+  In your dream job, how often would you want to work on different projects and tasks? 
+  Also, what would these tasks be?
+  </div>
+
+
+    <Form.Group controlId="formDQ4">
+      <Form.Control
+        as="textarea"
+        rows={3}
+        value={selectedAnswers[pageNum - 1]}
+        onChange={updateAnswer} />
+    </Form.Group>
+  </div>;
+}
