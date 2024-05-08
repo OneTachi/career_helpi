@@ -40,11 +40,8 @@ export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 </Form.Select>
             
             </Form.Group>
-            I would want to set my web up in a {selectedAnswers[pageNum - 1]}.
-            
-            <div>
-            <Button className = "SubmitButton">Submit Answer</Button>
-            </div>
+
+            {selectedAnswers[pageNum - 1] !== "" && <div>I would want to set my web up in a {selectedAnswers[pageNum - 1]}.</div>}
         </div>
     );
 }

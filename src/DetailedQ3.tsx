@@ -42,7 +42,7 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 </Form.Select>
             
             </Form.Group>
-            I would want my web to have a complexity level of rank: {selectedAnswers[pageNum - 1]}.
+            {selectedAnswers[pageNum - 1] !== "" && <div>I would want my web to have a complexity level of rank: {selectedAnswers[pageNum - 1]}</div>}
         </div>
     );
 }

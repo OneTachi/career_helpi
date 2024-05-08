@@ -142,9 +142,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
               />
               </div>
                             
-              <div>
-                The top 3 most important web qualities to me are: {getPrintString()}
-              </div>
+              {selectedAnswers[pageNum - 1] !== "" && <div>The top 3 most important web qualities to me are: {getPrintString()}.</div>}
           </div>
       );
   }
