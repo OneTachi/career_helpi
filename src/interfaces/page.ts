@@ -1,4 +1,5 @@
 export type Page = "api" | "home" | "basic" | "detailed" | "results";
+export type QuizType = "basic" | "detailed";
 
 export interface PageProps {
   page: Page;

@@ -4,7 +4,11 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { TestApiRequest } from "./Api";
+import {
+  TestApiRequest,
+  initializeAttributes,
+  incrementAttributes,
+} from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -26,6 +30,20 @@ function App() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
+
+  initializeAttributes();
+  incrementAttributes(
+    [
+      "ethics",
+      "problem solving",
+      "protectiveness",
+      "creativity",
+      "empathy",
+      "leadership",
+    ],
+    [9, 5, 7, 4, 6, 9],
+    "basic"
+  );
 
   return LoadPage(
     {
@@ -55,7 +73,6 @@ function LoadPage(
         <body>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
-          <TestApiRequest apikey={localKey} />
           {Footer({
             page,
             setPage,
