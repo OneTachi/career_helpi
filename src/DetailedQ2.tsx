@@ -35,12 +35,25 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 changeAnswer(tempArray);
                 updateNumSelected(1);
             }
-
-
       }
 
       function updateNumSelected(amount: number){
         changeNumSelected(numSelected + amount);
+      }
+
+      function getPrintString(): string{
+        let qualities: string[] = selectedAnswers[pageNum - 1].split(",");
+        let prnt: string = "The top 3 most important web qualities to me are: ";
+
+        if(qualities.length <= 2){
+            prnt += qualities.join(" and ").toString();
+        }
+        else{
+            prnt += qualities.join(", ").toString();
+            prnt = prnt.substring(0, prnt.lastIndexOf(",") + 1) + " and " + prnt.substring(prnt.lastIndexOf(",") + 1)
+        }
+
+        return(prnt);
       }
   
       // This is the View
@@ -130,7 +143,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
               </div>
                             
               <div>
-                The top 3 most important web qualities to me are: {selectedAnswers[pageNum - 1].split(",").join(" and ")}.
+                The top 3 most important web qualities to me are: {getPrintString()}
               </div>
           </div>
       );
