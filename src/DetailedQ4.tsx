@@ -37,8 +37,5 @@ export function DetailedQ4({pageNumber: pageNum, selectedAnswers, changeAnswer, 
         value={selectedAnswers[pageNum - 1]}
         onChange={updateAnswer} />
     </Form.Group>
-    <div>
-      Response: {selectedAnswers[pageNum - 1]}
-    </div>
   </div>;
 }
