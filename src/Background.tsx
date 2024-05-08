@@ -63,7 +63,8 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     }
 
     return(
-        <div onMouseMove={updateCompletionAmount}>
+        //<div onMouseMove={updateCompletionAmount}>
+        <div>
             {quizType === "results" ? 
                 <Results fields={["a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
                 : quizType === "basic" ?

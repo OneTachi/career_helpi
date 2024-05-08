@@ -13,12 +13,11 @@ const RANKINGS=
 ]
 
 export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
-    // This is the State (Model)
-    const [rank, setRank] = useState<string>("_____");
-
     // This is the Control
     function updateRank(event: React.ChangeEvent<HTMLSelectElement>) {
-        setRank(event.target.value);
+        let tempArray: string[] = [...selectedAnswers];
+        tempArray.splice(pageNum - 1, 1, event.target.value);
+        changeAnswer(tempArray);
     }
 
     // This is the View
@@ -35,18 +34,15 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 visual appeal. How you choose to distribute your resources is up to you.
                 </Form.Text>
                 
-                <Form.Select className = "DQ3"value={rank} onChange={updateRank}>
-                  { RANKINGS.map((rank: string) =>
-                    <option key={rank} value={rank}>{rank}</option>
-                  )}
+                <Form.Select className = "DQ3"value={selectedAnswers[pageNum - 1]} onChange={updateRank}>
+                    {selectedAnswers[pageNum - 1] === "" && <option key={"blank"} value={""}>{"<select an option>"}</option>}
+                    { RANKINGS.map((rank: string) =>
+                        <option key={rank} value={rank}>{rank}</option>
+                    )}
                 </Form.Select>
             
             </Form.Group>
-            I would want my web to have a complexity level of rank: {rank}.
-            
-            <div>
-            <Button className = "SubmitButton">Submit Answer</Button>
-            </div>
+            I would want my web to have a complexity level of rank: {selectedAnswers[pageNum - 1]}.
         </div>
     );
 }

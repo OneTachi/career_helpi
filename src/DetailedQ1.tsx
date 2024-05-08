@@ -33,9 +33,10 @@ export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, 
                 </Form.Text>
                 
                 <Form.Select className = "DQ1"value={selectedAnswers[pageNum - 1]} onChange={updateLocation}>
-                  { LOCATIONS.map((location: string) =>
-                    <option key={location} value={location}>{location}</option>
-                  )}
+                    {selectedAnswers[pageNum - 1] === "" && <option key={"blank"} value={""}>{"<select an option>"}</option>}
+                    { LOCATIONS.map((location: string) =>
+                        <option key={location} value={location}>{location}</option>
+                    )}
                 </Form.Select>
             
             </Form.Group>
