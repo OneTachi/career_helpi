@@ -57,7 +57,6 @@ function LoadPage(
         <div>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
-          <TestApiRequest apikey={localKey} />
           {Footer({
             page,
             setPage,
@@ -71,12 +70,32 @@ function LoadPage(
     case "basic": {
       return (
         <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
           <Background quizType={"basic"}></Background>
+          {Footer({
+              page,
+              setPage,
+              key,
+              setKey,
+              handleSubmit,
+            })}
         </div>
       );
     }
     case "detailed": {
-      return <div>Detailed Page Layout</div>;
+      return (
+        <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
+          <Background quizType={"detailed"}></Background>
+          {Footer({
+            page,
+            setPage,
+            key,
+            setKey,
+            handleSubmit,
+          })}
+        </div>
+      );
     }
     case "results": {
       return <div>Results Page Layout</div>;

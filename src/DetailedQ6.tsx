@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
+import "career_helpi\src\assets\css\DetailedQ6.css"
 
 export function DetailedQ6(): JSX.Element {
     // This is the State (Model)
