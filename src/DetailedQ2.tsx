@@ -50,7 +50,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
         }
         else{
             prnt += qualities.join(", ").toString();
-            prnt = prnt.substring(0, prnt.lastIndexOf(",") + 1) + " and " + prnt.substring(prnt.lastIndexOf(",") + 1)
+            prnt = prnt.substring(0, prnt.lastIndexOf(",") + 1) + " and " + prnt.substring(prnt.lastIndexOf(",") + 1);
         }
 
         return(prnt);
@@ -142,7 +142,7 @@ export function DetailedQ2({pageNumber: pageNum, selectedAnswers, changeAnswer, 
               />
               </div>
                             
-              {selectedAnswers[pageNum - 1] !== "" && <div>The top 3 most important web qualities to me are: {getPrintString()}.</div>}
+              {selectedAnswers[pageNum - 1] !== "" && <div>{getPrintString()}.</div>}
           </div>
       );
   }
