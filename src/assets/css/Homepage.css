@@ -44,8 +44,8 @@ body {
 }
 
 .basic-button:hover {
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   font-size: 20px;
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
   transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -63,8 +63,8 @@ body {
   margin-top: 150px;
   left: 50%;
   margin-left: -5%;
-  width: 10%;
-  height: 60px;
+  width: 200px;
+  height: 70px;
   background: linear-gradient(
     90deg,
     rgba(131, 58, 180, 1) 0%,
@@ -94,20 +94,6 @@ body {
   box-shadow: inset 5000px 0 0 0 gold;
 }
 
-.detailed-button {
-  position: relative;
-  margin-top: 150px;
-  left: 50%;
-  margin-left: -5%;
-  width: 10%;
-  height: 60px;
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(131, 58, 180, 1) 100%
-  );
-}
-
 .detailed-text {
   position: relative;
   color: white;
@@ -130,9 +116,23 @@ body {
   box-shadow: inset 5000px 0 0 0 gold;
 }
 
+.detailed-button {
+  position: relative;
+  margin-top: 150px;
+  left: 50%;
+  margin-left: -5%;
+  width: 10%;
+  height: 70px;
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(131, 58, 180, 1) 100%
+  );
+}
+
 .detailed-button:hover {
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   font-size: 20px;
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
   transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
