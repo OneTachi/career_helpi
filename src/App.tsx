@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { initializeAttributes, incrementAttributes } from "./Api";
+import { initializeAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -28,18 +28,6 @@ function App() {
   }
 
   initializeAttributes();
-  incrementAttributes(
-    [
-      "ethics",
-      "problem solving",
-      "protectiveness",
-      "creativity",
-      "empathy",
-      "leadership",
-    ],
-    [9, 5, 7, 4, 6, 9],
-    "basic"
-  );
 
   return LoadPage(
     {
@@ -66,7 +54,7 @@ function LoadPage(
   switch (page) {
     case "home": {
       return (
-        <body>
+        <div>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
           {Footer({
@@ -76,7 +64,7 @@ function LoadPage(
             setKey,
             handleSubmit,
           })}
-        </body>
+        </div>
       );
     }
     case "basic": {
@@ -85,12 +73,12 @@ function LoadPage(
           <Navbar page={page} setPage={setPage}></Navbar>
           <Background quizType={"basic"}></Background>
           {Footer({
-            page,
-            setPage,
-            key,
-            setKey,
-            handleSubmit,
-          })}
+              page,
+              setPage,
+              key,
+              setKey,
+              handleSubmit,
+            })}
         </div>
       );
     }
@@ -110,7 +98,7 @@ function LoadPage(
       );
     }
     case "results": {
-      return <body>Results Page Layout</body>;
+      return <div>Results Page Layout</div>;
     }
   }
   // This error should never occur.
