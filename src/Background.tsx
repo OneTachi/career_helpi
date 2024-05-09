@@ -99,7 +99,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             }
             
             currPageNum += 1;
-            
+
             return null;
         });
 
@@ -134,7 +134,11 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
     function updateShowUnfinishedString(isUnfinished: boolean){
         changeShowUnfinishedString(isUnfinished);
 
-        if(!isUnfinished){
+        if(isUnfinished){
+            alert(getUnfinishedQuestionsString())
+        }
+
+        if(!isUnfinished && completionAmount === 7){
             updatePageType("results");
         }
     }
@@ -151,7 +155,7 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
                 {"Finish"}
             </Button>
 
-            {showUnfinishedString && <div>{getUnfinishedQuestionsString()}</div>}
+            {showUnfinishedString && <>{}</> && <>{updateShowUnfinishedString(false)}</>}
         </div>
     );
 }
