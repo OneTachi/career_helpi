@@ -71,9 +71,11 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     }
 
     //Call this to update the completion amount
+    /*
     function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
         changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
     }
+    */
 
     //Returns the string that tells the user how many questions are unfinished
     function getUnfinishedQuestionsString(): string{
