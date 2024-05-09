@@ -45,20 +45,6 @@ body {
   width: 100%;
 }
 
-.basic-button:hover {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
-  transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background: linear-gradient(
-    90deg,
-    rgba(58, 99, 180, 1) 0%,
-    rgba(131, 58, 180, 1) 50%,
-    rgba(58, 99, 180, 1) 100%
-  );
-}
-
 .basic-button {
   position: relative;
   display: block;
@@ -71,6 +57,20 @@ body {
     90deg,
     rgba(131, 58, 180, 1) 0%,
     rgba(131, 58, 180, 1) 100%
+  );
+}
+
+.basic-button:hover {
+  width: 250px;
+  height: 60px;
+  font-size: 20px;
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
+  transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: linear-gradient(
+    90deg,
+    rgba(58, 99, 180, 1) 0%,
+    rgba(131, 58, 180, 1) 50%,
+    rgba(58, 99, 180, 1) 100%
   );
 }
 
@@ -88,10 +88,12 @@ body {
   text-align: center;
   background-color: black;
   font-size: large;
+  font-family: "SpaceType", sans-serif;
 }
 
 .basic-text:hover {
   color: black;
+  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
   box-shadow: inset 5000px 0 0 0 gold;
 }
 
@@ -109,31 +111,9 @@ body {
   );
 }
 
-.detailed-text {
-  position: relative;
-  color: white;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 175px;
-  width: 50%;
-  padding: 20px;
-  padding-top: 30px;
-  border-radius: 25px;
-  text-align: center;
-  background-color: black;
-  font-size: large;
-}
-
-.detailed-text:hover {
-  color: black;
-  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
-  box-shadow: inset 5000px 0 0 0 gold;
-}
-
 .detailed-button:hover {
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 60px;
   font-size: 20px;
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
   transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -143,6 +123,29 @@ body {
     rgba(131, 58, 180, 1) 50%,
     rgba(58, 99, 180, 1) 100%
   );
+}
+
+.detailed-text {
+  position: relative;
+  color: white;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 175px;
+  width: 55%;
+  padding: 20px;
+  padding-top: 30px;
+  border-radius: 25px;
+  text-align: center;
+  background-color: black;
+  font-size: large;
+  font-family: "SpaceType", sans-serif;
+}
+
+.detailed-text:hover {
+  color: black;
+  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
+  box-shadow: inset 5000px 0 0 0 gold;
 }
 
 .square {
