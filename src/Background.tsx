@@ -83,15 +83,21 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
         let unfinishedPageNums: string[] = [];
 
         answers.map((answer: string) => {
+            /*  //This would work for every question if it wasn't for detailed question 2 needing to have exactly 3 boxes checked to be completed
             if(answer === ""){
-                 //unfinishedPageNums.push(currPageNum.toString());   //This line would simply work if it wasn't for detailed question 2, so the next 2 lines are needed
-
-                if(pageType === "basic" || currPageNum !== 2 || answers[1].split(",").length < 3){ //Need this if statement to make sure exactly 3 boxes are selected for detailed question 2 when deciding if question 2 is complete (otherwise this if statement could be removed and the line inside it would simply be there and work for all other questions)
-                    unfinishedPageNums.push(currPageNum.toString());
-                }
+                unfinishedPageNums.push(currPageNum.toString());
             }
+            */
+
+            if(pageType === "detailed" && currPageNum === 2 && answers[1].split(",").length !== 3){ //Need this if statement to make sure exactly 3 boxes are selected for detailed question 2 when deciding if question 2 is complete (otherwise this if statement would be removed and the if statement above it would simply work for all questions
+                unfinishedPageNums.push(currPageNum.toString());
+            }
+            else if(answer === "" && (pageType !== "detailed" || currPageNum !== 2)){
+                unfinishedPageNums.push(currPageNum.toString());
+            }
+            
             currPageNum += 1;
-        })
+        });
 
         if(unfinishedPageNums.length <= 2){
             prnt += unfinishedPageNums.join(" and ").toString();
@@ -142,7 +148,6 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
             </Button>
 
             {showUnfinishedString && <div>{getUnfinishedQuestionsString()}</div>}
-            {pageType + " " + completionAmount + " "}
         </div>
     );
 }
