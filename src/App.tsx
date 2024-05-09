@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { TestApiRequest, initializeAttributes } from "./Api";
+import { initializeAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
