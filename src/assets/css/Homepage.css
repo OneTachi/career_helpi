@@ -15,6 +15,7 @@ body {
 .heading {
   position: relative;
   font-size: 80px;
+  font-family: 'SpaceType', sans-serif;
   color: rgba(245, 245, 245, 0.781);
   margin-top: 0px;
   text-align: center;
@@ -33,6 +34,7 @@ body {
   font-size: 80px;
   color: rgba(245, 245, 245, 0.781);
   font-size: 40px;
+  font-family: 'SpaceType', sans-serif;
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -44,8 +46,8 @@ body {
 }
 
 .basic-button:hover {
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   font-size: 20px;
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
   transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -63,8 +65,8 @@ body {
   margin-top: 150px;
   left: 50%;
   margin-left: -5%;
-  width: 10%;
-  height: 60px;
+  width: 200px;
+  height: 70px;
   background: linear-gradient(
     90deg,
     rgba(131, 58, 180, 1) 0%,
@@ -86,9 +88,33 @@ body {
   text-align: center;
   background-color: black;
   font-size: large;
+  font-family: 'SpaceType', sans-serif;
 }
 
 .basic-text:hover {
+  color: black;
+  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
+  box-shadow: inset 5000px 0 0 0 gold;
+}
+
+.detailed-text {
+  position: relative;
+  color: white;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 175px;
+  width: 55%;
+  padding: 20px;
+  padding-top: 30px;
+  border-radius: 25px;
+  text-align: center;
+  background-color: black;
+  font-size: large;
+  font-family: 'SpaceType', sans-serif;
+}
+
+.detailed-text:hover {
   color: black;
   transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
   box-shadow: inset 5000px 0 0 0 gold;
@@ -100,7 +126,7 @@ body {
   left: 50%;
   margin-left: -5%;
   width: 10%;
-  height: 60px;
+  height: 70px;
   background: linear-gradient(
     90deg,
     rgba(131, 58, 180, 1) 0%,
@@ -108,31 +134,9 @@ body {
   );
 }
 
-.detailed-text {
-  position: relative;
-  color: white;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 175px;
-  width: 50%;
-  padding: 20px;
-  padding-top: 30px;
-  border-radius: 25px;
-  text-align: center;
-  background-color: black;
-  font-size: large;
-}
-
-.detailed-text:hover {
-  color: black;
-  transition: color 3s ease-in-out, box-shadow 3s ease-in-out;
-  box-shadow: inset 5000px 0 0 0 gold;
-}
-
 .detailed-button:hover {
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   font-size: 20px;
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.07);
   transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -155,5 +159,4 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  margin-top: calc(150px / 100%);
 }

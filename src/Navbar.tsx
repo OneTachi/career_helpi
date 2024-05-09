@@ -8,7 +8,7 @@ export function Navbar({ page, setPage }: PageProps): JSX.Element {
   };
   return (
     <header className="bar">
-      <Button className="image" onClick={linkHome}>
+      <Button className="image" style={{fontFamily:"SpaceType, sans-serif"}}  onClick={linkHome}>
         Home
       </Button>
     </header>

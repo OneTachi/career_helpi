@@ -30,7 +30,7 @@ export function Footer({
           </Col>
           <Col>
             <span className="item right">
-              <h3 style={{ textDecorationLine: "underline" }}>Created By</h3>
+              <h3 style={{ textDecorationLine: "underline"}}>Created By</h3>
               <p>Siddharth Lokula | Justin Burger | Christopher Rasquin</p>
             </span>
           </Col>

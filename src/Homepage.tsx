@@ -8,11 +8,20 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
       <div className="heading">8-Legged Career Quest</div>
+      <link href="https://fonts.cdnfonts.com/css/spacetype" rel="stylesheet"></link>
+      <style>
+      @import url('https://fonts.cdnfonts.com/css/spacetype');
+      </style>
+
 
       <img src={pixel} alt="rain pouring" className="basic-background" />
 
       <div>
-        <Button className="basic-button" onClick={() => setPage("basic")}>
+        <Button 
+        className="basic-button" 
+        style={{fontFamily:"SpaceType, sans-serif"}} 
+        onClick={() => setPage("basic")}
+        >
           Basic Questions
         </Button>
         <p className="basic-text">
@@ -29,6 +38,7 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
       <div>
         <Button
           className={"detailed-button"}
+          style={{fontFamily:"SpaceType, sans-serif"}}
           onClick={() => setPage("detailed")}
         >
           Detailed Questions
