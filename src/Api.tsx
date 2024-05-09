@@ -16,7 +16,7 @@ let message_history: ChatCompletionMessageParam[] = [];
  * Requests career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
  * @param key The API Key for ChatGPT provided by the user
  * @param quizType Whether you want ChatGPT to use data collected from the basic or detailed quiz
- * @returns Three careers within the same occupation field
+ * @returns Three careers within the same occupation field. The last element is the occupation field.
  */
 export async function requestCareers(
   key: string,
@@ -52,6 +52,11 @@ export async function requestCareers(
   careers.push(await requestCareerHelper(initial_message));
   careers.push(await requestCareerHelper(following_message));
   careers.push(await requestCareerHelper(following_message));
+  careers.push(
+    await requestCareerHelper(
+      "What is the Occupation Field? Only include the title in the next response"
+    )
+  );
 
   return careers;
 }
@@ -106,6 +111,90 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
 }
 
 /**
+ * Verifies whether the User entered a response valid enough to send to ChatGPT
+ * @param message The User Response
+ * @returns Whether the response is valid or not.
+ */
+export function validateUserResponse(message: string): {
+  validity: boolean;
+  errorMessage: string;
+} {
+  if (message.length <= 10) {
+    return { validity: false, errorMessage: "Response too short!" };
+  }
+  if (message.includes("Do not") || message.includes("do not")) {
+    return { validity: false, errorMessage: "Response includes commands" };
+  }
+  return { validity: true, errorMessage: "All good!" };
+}
+
+/**
+ * Increases the attributes based on a user prompt.
+ * @param message User's response to text prompt
+ * @param quizType Type of quiz we want to change attributes for
+ */
+export async function incrementAttributesByMessage(
+  message: string,
+  quizType: QuizType
+): Promise<void> {
+  // Create Question
+  const question: string =
+    `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
+  Please only include the three attributes as your response separated by commas. Do not include anything outside the attribute list.\n
+  Attributes: problem solving, protectiveness, creativity, empathy, leadership, communication, 
+  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n
+  Message: ` + message;
+
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: question }],
+    model: "gpt-3.5-turbo",
+  });
+  const response = chatCompletion.choices[0].message.content;
+  if (response === null) {
+    throw new Error(
+      "Reponse from ChatGPT is empty for increment by message function"
+    );
+  }
+
+  // Handle Incrementation
+  handleResponseAttribution(response, quizType);
+}
+
+/**
+ * Increases the attributes of a given message containing the names of the attributes it wants to increase. Comma separated message
+ * @param response ChatGPT's three choices of attributes to increment. MUST be comma separated
+ * @param quizType The type of quiz to alter the data for
+ */
+export function handleResponseAttribution(
+  response: string,
+  quizType: QuizType
+): void {
+  // Get Data
+  const separated_response: string[] = response.split(",");
+  const formatted_response = separated_response.map((resp: string) => {
+    return resp.trim();
+  });
+  const getStorageData: string | null = localStorage.getItem(
+    quizType + "-quiz-results"
+  );
+  if (getStorageData === null) {
+    throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
+  }
+  // Increase attributes as long as attribute is correct.
+  const quiz_data: Record<string, number> = JSON.parse(getStorageData);
+
+  [...formatted_response].forEach((resp: string) => {
+    if (resp in quiz_data) {
+      quiz_data[resp] = Math.min(10, quiz_data[resp] + 1); // We want to have a max of 10 points in any attribute
+    }
+  });
+
+  // Set new data in local storage
+  const formatted_data = JSON.stringify(quiz_data);
+  localStorage.setItem(quizType + "-quiz-results", formatted_data);
+}
+
+/**
  * Increases elements of quiz result data
  * @param attr A list of attributes to increment. MUST equal the length of points parameter.
  * @param points The number of points to increment the attributes. It's order must reflect the order of attr paramater.
@@ -129,6 +218,22 @@ export function incrementAttributes(
 
   [...attr].map((att: string) => (quiz[att] += points[attr.indexOf(att)]));
   localStorage.setItem(quizType + "-quiz-results", JSON.stringify(quiz));
+}
+/**
+ * Primarily used for testing purposes.
+ * @param quizType The type of quiz
+ * @returns Record of quiz data
+ */
+export function getAttributes(quizType: QuizType): Record<string, number> {
+  const getStorageData: string | null = localStorage.getItem(
+    quizType + "-quiz-results"
+  );
+  if (getStorageData === null) {
+    throw new Error("No quiz data available to generate careers"); // Storage data of quiz results should NEVER be null
+  }
+
+  const quiz_data: Record<string, number> = JSON.parse(getStorageData);
+  return quiz_data;
 }
 
 /**
