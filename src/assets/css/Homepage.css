@@ -15,6 +15,7 @@ body {
 .heading {
   position: relative;
   font-size: 80px;
+  font-family: 'SpaceType', sans-serif;
   color: rgba(245, 245, 245, 0.781);
   margin-top: 0px;
   text-align: center;
@@ -33,6 +34,7 @@ body {
   font-size: 80px;
   color: rgba(245, 245, 245, 0.781);
   font-size: 40px;
+  font-family: 'SpaceType', sans-serif;
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -86,6 +88,7 @@ body {
   text-align: center;
   background-color: black;
   font-size: large;
+  font-family: 'SpaceType', sans-serif;
 }
 
 .basic-text:hover {
@@ -101,13 +104,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 175px;
-  width: 50%;
+  width: 55%;
   padding: 20px;
   padding-top: 30px;
   border-radius: 25px;
   text-align: center;
   background-color: black;
   font-size: large;
+  font-family: 'SpaceType', sans-serif;
 }
 
 .detailed-text:hover {
