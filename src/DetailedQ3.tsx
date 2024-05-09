@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
-import {Button} from "react-bootstrap";
+import { detailedQuestionProps } from "./Background";
+import "./assets/css/detailed.css"
 const RANKINGS= 
 ["Visual Appeal: 5, Functionality: 0", 
 "Visual Appeal: 4, Functionality: 1", 
@@ -10,41 +10,39 @@ const RANKINGS=
 "Visual Appeal: 0, Functionality: 5",
 ]
 
-export function DetailedQ3(): JSX.Element {
-    // This is the State (Model)
-    const [rank, setRank] = useState<string>("_____");
-
+export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element {
     // This is the Control
     function updateRank(event: React.ChangeEvent<HTMLSelectElement>) {
-        setRank(event.target.value);
+        let tempArray: string[] = [...selectedAnswers];
+        tempArray.splice(pageNum - 1, 1, event.target.value);
+        changeAnswer(tempArray);
+
+        if(selectedAnswers[pageNum - 1] === ""){
+            changeCompletionAmount(completionAmount + 1);
+        }
     }
 
     // This is the View
     return (
-        <div>
-            <header className="DQ3Header">Detailed Question 3: Overall Design</header>
-
-            <div>Insert Images In empty space above</div>
+        <div className = "Detailed-Question">
+            <h3>Web Construction</h3>
 
             <Form.Group controlId="selectRank">
-                <Form.Label>
+                <div>
                 Now you are going to determine how you are going to design your web.
                 You are given 5 resource points that gain be put towards either functionality or 
                 visual appeal. How you choose to distribute your resources is up to you.
-                </Form.Label>
+                </div>
                 
-                <Form.Select className = "DQ3"value={rank} onChange={updateRank}>
-                  { RANKINGS.map((rank: string) =>
-                    <option key={rank} value={rank}>{rank}</option>
-                  )}
+                <Form.Select className = "DQ3"value={selectedAnswers[pageNum - 1]} onChange={updateRank}>
+                    {selectedAnswers[pageNum - 1] === "" && <option key={"blank"} value={""}>{"<select an option>"}</option>}
+                    { RANKINGS.map((rank: string) =>
+                        <option key={rank} value={rank}>{rank}</option>
+                    )}
                 </Form.Select>
             
             </Form.Group>
-            I would want my web to have a complexity level of rank: {rank}.
-            
-            <div>
-            <Button className = "SubmitButton">Submit Answer</Button>
-            </div>
+            {selectedAnswers[pageNum - 1] !== "" && <div>I would want my web to have a complexity level of rank: {selectedAnswers[pageNum - 1]}</div>}
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 import { Page, PageKeyProps } from "./interfaces/page";
 import { Footer } from "./Footer";
 import { Homepage } from "./Homepage";
-import { TestApiRequest } from "./Api";
+import { initializeAttributes } from "./Api";
 import { Background } from "./Background";
 
 function App() {
@@ -26,6 +26,8 @@ function App() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
+
+  initializeAttributes();
 
   return LoadPage(
     {
@@ -52,7 +54,7 @@ function LoadPage(
   switch (page) {
     case "home": {
       return (
-        <body>
+        <div>
           <Navbar page={page} setPage={setPage}></Navbar>
           <Homepage page={page} setPage={setPage}></Homepage>
           {Footer({
@@ -62,37 +64,41 @@ function LoadPage(
             setKey,
             handleSubmit,
           })}
-        </body>
+        </div>
       );
     }
     case "basic": {
-      return <div>
-        <Navbar page={page} setPage={setPage}></Navbar>
-        <Background quizType={"basic"}></Background>
-        {Footer({
+      return (
+        <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
+          <Background quizType={"basic"}></Background>
+          {Footer({
+              page,
+              setPage,
+              key,
+              setKey,
+              handleSubmit,
+            })}
+        </div>
+      );
+    }
+    case "detailed": {
+      return (
+        <div>
+          <Navbar page={page} setPage={setPage}></Navbar>
+          <Background quizType={"detailed"}></Background>
+          {Footer({
             page,
             setPage,
             key,
             setKey,
             handleSubmit,
           })}
-        </div>;
-    }
-    case "detailed": {
-      return <div>
-      <Navbar page={page} setPage={setPage}></Navbar>
-      <Background quizType={"detailed"}></Background>
-      {Footer({
-          page,
-          setPage,
-          key,
-          setKey,
-          handleSubmit,
-        })}
-      </div>;
+        </div>
+      );
     }
     case "results": {
-      return <body>Results Page Layout</body>;
+      return <div>Results Page Layout</div>;
     }
   }
   // This error should never occur.
