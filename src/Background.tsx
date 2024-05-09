@@ -99,6 +99,8 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             }
             
             currPageNum += 1;
+            
+            return null;
         });
 
         if(unfinishedPageNums.length <= 2){
