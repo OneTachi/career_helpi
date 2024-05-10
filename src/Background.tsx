@@ -145,6 +145,24 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
 
     return(
         <div>
+            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)}>
+                {"< Back"}
+            </Button>}
+            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)}>
+                {"Next >"}
+            </Button>}
+
+            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateShowUnfinishedString(false) : updateShowUnfinishedString(true)}>
+                {"Finish"}
+            </Button>
+
+            {showUnfinishedString && <>{}</> && <>{updateShowUnfinishedString(false)}</>}
+        </div>
+    );
+
+    /* //Original quiz page buttons (fully working). The difference is, the above version doesn't show the back or next buttons on pages 1 and 7 respectively
+    return(
+        <div>
             <Button className="Back-Button" onClick={() => pageNumber > 1 ? changePageNumber(pageNumber - 1) : ""}>
                 {"< Back"}
             </Button>
@@ -158,6 +176,7 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
             {showUnfinishedString && <>{}</> && <>{updateShowUnfinishedString(false)}</>}
         </div>
     );
+    */
 }
 
 export function Spider(): JSX.Element{
