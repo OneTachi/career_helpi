@@ -80,17 +80,9 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
     function updatePageType(newType: string, quizType: string, apiKey: string){
         if(newType === "results"){
             getJobsFromAi(quizType, apiKey);
-
-            console.log(fields);
-            console.log(descriptions);
-            console.log(fields.length);
-            if(fields.length === 3){
-                changePageType(newType);
-            }
         }
-        else{
-            changePageType(newType);
-        }
+        
+        changePageType(newType);
     }
 
     //Get 3 Careers and 3 jobs and their descriptions from each career from the chatGPT api
@@ -104,23 +96,31 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
             typeOfQuiz = 'detailed';
         }
 
+        let tempFields: string[] = [];
+        let tempJobs: string[][] = [];
+        let tempDescriptions: string[][] = [];
+
+
+        let newCareer: string[] = await requestCareers(apiKey, typeOfQuiz);
+        tempFields.push(newCareer[3]);
+        tempJobs.push(["a", "b", "c"]);
+        tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
+
+        console.log("done 1");
+
+        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        tempFields.push(newCareer[3]);
+        tempJobs.push(["a", "b", "c"]);
+        tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
         
-        console.log("started");
+        console.log("done 2");
 
-        let career1: string[] = await requestCareers(apiKey, typeOfQuiz);
-        changeFields([...fields, career1[3]]);
-        changeJobs([...jobs, ["a", "b", "c"]]);
-        changeDescriptions([...descriptions, [career1[0], career1[1], career1[2]]]);
+        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        changeFields([...tempFields, newCareer[3]]);
+        changeJobs([...tempJobs, ["a", "b", "c"]]);
+        changeDescriptions([...tempDescriptions, [newCareer[0], newCareer[1], newCareer[2]]]);
 
-        let career2: string[] = await requestCareers(apiKey, typeOfQuiz);
-        changeFields([...fields, career2[3]]);
-        changeJobs([...jobs, ["a", "b", "c"]]);
-        changeDescriptions([...descriptions, [career2[0], career2[1], career2[2]]]);
-
-        let career3: string[] = await requestCareers(apiKey, typeOfQuiz);
-        changeFields([...fields, career3[3]]);
-        changeJobs([...jobs, ["a", "b", "c"]]);
-        changeDescriptions([...descriptions, [career3[0], career3[1], career3[2]]]);
+        console.log("done 3");
     }
 
     //Call this to update the completion amount
@@ -182,10 +182,10 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
 }
 
 export function ChangePage({pageNumber, changePageNumber, completionAmount, pageType, updatePageType, getUnfinishedQuestionsString, quizType, apiKey}: changePageProps): JSX.Element{
-    const [showUnfinishedString, changeShowUnfinishedString] = useState<boolean>(false);
+    const [quizUnfinished, changeQuizUnfinished] = useState<boolean>(false);
 
-    function updateShowUnfinishedString(isUnfinished: boolean){
-        changeShowUnfinishedString(isUnfinished);
+    function updateQuizUnfinished(isUnfinished: boolean){
+        changeQuizUnfinished(isUnfinished);
 
         if(isUnfinished){
             alert(getUnfinishedQuestionsString())
@@ -205,11 +205,11 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
                 {"Next >"}
             </Button>}
 
-            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateShowUnfinishedString(false) : updateShowUnfinishedString(true)}>
+            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)}>
                 {"Finish"}
             </Button>
 
-            {showUnfinishedString && <>{updateShowUnfinishedString(false)}</>}
+            {quizUnfinished && <>{updateQuizUnfinished(false)}</>}
         </div>
     );
 

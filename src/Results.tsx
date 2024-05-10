@@ -55,14 +55,18 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
         changeSelectedJob(newJob);
     }
     
-    
-    return(
-        <div>
-            <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
-            <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: (Number(showWeb) * 70).toString() + "%"}}></img>
-            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
-        </div>
-    );
+    if(fields.length >= 3){
+        return(
+            <div>
+                <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
+                <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: (Number(showWeb) * 70).toString() + "%"}}></img>
+                {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
+            </div>
+        );
+    }
+    else{
+        return(<div>loading</div>)
+    }
 }
 
 
