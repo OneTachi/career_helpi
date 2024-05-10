@@ -28,12 +28,12 @@
 
 .Spider-1{
     left: 75%;
-    top: 45%;
+    top: 40%;
 }
 
 .Spider-2{
     left: 50%;
-    top: 60%;
+    top: 55%;
 }
 
 
@@ -103,6 +103,8 @@
 .Job-Description{
     width: auto; 
     height: auto;
+    top: 10%;
+    left: 50%;
     max-Width: 40%;
     border: 3px solid;
     border-color: darkgreen;
@@ -116,11 +118,3 @@
     opacity: .9;
     background-Color: turquoise;
 }
-
-#job-description-relative-to-window {
-    position: fixed;
-    width: 100%;
-    top: 20%;
-    left: 50%;
-    
-  }
