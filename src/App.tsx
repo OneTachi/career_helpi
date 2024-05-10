@@ -71,7 +71,7 @@ function LoadPage(
       return (
         <div>
           <Navbar page={page} setPage={setPage}></Navbar>
-          <Background quizType={"basic"}></Background>
+          <Background quizType={"basic"} apiKey={key}></Background>
           {Footer({
               page,
               setPage,
@@ -86,7 +86,7 @@ function LoadPage(
       return (
         <div>
           <Navbar page={page} setPage={setPage}></Navbar>
-          <Background quizType={"detailed"}></Background>
+          <Background quizType={"detailed"} apiKey={key}></Background>
           {Footer({
             page,
             setPage,

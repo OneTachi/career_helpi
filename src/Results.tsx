@@ -5,7 +5,7 @@ import spider1 from "./assets/images/characters/orange/idle (orange).gif";
 import spider2 from "./assets/images/characters/blue/idle (blue).gif";
 
 import backgroundWeb from "./assets/images/objects/result web.png";
-import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png"; //Delete me!!!!
+import flyImg from "./assets/images/objects/progress bar/fly.png";
 
 interface selectedFieldProps{
     field: string;
@@ -39,6 +39,9 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
     const [selectedField, changeSelectedField] = useState<string>("");
     const [selectedJob, changeSelectedJob] = useState<string>("");
     const [showWeb, changeShowWeb] = useState<boolean>(true)
+
+    console.log("RESULTS");
+    console.log(fields);
 
     function updateSelectedField(newField: string){
         changeSelectedField(newField);
@@ -88,7 +91,7 @@ export function JobFly({job, description, selectedJob, updateSelectedJob}: selec
         <div>
             <div onMouseDown={() => updateSelectedJob(job)} key={job} style = {{backgroundColor: "purple"}} className="Job-Fly">
                 <h2 className={"Job-Text"}>{job}</h2>
-                <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
+                <img src = {flyImg} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
             </div>
             <div id="job-description-relative-to-window">{job === selectedJob && <div className="Job-Description">{description}</div>}</div>
         </div>
