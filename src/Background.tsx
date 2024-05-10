@@ -156,7 +156,7 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
                 {"Finish"}
             </Button>
 
-            {showUnfinishedString && <>{}</> && <>{updateShowUnfinishedString(false)}</>}
+            {showUnfinishedString && <>{updateShowUnfinishedString(false)}</>}
         </div>
     );
 
