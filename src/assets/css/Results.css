@@ -100,3 +100,28 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.Job-Description{
+    width: auto; 
+    height: auto;
+    max-Width: 40%;
+    border: 3px solid;
+    border-color: darkgreen;
+    border-radius: 25px;
+    padding: 1%;
+    
+    transform: translate(-50%, 0%);
+    
+    position: absolute;
+    
+    opacity: .9;
+    background-Color: turquoise;
+}
+
+#job-description-relative-to-window {
+    position: fixed;
+    width: 100%;
+    top: 20%;
+    left: 50%;
+    
+  }
