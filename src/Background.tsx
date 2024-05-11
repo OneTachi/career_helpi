@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Background.css';
 import { Button } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
@@ -13,6 +13,7 @@ import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
 import waterfall from "./assets/images/backgrounds/waterfall.gif"
 import garden from "./assets/images/backgrounds/garden.png"
+import spider0 from "./assets/images/characters/main/idle (main).gif";
 
 import { DetailedQ1 } from './DetailedQ1';
 import { DetailedQ2 } from './DetailedQ2';
@@ -75,7 +76,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
 
     const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall, garden];
 
-    
+
 
     function updatePageType(newType: string, quizType: string, apiKey: string){
         if(newType === "results"){
@@ -84,6 +85,13 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         
         changePageType(newType);
     }
+
+    //Call this to update the completion amount
+    /*
+    function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
+        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
+    }
+    */
 
     //Get 3 Careers and 3 jobs and their descriptions from each career from the chatGPT api
     async function getJobsFromAi(quizType: string, apiKey: string){
@@ -122,13 +130,6 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
 
         console.log("done 3");
     }
-
-    //Call this to update the completion amount
-    /*
-    function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
-        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
-    }
-    */
 
     //Returns the string that tells the user how many questions are unfinished
     function getUnfinishedQuestionsString(): string{
@@ -177,6 +178,8 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
             {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
             {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
+
+            <SpiderPlayer pageNum={pageNumber}></SpiderPlayer>
         </div>
     );
 }
@@ -232,17 +235,6 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
     */
 }
 
-export function Spider(): JSX.Element{
-    //const spiderImg = "";
-    
-    return(
-        <div
-            style = {{}}
-        >
-        </div>
-    );
-}
-
 function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element{
     switch(pageNum){
         case 1: {return(<DetailedQ1 pageNumber = {pageNum} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></DetailedQ1>)}
@@ -256,3 +248,108 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 
     return<div>ERROR</div> //Should never occur
 }
+
+
+
+export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
+    const [xCord, changeXCord] = useState<number>(0);
+    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
+    const [pressingKey, changePressingKey] = useState<boolean>(false);
+    
+    const speed: number = .5;
+
+    //-1 = left, 1 = right
+    function updateXCord(direction: number){
+        changeXCord(xCord + (speed * direction));
+    }
+
+
+    /*
+    document.addEventListener("keydown", event => {
+        changePressingKey(true);
+
+        if(event.key === "ArrowLeft"){
+            updateXCord(-1);
+        }
+        else if(event.key === "ArrowRight"){
+            updateXCord(1);
+        }
+    })
+
+    document.addEventListener("keyup", event => {
+        changePressingKey(false);
+    })
+    */
+
+
+    const keyDownListener = (event: KeyboardEvent) => {
+        changePressingKey(true);
+
+        if(event.key === "ArrowLeft"){
+            updateXCord(-1);
+        }
+        else if(event.key === "ArrowRight"){
+           updateXCord(1);
+        }
+        else{
+            updateXCord(0);
+        }
+    }  
+
+
+    useEffect(() => {
+        document.addEventListener("keydown", event => keyDownListener(event));
+        return () =>
+        {
+            document.removeEventListener("keydown", keyDownListener);
+        }
+    }, [])
+
+    return(
+        <div style={{}}>
+            <img src={spider0} alt={"player spider img"} style={{position: "absolute", width: "20%", height: "10%", top:"50%", left:xCord.toString() + "%"}}></img>
+        </div>
+    );
+}
+
+
+    /*
+    const keyDownListener = (event: KeyboardEvent) => {
+        changePressingKey(true);
+
+        if(event.key === "ArrowLeft"){
+            changeCurrKey(-1);
+        }
+        else if(event.key === "ArrowRight"){
+            changeCurrKey(1);
+        }
+        else{
+            changeCurrKey(0);
+        }
+    }
+    
+    const keyUpListener = (event: KeyboardEvent) => {
+        changePressingKey(false);
+    }
+
+
+    useEffect(() => {
+        document.addEventListener("keydown", event => keyDownListener(event));
+        return () =>
+        {
+            document.removeEventListener("keydown", keyDownListener);
+        }
+    }, [])
+
+    useEffect(() => {
+        document.addEventListener("keyup", event => keyUpListener(event));
+        return () =>
+        {
+            document.removeEventListener("keyup", event => keyUpListener(event));
+        }
+    }, [])
+
+    if(pressingKey){
+        updateXCord(currKey);
+    }
+    */
