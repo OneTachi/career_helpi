@@ -91,7 +91,7 @@ export function CareerSpider({field, jobs, descriptions, selectedField, updateSe
 
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
-        <div onMouseDown={() => updateSelectedJob(job)} key={job} style = {{backgroundColor: "purple"}} className="Job-Fly">
+        <div onMouseDown={() => updateSelectedJob(job)} key={job} className="Job-Fly">
             <h2 className={"Job-Text"}>{job}</h2>
             <img src = {flyImg} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
         </div>

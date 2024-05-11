@@ -64,9 +64,9 @@
 }
 
 .Job-Fly{
-    width: 30%;
-    height: 60%;
-    left: 40%;
+    width: 35%;
+    height: 65%;
+    left: 35%;
     top: 20%;
     border: 3px solid;
     border-color: blue;
@@ -76,7 +76,7 @@
 }
 
 .Fly-Image{
-    width: 90% ;
+    width: 90%;
     height: 90%;
     margin-left: 5%;
     top: 5%;
