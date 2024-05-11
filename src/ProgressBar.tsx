@@ -27,7 +27,7 @@ export function ProgressBar({amountCompleted}: {amountCompleted: number}): JSX.E
         <div className = "Progress-Bar" onMouseOver = {setToHovering} onMouseLeave = {setToNotHovering}>
             <img src={progressBarWebs[amountCompleted]} alt = "Progress Bar Web Img" className = "Web-Image"></img>
 
-            {isHovering ? 
+            {!isHovering ? 
             <div className = "Amount-Completed">{"" + amountCompleted + "/7"}</div> :
             <div>{/*"Replace this div with the image to have it swap between the image and completion count instead of overlaying them"*/}</div>
             }
