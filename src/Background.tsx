@@ -14,6 +14,7 @@ import insideHouse from "./assets/images/backgrounds/insideHouse.png"
 import waterfall from "./assets/images/backgrounds/waterfall.gif"
 import garden from "./assets/images/backgrounds/garden.png"
 import spiderIdle from "./assets/images/characters/main/idle (main).gif";
+import spiderWalking from "./assets/images/characters/main/walking (main).gif";
 
 import { DetailedQ1 } from './DetailedQ1';
 import { DetailedQ2 } from './DetailedQ2';
@@ -252,7 +253,7 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 
 export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
     const [xCord, changeXCord] = useState<number>(0);
-    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
+    const [facingRight, changeFacingRight] = useState<boolean>(false); //0 is left, 1 is right
     const [currImg, changeCurrImg] = useState<string>(spiderIdle);
     
     const speed: number = .5;
@@ -269,19 +270,38 @@ export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
     document.onkeydown = function(event){
         if(event.keyCode === 37){
             updateXCord(-1);
+            changeCurrImg(spiderWalking);
+            changeFacingRight(false);
         }
         else if(event.keyCode === 39){
            updateXCord(1);
+           changeCurrImg(spiderWalking);
+           changeFacingRight(true);
         }
         else{
             updateXCord(0);
         }
     }
 
+    document.onkeyup = function(event){
+        if(event.keyCode === 37){
+            changeCurrImg(spiderIdle);
+        }
+        else if(event.keyCode === 39){
+            changeCurrImg(spiderIdle);
+        } 
+    }
+
+    function tempy(){
+        console.log(document.getElementById("player_spider")!.style.right)
+    }
+    window.onload = tempy;
+
     return(
         <div style={{width: "100%", maxWidth: "100%"}}>
-            <img src={currImg} id="player_spider" alt={"player spider img"} style={{position: "absolute", width: "10%", height: "7.5%", top:"50%", left:xCord.toString() + "%"}}></img>
+            <img src={currImg} id="player_spider" className={"Player-" + pageNum.toString()} alt={"player spider img"} style={{position: "absolute", width: "10%", height: "7.5%", left:xCord.toString() + "%", transform:"scaleX(" + ((-1 * Number(facingRight)) + Number(!facingRight)).toString() +")"}}></img>
         </div>
     );
-    
+    // (-1 * Number(facingRight)) + Number(!facingRight)     gives -1 if facing right and 1 if facing left (for scaleX function)
 }
+
