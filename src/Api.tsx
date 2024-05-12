@@ -275,5 +275,19 @@ export function processBasicAnswers(userAnswers: string[]): void {
     incrementAttributes(results.attributes, results.points, "basic");
   });
 }
-
-export function processDetailedAnswers(userAnswers: string[]): void {}
+/**
+ * Processes all answers from the basic quiz into points/attributes
+ * @param userAnswers Detailed Answers from quiz, all strings
+ */
+export function processDetailedAnswers(userAnswers: string[]): void {
+  const nonMessages: string[] = userAnswers.slice(0, 3);
+  const userMessages: string[] = userAnswers.slice(-4);
+  nonMessages.forEach((value: string) => {
+    let results: { attributes: string[]; points: number[] } =
+      points[single_answers.indexOf(value)];
+    incrementAttributes(results.attributes, results.points, "basic");
+  });
+  userMessages.forEach((value: string) => {
+    incrementAttributesByMessage(value, "detailed");
+  });
+}

@@ -1,4 +1,4 @@
-const detailedQuestions: string[] = [
+export const detailedQuestions: string[] = [
   "Beach",
   "City",
   "Rainforest",
@@ -12,3 +12,5 @@ const detailedQuestions: string[] = [
   "Camouflage",
   "Stickiness",
 ];
+
+export const detailedPoints: { attributes: string[]; points: number[] }[] = [];
