@@ -38,7 +38,6 @@ interface selectedJobProps{
 export function Results({fields, jobs, descriptions}: {fields: string[], jobs: string[][], descriptions: string[][]}): JSX.Element{
     const [selectedField, changeSelectedField] = useState<string>("");
     const [selectedJob, changeSelectedJob] = useState<string>("");
-    const [showWeb, changeShowWeb] = useState<boolean>(true)
 
     function updateSelectedField(newField: string){
         changeSelectedField(newField);
@@ -56,7 +55,7 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
         return(
             <div>
                 <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
-                <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: (Number(showWeb) * 70).toString() + "%"}}></img>
+                <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: "70%"}}></img>
                 {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
 
                 <div>{selectedJob !== "" && <div className="Job-Description">{descriptions[fields.indexOf(selectedField)][jobs[fields.indexOf(selectedField)].indexOf(selectedJob)]}</div>}</div>
