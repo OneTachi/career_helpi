@@ -24,7 +24,7 @@ export function DetailedQ3({pageNumber: pageNum, selectedAnswers, changeAnswer, 
 
     // This is the View
     return (
-        <div className = "Detailed-Question">
+        <div className = "Detailed-Question" style={{fontFamily:"SpaceType, sans-serif"}}>
             <h3>Web Construction</h3>
 
             <Form.Group controlId="selectRank">

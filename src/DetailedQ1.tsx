@@ -26,7 +26,7 @@ export function DetailedQ1({pageNumber: pageNum, selectedAnswers, changeAnswer, 
 
     // This is the View
     return (
-        <div className = "Detailed-Question">
+        <div className = "Detailed-Question" style={{fontFamily:"SpaceType, sans-serif"}}>
             <h3>Location</h3>
 
             <div>Insert Images In empty space above</div>
