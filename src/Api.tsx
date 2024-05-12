@@ -121,9 +121,9 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
 
   const response = async () => {
     if (buttonText.length === 1) {
-      setButtonText(await requestCareers(newKey, "basic"));
+      setButtonText(await requestMoreCareers(newKey, "basic"));
     } else {
-      setButtonText(await requestCareers(newKey, "basic"));
+      setButtonText(await requestMoreCareers(newKey, "basic"));
     }
   };
   return (
