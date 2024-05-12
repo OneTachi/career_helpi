@@ -15,7 +15,7 @@ export function SpiderPlayer({pageNum, changePageNumber}: {pageNum: number, chan
         changeXCord(xCordPercent + (speed * direction));
 
         //Instead of left and right bounds, hitting borders changes pages
-        if(xCordPercent + (speed * direction) > 100 - spiderWidthPercent){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
+        if(xCordPercent + (speed * direction) > 100 - spiderWidthPercent){ //If the spider would go over the right side, go to the next page or stop it
             if(pageNum < 7){
                 changeXCord(0);
                 changePageNumber(pageNum + 1);
@@ -25,7 +25,7 @@ export function SpiderPlayer({pageNum, changePageNumber}: {pageNum: number, chan
             }
 
         }
-        else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, stop it
+        else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, go to the previous page or stop ir
             if(pageNum > 1){
                 changeXCord(100 - spiderWidthPercent);
                 changePageNumber(pageNum - 1);
