@@ -28,38 +28,39 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
----------------------|---------|----------|---------|---------|--------------------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
----------------------|---------|----------|---------|---------|--------------------------------
-All files            |   12.03 |     5.85 |   13.25 |   12.09 |                                
- src                 |   12.03 |     5.85 |   13.25 |   12.09 |                                
-  Api.tsx            |   35.52 |    35.71 |   46.15 |      36 | 25-105,142-160,181,208-220,232 
-  App.tsx            |   58.82 |    33.33 |   66.66 |   58.82 | 19,26-27,71-105                
-  Background.tsx     |       0 |        0 |       0 |       0 | 68-252                         
-  Default.tsx        |       0 |        0 |       0 |       0 | 10-29                          
-  DetailedQ1.tsx     |    12.5 |        0 |       0 |    12.5 | 16-43                          
-  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-75                           
-  DetailedQ3.tsx     |    12.5 |        0 |       0 |    12.5 | 16-40                          
-  DetailedQ4.tsx     |       0 |        0 |       0 |       0 | 7-23                           
-  DetailedQ5.tsx     |       0 |        0 |       0 |       0 | 7-23                           
-  DetailedQ6.tsx     |       0 |        0 |       0 |       0 | 7-23                           
-  DetailedQ7.tsx     |       0 |        0 |       0 |       0 | 7-23                           
-  Footer.tsx         |      50 |      100 |      50 |      50 | 16                             
-  Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 23-42                          
-  MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30                          
-  Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 7                              
-  ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26                          
-  Results.tsx        |       0 |        0 |       0 |       0 | 39-93                          
-  SpiderPlayer.tsx   |       0 |        0 |       0 |       0 | 6-188                          
-  basicQuestions.ts  |     100 |      100 |     100 |     100 |                                
-  index.tsx          |       0 |      100 |     100 |       0 | 8-20                           
-  reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10                           
- src/interfaces      |       0 |        0 |       0 |       0 |                                
-  page.ts            |       0 |        0 |       0 |       0 |                                
----------------------|---------|----------|---------|---------|--------------------------------
+-----------------------|---------|----------|---------|---------|----------------------------------------
+File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                      
+-----------------------|---------|----------|---------|---------|----------------------------------------
+All files              |   15.05 |     6.76 |   16.85 |   14.87 |                                        
+ src                   |   14.61 |     6.76 |   16.85 |   14.43 |                                        
+  Api.tsx              |   41.11 |       40 |   52.63 |   40.44 | 31-129,166-184,205,233,239,256,306-314 
+  App.tsx              |   58.82 |    33.33 |   66.66 |   58.82 | 19,26-27,71-105                        
+  Background.tsx       |       0 |        0 |       0 |       0 | 68-252                                 
+  Default.tsx          |       0 |        0 |       0 |       0 | 10-29                                  
+  DetailedQ1.tsx       |    12.5 |        0 |       0 |    12.5 | 16-43                                  
+  DetailedQ2.tsx       |       0 |        0 |       0 |       0 | 7-75                                   
+  DetailedQ3.tsx       |    12.5 |        0 |       0 |    12.5 | 16-40                                  
+  DetailedQ4.tsx       |       0 |        0 |       0 |       0 | 7-23                                   
+  DetailedQ5.tsx       |       0 |        0 |       0 |       0 | 7-23                                   
+  DetailedQ6.tsx       |       0 |        0 |       0 |       0 | 7-23                                   
+  DetailedQ7.tsx       |       0 |        0 |       0 |       0 | 7-23                                   
+  Footer.tsx           |      50 |      100 |      50 |      50 | 16                                     
+  Homepage.tsx         |   33.33 |      100 |   33.33 |   33.33 | 23-42                                  
+  MultipleChoice.tsx   |       0 |        0 |       0 |       0 | 11-30                                  
+  Navbar.tsx           |   66.66 |      100 |      50 |   66.66 | 7                                      
+  ProgressBar.tsx      |       0 |        0 |       0 |       0 | 13-26                                  
+  Results.tsx          |       0 |        0 |       0 |       0 | 39-93                                  
+  SpiderPlayer.tsx     |       0 |        0 |       0 |       0 | 6-188                                  
+  basicQuestions.ts    |     100 |      100 |     100 |     100 |                                        
+  index.tsx            |       0 |      100 |     100 |       0 | 8-20                                   
+  reportWebVitals.ts   |       0 |        0 |       0 |       0 | 3-10                                   
+ src/interfaces        |     100 |      100 |     100 |     100 |                                        
+  detailedQuestions.ts |     100 |      100 |     100 |     100 |                                        
+  page.ts              |       0 |        0 |       0 |       0 |                                        
+-----------------------|---------|----------|---------|---------|----------------------------------------
 
 Test Suites: 2 passed, 2 total
-Tests:       11 passed, 11 total
+Tests:       12 passed, 12 total
 Snapshots:   0 total
-Time:        5.116 s
+Time:        5.06 s
 Ran all test suites.
