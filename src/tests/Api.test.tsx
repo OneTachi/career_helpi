@@ -7,8 +7,13 @@ import {
   validateUserResponse,
   processBasicAnswers,
   incrementAttributes,
+  processDetailedAnswers,
 } from "../Api";
 import { answers } from "../basicQuestions";
+import {
+  detailedQuestions,
+  detailedPoints,
+} from "../interfaces/detailedQuestions";
 
 let quiz_format: Record<string, number> = {
   "problem solving": 0,
@@ -151,5 +156,26 @@ describe("incrementAttributes", () => {
     incrementAttributes(["ethics"], [11], "basic");
     quiz_format["ethics"] = 10;
     expect(getAttributes("basic")).toEqual(quiz_format);
+  });
+});
+
+describe("Detailed Quiz Processing", () => {
+  test("Does not crash", () => {
+    render(<App />);
+    ResetRecord();
+    const testAnswers = [
+      detailedQuestions[0],
+      detailedQuestions[4],
+      detailedQuestions[5],
+      detailedQuestions[6],
+      detailedQuestions[-1],
+      "Hi, I really like pancakes.",
+      "This is for pancakia! I enjoy eating them on the beach with my friends.",
+      "Wow this is super cool. I want to a be a cool surfboarder and make creative artwork!",
+      "Crazy stuff here!",
+    ];
+    processDetailedAnswers(testAnswers);
+
+    expect(getAttributes("detailed")["patience"]).toBeGreaterThanOrEqual(1);
   });
 });

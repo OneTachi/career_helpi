@@ -86,7 +86,7 @@ export const points: { attributes: string[]; points: number[] }[] = [
   { attributes: ["patience"], points: [2] },
   { attributes: ["teamwork", "communication"], points: [1, 1] },
   { attributes: ["organization"], points: [2] },
-  { attributes: ["creativity, analytics"], points: [1, 1] },
+  { attributes: ["creativity", "analytics"], points: [1, 1] },
   {
     attributes: ["problem solving", "analytics", "organization"],
     points: [1, 1, 1],
