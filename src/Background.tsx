@@ -252,19 +252,33 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 
 
 export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
-    const [xCord, changeXCord] = useState<number>(0);
+    const [xCordPercent, changeXCord] = useState<number>(0);
     const [facingRight, changeFacingRight] = useState<boolean>(false); //0 is left, 1 is right
     const [currImg, changeCurrImg] = useState<string>(spiderIdle);
     
     const speed: number = .5;
+    const spiderWidthPercent: number = 10;
 
     //-1 = left, 1 = right
     function updateXCord(direction: number){
-        changeXCord(xCord + (speed * direction));
+        changeXCord(xCordPercent + (speed * direction));
 
-        if(Number(document.getElementById("player_spider")!.style.right) >= Number(document.getElementById("back_image")!.style.right)){ //Exclamation point basically means I'm telling it that it could never return null
-            console.log(document.getElementById("back_image")!.style.right)
+        //Simpler working left and right bounds
+        if(xCordPercent + (speed * direction) > 100 - spiderWidthPercent){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
+            changeXCord(100 - spiderWidthPercent)
         }
+        else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, stop it
+            changeXCord(0);
+        }
+
+        /*//Working left and right bounds
+        if(((xCordPercent/100)*document.body.clientWidth) + (speed * direction) > document.body.clientWidth - (document.body.clientWidth * (spiderWidthPercent/100))){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
+            changeXCord(100 - spiderWidthPercent)
+        }
+        else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, stop it
+            changeXCord(0);
+        }
+        */
     }
 
     document.onkeydown = function(event){
@@ -299,9 +313,12 @@ export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
 
     return(
         <div style={{width: "100%", maxWidth: "100%"}}>
-            <img src={currImg} id="player_spider" className={"Player-" + pageNum.toString()} alt={"player spider img"} style={{position: "absolute", width: "10%", height: "7.5%", left:xCord.toString() + "%", transform:"scaleX(" + ((-1 * Number(facingRight)) + Number(!facingRight)).toString() +")"}}></img>
+            <img src={currImg} id="player_spider" className={"Player-" + pageNum.toString()} alt={"player spider img"} style={{position: "absolute", width: spiderWidthPercent.toString() + "%", height: "7.5%", left:xCordPercent.toString() + "%", transform:"scaleX(" + ((-1 * Number(facingRight)) + Number(!facingRight)).toString() +")"}}></img>
         </div>
     );
     // (-1 * Number(facingRight)) + Number(!facingRight)     gives -1 if facing right and 1 if facing left (for scaleX function)
 }
+
+//<img src={currImg} id="player_spider" className={"Player-" + pageNum.toString()} alt={"player spider img"} style={{position: "absolute", width: "10%", height: "7.5%", left:"min(" + xCord.toString() + "%, 90%)", transform:"scaleX(" + ((-1 * Number(facingRight)) + Number(!facingRight)).toString() +")"}}></img>
+//left:"min(" + xCord.toString() + "%, 90%)" prevents the spider from going over the right edge of the screen but doesn't prevent xCord from increasing, so it takes a while to walk back and the spider looks like it's staying in place, so this method shouldn't be used.
 
