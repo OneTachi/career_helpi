@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { test } from "./interfaces/page";
 import { QuizType } from "./interfaces/page";
 import { ChatCompletionMessageParam } from "openai/resources";
+import { single_answers, points } from "./basicQuestions";
 
 const openai = new OpenAI({
   apiKey: "",
@@ -261,4 +262,16 @@ export function initializeAttributes(): void {
   localStorage.getItem("detailed-quiz-results");
   localStorage.setItem("basic-quiz-results", JSON.stringify(quiz_format));
   localStorage.setItem("detailed-quiz-results", JSON.stringify(quiz_format));
+}
+
+/**
+ * Processes all answers from the basic quiz into points/attributes
+ * @param userAnswers Basic Answers from quiz, all strings
+ */
+export function processBasicAnswers(userAnswers: string[]): void {
+  [...userAnswers].forEach((value: string) => {
+    let results: { attributes: string[]; points: number[] } =
+      points[single_answers.indexOf(value)];
+    incrementAttributes(results.attributes, results.points, "basic");
+  });
 }
