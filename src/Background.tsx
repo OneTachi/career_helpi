@@ -8,6 +8,7 @@ import { ProgressBar } from './ProgressBar';
 import { Results } from './Results';
 import { requestCareers } from './Api';
 import { QuizType } from "./interfaces/page";
+import { SpiderPlayer } from './SpiderPlayer';
 
 import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
@@ -75,7 +76,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
 
     const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall, garden];
 
-    
+
 
     function updatePageType(newType: string, quizType: string, apiKey: string){
         if(newType === "results"){
@@ -84,6 +85,13 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         
         changePageType(newType);
     }
+
+    //Call this to update the completion amount
+    /*
+    function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
+        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
+    }
+    */
 
     //Get 3 Careers and 3 jobs and their descriptions from each career from the chatGPT api
     async function getJobsFromAi(quizType: string, apiKey: string){
@@ -123,13 +131,6 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         console.log("done 3");
     }
 
-    //Call this to update the completion amount
-    /*
-    function updateCompletionAmount(){ //technically no longer need this function now that the question pages use props to update the amount completed so far, but keeping it because it could be useful later.
-        changeCompletionAmount(7 - selectedAnswers.filter((answer: string): boolean => answer === "").length);
-    }
-    */
-
     //Returns the string that tells the user how many questions are unfinished
     function getUnfinishedQuestionsString(): string{
         let answers: string[] = [...selectedAnswers];
@@ -167,16 +168,18 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
     }
 
     return(
-        <div>
+        <div style={{overflow:"hidden", position:"relative"}}>
             {pageType === "results" ? 
                 <Results fields={fields} jobs={jobs} descriptions={descriptions}></Results> 
                 : pageType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
                     : getDetailedPage({pageNumber, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount})
             }
-            {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
+            {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} id="back_image" alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
             {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
+
+            {pageType !== "results" && <SpiderPlayer pageNum={pageNumber} changePageNumber={changePageNumber}></SpiderPlayer>}
         </div>
     );
 }
@@ -230,17 +233,6 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
         </div>
     );
     */
-}
-
-export function Spider(): JSX.Element{
-    //const spiderImg = "";
-    
-    return(
-        <div
-            style = {{}}
-        >
-        </div>
-    );
 }
 
 function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount}: detailedQuestionProps): JSX.Element{
