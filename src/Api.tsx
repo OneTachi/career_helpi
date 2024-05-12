@@ -5,6 +5,10 @@ import { test } from "./interfaces/page";
 import { QuizType } from "./interfaces/page";
 import { ChatCompletionMessageParam } from "openai/resources";
 import { single_answers, points } from "./basicQuestions";
+import {
+  detailedQuestions,
+  detailedPoints,
+} from "./interfaces/detailedQuestions";
 
 const openai = new OpenAI({
   apiKey: "",
@@ -284,8 +288,8 @@ export function processDetailedAnswers(userAnswers: string[]): void {
   const userMessages: string[] = userAnswers.slice(-4);
   nonMessages.forEach((value: string) => {
     let results: { attributes: string[]; points: number[] } =
-      points[single_answers.indexOf(value)];
-    incrementAttributes(results.attributes, results.points, "basic");
+      detailedPoints[detailedQuestions.indexOf(value)];
+    incrementAttributes(results.attributes, results.points, "detailed");
   });
   userMessages.forEach((value: string) => {
     incrementAttributesByMessage(value, "detailed");
