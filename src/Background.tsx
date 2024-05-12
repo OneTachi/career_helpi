@@ -59,6 +59,18 @@ export interface detailedQuestionProps{
     changeCompletionAmount: (newAmount: number) => void;
 }
 
+export interface playerSpiderProps{
+    pageNum: number;
+    
+    xCord: number;
+    changeXCord: (newXCord: number) => void;
+    currKey: number;
+    changeCurrKey: (newKey: number) => void;
+    pressingKey: boolean;
+    changePressingKey: (newPressing: boolean) => void;
+
+}
+
 //selectedAnswers is an array of the basic question multiple choice answers that have been selected, and is used to save the responses to each quetsion on different pages.
 //pageNumber - 1 in the array is the user's answer to that question.
 //
@@ -73,6 +85,11 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
     const [fields, changeFields] = useState<string[]>([]);
     const [jobs, changeJobs] = useState<string[][]>([]);
     const [descriptions, changeDescriptions] = useState<string[][]>([]);
+
+
+    const [xCord, changeXCord] = useState<number>(0);
+    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
+    const [pressingKey, changePressingKey] = useState<boolean>(false);
 
     const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall, garden];
 
@@ -179,7 +196,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
             {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
 
-            <SpiderPlayer pageNum={pageNumber}></SpiderPlayer>
+            <SpiderPlayer pageNum={pageNumber} xCord={xCord} changeXCord={changeXCord} currKey={currKey} changeCurrKey={changeCurrKey} pressingKey={pressingKey} changePressingKey={changePressingKey}></SpiderPlayer>
         </div>
     );
 }
@@ -250,12 +267,8 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 }
 
 
-
-export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
-    const [xCord, changeXCord] = useState<number>(0);
-    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
-    const [pressingKey, changePressingKey] = useState<boolean>(false);
-    
+//export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
+export function SpiderPlayer({pageNum, xCord, changeXCord, currKey, changeCurrKey, pressingKey, changePressingKey}: playerSpiderProps): JSX.Element{
     const speed: number = .5;
 
     //-1 = left, 1 = right
@@ -263,93 +276,22 @@ export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
         changeXCord(xCord + (speed * direction));
     }
 
-
-    /*
-    document.addEventListener("keydown", event => {
-        changePressingKey(true);
-
-        if(event.key === "ArrowLeft"){
+    document.onkeydown = function(event){
+        if(event.keyCode === 37){
             updateXCord(-1);
         }
-        else if(event.key === "ArrowRight"){
-            updateXCord(1);
-        }
-    })
-
-    document.addEventListener("keyup", event => {
-        changePressingKey(false);
-    })
-    */
-
-
-    const keyDownListener = (event: KeyboardEvent) => {
-        changePressingKey(true);
-
-        if(event.key === "ArrowLeft"){
-            updateXCord(-1);
-        }
-        else if(event.key === "ArrowRight"){
+        else if(event.keyCode === 39){
            updateXCord(1);
         }
         else{
             updateXCord(0);
         }
-    }  
-
-
-    useEffect(() => {
-        document.addEventListener("keydown", event => keyDownListener(event));
-        return () =>
-        {
-            document.removeEventListener("keydown", keyDownListener);
-        }
-    }, [])
+    }
 
     return(
         <div style={{}}>
             <img src={spider0} alt={"player spider img"} style={{position: "absolute", width: "20%", height: "10%", top:"50%", left:xCord.toString() + "%"}}></img>
         </div>
     );
-}
-
-
-    /*
-    const keyDownListener = (event: KeyboardEvent) => {
-        changePressingKey(true);
-
-        if(event.key === "ArrowLeft"){
-            changeCurrKey(-1);
-        }
-        else if(event.key === "ArrowRight"){
-            changeCurrKey(1);
-        }
-        else{
-            changeCurrKey(0);
-        }
-    }
     
-    const keyUpListener = (event: KeyboardEvent) => {
-        changePressingKey(false);
-    }
-
-
-    useEffect(() => {
-        document.addEventListener("keydown", event => keyDownListener(event));
-        return () =>
-        {
-            document.removeEventListener("keydown", keyDownListener);
-        }
-    }, [])
-
-    useEffect(() => {
-        document.addEventListener("keyup", event => keyUpListener(event));
-        return () =>
-        {
-            document.removeEventListener("keyup", event => keyUpListener(event));
-        }
-    }, [])
-
-    if(pressingKey){
-        updateXCord(currKey);
-    }
-    */
+}
