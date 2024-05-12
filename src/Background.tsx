@@ -6,6 +6,8 @@ import { questions } from './basicQuestions';
 import { answers } from './basicQuestions';
 import { ProgressBar } from './ProgressBar';
 import { Results } from './Results';
+import { requestCareers } from './Api';
+import { QuizType } from "./interfaces/page";
 
 import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
@@ -28,9 +30,12 @@ interface changePageProps{
     completionAmount: number;
 
     pageType: string;
-    updatePageType: (newType: string) => void;
+    updatePageType: (newType: string, quizType: string, apiKey: string) => void;
     
     getUnfinishedQuestionsString: () => string;
+
+    quizType: string;
+    apiKey: string;
 }
 
 export interface basicQuestionProps{
@@ -58,16 +63,64 @@ export interface detailedQuestionProps{
 //
 //completionAmount is how many questions have been answered so far.
 //pageNumber is the page/question number of the quiz that the user is on.
-export function Background({quizType}: {quizType: string}): JSX.Element{
+export function Background({quizType, apiKey}: {quizType: string, apiKey: string}): JSX.Element{
     const [pageType, changePageType] = useState<string>(quizType);
     const [pageNumber, changePageNumber] = useState<number>(1);
     const [completionAmount, changeCompletionAmount] = useState<number>(0);
     const [selectedAnswers, changeAnswer] = useState<string[]>(["", "", "", "", "", "", ""]);
 
-    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall];
+    const [fields, changeFields] = useState<string[]>([]);
+    const [jobs, changeJobs] = useState<string[][]>([]);
+    const [descriptions, changeDescriptions] = useState<string[][]>([]);
 
-    function updatePageType(newType: string){
+    const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall, garden];
+
+    
+
+    function updatePageType(newType: string, quizType: string, apiKey: string){
+        if(newType === "results"){
+            getJobsFromAi(quizType, apiKey);
+        }
+        
         changePageType(newType);
+    }
+
+    //Get 3 Careers and 3 jobs and their descriptions from each career from the chatGPT api
+    async function getJobsFromAi(quizType: string, apiKey: string){
+        let typeOfQuiz: QuizType;
+
+        if(quizType === "basic"){
+          typeOfQuiz = 'basic';
+        }
+        else{
+            typeOfQuiz = 'detailed';
+        }
+
+        let tempFields: string[] = [];
+        let tempJobs: string[][] = [];
+        let tempDescriptions: string[][] = [];
+
+
+        let newCareer: string[] = await requestCareers(apiKey, typeOfQuiz);
+        tempFields.push(newCareer[3]);
+        tempJobs.push(["a", "b", "c"]);
+        tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
+
+        console.log("done 1");
+
+        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        tempFields.push(newCareer[3]);
+        tempJobs.push(["a", "b", "c"]);
+        tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
+        
+        console.log("done 2");
+
+        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        changeFields([...tempFields, newCareer[3]]);
+        changeJobs([...tempJobs, ["a", "b", "c"]]);
+        changeDescriptions([...tempDescriptions, [newCareer[0], newCareer[1], newCareer[2]]]);
+
+        console.log("done 3");
     }
 
     //Call this to update the completion amount
@@ -99,7 +152,7 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
             }
             
             currPageNum += 1;
-            
+
             return null;
         });
 
@@ -116,29 +169,51 @@ export function Background({quizType}: {quizType: string}): JSX.Element{
     return(
         <div>
             {pageType === "results" ? 
-                <Results fields={["a", "b", "c"]} jobs={[["a1", "a2", "a3"], ["b1", "b2", "b3"], ["c1", "c2", "c3"]]} descriptions={[["ad1", "ad2", "ad3"], ["bd1", "bd2", "bd3"], ["cd1", "cd2", "cd3"]]}></Results> 
+                <Results fields={fields} jobs={jobs} descriptions={descriptions}></Results> 
                 : pageType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
                     : getDetailedPage({pageNumber, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount})
             }
             {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
-            {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString}></ChangePage> : ""}
+            {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
         </div>
     );
 }
 
-export function ChangePage({pageNumber, changePageNumber, completionAmount, pageType, updatePageType, getUnfinishedQuestionsString}: changePageProps): JSX.Element{
-    const [showUnfinishedString, changeShowUnfinishedString] = useState<boolean>(false);
+export function ChangePage({pageNumber, changePageNumber, completionAmount, pageType, updatePageType, getUnfinishedQuestionsString, quizType, apiKey}: changePageProps): JSX.Element{
+    const [quizUnfinished, changeQuizUnfinished] = useState<boolean>(false);
 
-    function updateShowUnfinishedString(isUnfinished: boolean){
-        changeShowUnfinishedString(isUnfinished);
+    function updateQuizUnfinished(isUnfinished: boolean){
+        changeQuizUnfinished(isUnfinished);
 
-        if(!isUnfinished){
-            updatePageType("results");
+        if(isUnfinished){
+            alert(getUnfinishedQuestionsString())
+        }
+
+        if(!isUnfinished && completionAmount === 7){
+            updatePageType("results", quizType, apiKey);
         }
     }
 
+    return(
+        <div>
+            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)}>
+                {"< Back"}
+            </Button>}
+            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)}>
+                {"Next >"}
+            </Button>}
+
+            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)}>
+                {"Finish"}
+            </Button>
+
+            {quizUnfinished && <>{updateQuizUnfinished(false)}</>}
+        </div>
+    );
+
+    /* //Original quiz page buttons (fully working). The difference is, the above version doesn't show the back or next buttons on pages 1 and 7 respectively
     return(
         <div>
             <Button className="Back-Button" onClick={() => pageNumber > 1 ? changePageNumber(pageNumber - 1) : ""}>
@@ -151,9 +226,10 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
                 {"Finish"}
             </Button>
 
-            {showUnfinishedString && <div>{getUnfinishedQuestionsString()}</div>}
+            {showUnfinishedString && <>{}</> && <>{updateShowUnfinishedString(false)}</>}
         </div>
     );
+    */
 }
 
 export function Spider(): JSX.Element{

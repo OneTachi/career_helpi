@@ -5,7 +5,7 @@ import spider1 from "./assets/images/characters/orange/idle (orange).gif";
 import spider2 from "./assets/images/characters/blue/idle (blue).gif";
 
 import backgroundWeb from "./assets/images/objects/result web.png";
-import miniWeb0 from "./assets/images/objects/progress bar/progressWeb0.png"; //Delete me!!!!
+import flyImg from "./assets/images/objects/progress bar/fly.png";
 
 interface selectedFieldProps{
     field: string;
@@ -38,7 +38,7 @@ interface selectedJobProps{
 export function Results({fields, jobs, descriptions}: {fields: string[], jobs: string[][], descriptions: string[][]}): JSX.Element{
     const [selectedField, changeSelectedField] = useState<string>("");
     const [selectedJob, changeSelectedJob] = useState<string>("");
-    const [showWeb, changeShowWeb] = useState<boolean>(false)
+    const [showWeb, changeShowWeb] = useState<boolean>(true)
 
     function updateSelectedField(newField: string){
         changeSelectedField(newField);
@@ -52,14 +52,20 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
         changeSelectedJob(newJob);
     }
     
-    
-    return(
-        <div>
-            <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
-            <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: (Number(showWeb) * 100).toString() + "%"}} onMouseOver={()=> changeShowWeb(true)} onMouseOut={()=> changeShowWeb(false)}></img>
-            {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
-        </div>
-    );
+    if(fields.length >= 3){
+        return(
+            <div>
+                <div onClick={() => updateSelectedField("")} className="Results-Click-Box"></div>
+                <img src = {backgroundWeb} alt = "Background Img" onClick={() => updateSelectedField("")} style={{width: "100%", height: "100%", position: "absolute", opacity: (Number(showWeb) * 70).toString() + "%"}}></img>
+                {fields.map((field: string) => <CareerSpider field={field} jobs={jobs[fields.indexOf(field)]} descriptions={descriptions[fields.indexOf(field)]} selectedField={selectedField} updateSelectedField={updateSelectedField} selectedJob={selectedJob} updateSelectedJob={updateSelectedJob} spiderNum={fields.indexOf(field)}></CareerSpider>)}
+
+                <div>{selectedJob !== "" && <div className="Job-Description">{descriptions[fields.indexOf(selectedField)][jobs[fields.indexOf(selectedField)].indexOf(selectedJob)]}</div>}</div>
+            </div>
+        );
+    }
+    else{
+        return(<div>loading</div>)
+    }
 }
 
 
@@ -85,10 +91,9 @@ export function CareerSpider({field, jobs, descriptions, selectedField, updateSe
 
 export function JobFly({job, description, selectedJob, updateSelectedJob}: selectedJobProps): JSX.Element{
     return(
-        <div onMouseDown={() => updateSelectedJob(job)} key={job} style = {{backgroundColor: "purple"}} className="Job-Fly">
+        <div onMouseDown={() => updateSelectedJob(job)} key={job} className="Job-Fly">
             <h2 className={"Job-Text"}>{job}</h2>
-            <img src = {miniWeb0} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
-            {job === selectedJob && <div>{description}</div>}
+            <img src = {flyImg} alt = "test img" style = {{left: "50%", top: "50%"}} className = "Fly-Image"></img>
         </div>
     );
 }

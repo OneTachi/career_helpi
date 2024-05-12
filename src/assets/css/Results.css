@@ -28,12 +28,12 @@
 
 .Spider-1{
     left: 75%;
-    top: 45%;
+    top: 40%;
 }
 
 .Spider-2{
     left: 50%;
-    top: 60%;
+    top: 55%;
 }
 
 
@@ -64,20 +64,19 @@
 }
 
 .Job-Fly{
-    width: 50px;
-    height: 50px;
-    left: 40%;
+    width: 35%;
+    height: 65%;
+    left: 35%;
     top: 20%;
     border: 3px solid;
     border-color: blue;
     border-radius: 25px;
-    background-color: grey;
     opacity: 100%;
     position: relative;
 }
 
 .Fly-Image{
-    width: 90% ;
+    width: 90%;
     height: 90%;
     margin-left: 5%;
     top: 5%;
@@ -99,4 +98,23 @@
 
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.Job-Description{
+    width: auto; 
+    height: auto;
+    top: 10%;
+    left: 50%;
+    max-Width: 40%;
+    border: 3px solid;
+    border-color: darkgreen;
+    border-radius: 25px;
+    padding: 1%;
+    
+    transform: translate(-50%, 0%);
+    
+    position: absolute;
+    
+    opacity: .9;
+    background-Color: turquoise;
 }
