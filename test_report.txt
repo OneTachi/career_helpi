@@ -16,29 +16,41 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
-A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+[0;33mOne of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+
+babel-preset-react-app is part of the create-react-app project, [1mwhich
+is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.[0m
+  
 ---------------------|---------|----------|---------|---------|--------------------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ---------------------|---------|----------|---------|---------|--------------------------------
-All files            |   16.42 |     8.88 |   14.28 |   16.66 |                                
- src                 |   16.42 |     8.88 |   14.28 |   16.66 |                                
+All files            |   12.03 |     5.85 |   13.25 |   12.09 |                                
+ src                 |   12.03 |     5.85 |   13.25 |   12.09 |                                
   Api.tsx            |   35.52 |    35.71 |   46.15 |      36 | 25-105,142-160,181,208-220,232 
   App.tsx            |   58.82 |    33.33 |   66.66 |   58.82 | 19,26-27,71-105                
-  Background.tsx     |       0 |        0 |       0 |       0 | 62-181                         
+  Background.tsx     |       0 |        0 |       0 |       0 | 68-252                         
   Default.tsx        |       0 |        0 |       0 |       0 | 10-29                          
   DetailedQ1.tsx     |    12.5 |        0 |       0 |    12.5 | 16-43                          
-  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-73                           
+  DetailedQ2.tsx     |       0 |        0 |       0 |       0 | 7-75                           
   DetailedQ3.tsx     |    12.5 |        0 |       0 |    12.5 | 16-40                          
-  DetailedQ4.tsx     |       0 |        0 |       0 |       0 | 7-22                           
-  DetailedQ5.tsx     |       0 |        0 |       0 |       0 | 7-22                           
-  DetailedQ6.tsx     |       0 |        0 |       0 |       0 | 7-21                           
-  DetailedQ7.tsx     |       0 |        0 |       0 |       0 | 7-21                           
+  DetailedQ4.tsx     |       0 |        0 |       0 |       0 | 7-23                           
+  DetailedQ5.tsx     |       0 |        0 |       0 |       0 | 7-23                           
+  DetailedQ6.tsx     |       0 |        0 |       0 |       0 | 7-23                           
+  DetailedQ7.tsx     |       0 |        0 |       0 |       0 | 7-23                           
   Footer.tsx         |      50 |      100 |      50 |      50 | 16                             
   Homepage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 23-42                          
   MultipleChoice.tsx |       0 |        0 |       0 |       0 | 11-30                          
   Navbar.tsx         |   66.66 |      100 |      50 |   66.66 | 7                              
   ProgressBar.tsx    |       0 |        0 |       0 |       0 | 13-26                          
-  Results.tsx        |       0 |        0 |       0 |       0 | 39-88                          
+  Results.tsx        |       0 |        0 |       0 |       0 | 39-93                          
+  SpiderPlayer.tsx   |       0 |        0 |       0 |       0 | 6-188                          
   basicQuestions.ts  |     100 |      100 |     100 |     100 |                                
   index.tsx          |       0 |      100 |     100 |       0 | 8-20                           
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10                           
@@ -49,5 +61,5 @@ All files            |   16.42 |     8.88 |   14.28 |   16.66 |
 Test Suites: 2 passed, 2 total
 Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        5.24 s
+Time:        5.116 s
 Ran all test suites.
