@@ -275,3 +275,5 @@ export function processBasicAnswers(userAnswers: string[]): void {
     incrementAttributes(results.attributes, results.points, "basic");
   });
 }
+
+export function processDetailedAnswers(userAnswers: string[]): void {}
