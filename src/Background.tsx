@@ -180,7 +180,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
             {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
 
-            {pageType !== "results" && <SpiderPlayer pageNum={pageNumber}></SpiderPlayer>}
+            {pageType !== "results" && <SpiderPlayer pageNum={pageNumber} changePageNumber={changePageNumber}></SpiderPlayer>}
         </div>
     );
 }
@@ -251,7 +251,7 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 }
 
 
-export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
+export function SpiderPlayer({pageNum, changePageNumber}: {pageNum: number, changePageNumber: Function}): JSX.Element{
     const [xCordPercent, changeXCord] = useState<number>(0);
     const [facingRight, changeFacingRight] = useState<boolean>(false); //0 is left, 1 is right
     const [currImg, changeCurrImg] = useState<string>(spiderIdle);
@@ -263,13 +263,39 @@ export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
     function updateXCord(direction: number){
         changeXCord(xCordPercent + (speed * direction));
 
+        //Instead of left and right bounds, hitting borders changes pages
+        if(xCordPercent + (speed * direction) > 100 - spiderWidthPercent){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
+            if(pageNum < 7){
+                changeXCord(0);
+                changePageNumber(pageNum + 1);
+            }
+            else{
+                changeXCord(100 - spiderWidthPercent);
+            }
+
+        }
+        else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, stop it
+            if(pageNum > 1){
+                changeXCord(100 - spiderWidthPercent);
+                changePageNumber(pageNum - 1);
+            }
+            else{
+                changeXCord(0);
+            }
+            
+        }
+
+
+
         //Simpler working left and right bounds
+        /*
         if(xCordPercent + (speed * direction) > 100 - spiderWidthPercent){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
             changeXCord(100 - spiderWidthPercent)
         }
         else if(xCordPercent + (speed * direction) < 0){ //If the spider would go over the left side, stop it
             changeXCord(0);
         }
+        */
 
         /*//Working left and right bounds
         if(((xCordPercent/100)*document.body.clientWidth) + (speed * direction) > document.body.clientWidth - (document.body.clientWidth * (spiderWidthPercent/100))){ //If the spider would go over the right side (its left plus is greater than the right side of the document minus the spider's width), set it to be located so that it is stopped at the right side
