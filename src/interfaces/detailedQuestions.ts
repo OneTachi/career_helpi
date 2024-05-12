@@ -20,10 +20,10 @@ export const detailedQuestions: string[] = [
 ];
 
 export const detailedPoints: { attributes: string[]; points: number[] }[] = [
-  { attributes: ["patience, creativity"], points: [1, 1] },
-  { attributes: ["communication, decision making"], points: [1, 1] },
-  { attributes: ["adaptability, analytics"], points: [1, 1] },
-  { attributes: ["independence, organization"], points: [1, 1] },
+  { attributes: ["patience", "creativity"], points: [1, 1] },
+  { attributes: ["communication", "decision making"], points: [1, 1] },
+  { attributes: ["adaptability", "analytics"], points: [1, 1] },
+  { attributes: ["independence", "organization"], points: [1, 1] },
   { attributes: ["protectiveness"], points: [1] },
   { attributes: ["independence"], points: [1] },
   { attributes: ["problem solving"], points: [1] },
@@ -32,10 +32,13 @@ export const detailedPoints: { attributes: string[]; points: number[] }[] = [
   { attributes: ["ethics"], points: [1] },
   { attributes: ["analytics"], points: [1] },
   { attributes: ["patience"], points: [1] },
-  { attributes: ["creativity, empathy"], points: [1, 1] },
-  { attributes: ["teamwork, patience"], points: [1, 1] },
-  { attributes: ["analytics, communication "], points: [1, 1] },
-  { attributes: ["analytics, adaptability"], points: [1, 1] },
-  { attributes: ["communication, independence"], points: [1, 1] },
-  { attributes: ["decision making, organization, ethics"], points: [1, 1, 1] },
+  { attributes: ["creativity", "empathy"], points: [1, 1] },
+  { attributes: ["teamwork", "patience"], points: [1, 1] },
+  { attributes: ["analytics", "communication "], points: [1, 1] },
+  { attributes: ["analytics", "adaptability"], points: [1, 1] },
+  { attributes: ["communication", "independence"], points: [1, 1] },
+  {
+    attributes: ["decision making", "organization", "ethics"],
+    points: [1, 1, 1],
+  },
 ];
