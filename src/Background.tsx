@@ -6,7 +6,7 @@ import { questions } from './basicQuestions';
 import { answers } from './basicQuestions';
 import { ProgressBar } from './ProgressBar';
 import { Results } from './Results';
-import { requestCareers } from './Api';
+import { requestCareers, requestMoreCareers } from './Api';
 import { QuizType } from "./interfaces/page";
 import { SpiderPlayer } from './SpiderPlayer';
 
@@ -109,21 +109,21 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         let tempDescriptions: string[][] = [];
 
 
-        let newCareer: string[] = await requestCareers(apiKey, typeOfQuiz);
+        let newCareer: string[] = await requestCareers(apiKey, typeOfQuiz, selectedAnswers);
         tempFields.push(newCareer[3]);
         tempJobs.push(["a", "b", "c"]);
         tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
 
         console.log("done 1");
 
-        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        newCareer = await requestMoreCareers(apiKey, typeOfQuiz);
         tempFields.push(newCareer[3]);
         tempJobs.push(["a", "b", "c"]);
         tempDescriptions.push([newCareer[0], newCareer[1], newCareer[2]]);
         
         console.log("done 2");
 
-        newCareer = await requestCareers(apiKey, typeOfQuiz);
+        newCareer = await requestMoreCareers(apiKey, typeOfQuiz);
         changeFields([...tempFields, newCareer[3]]);
         changeJobs([...tempJobs, ["a", "b", "c"]]);
         changeDescriptions([...tempDescriptions, [newCareer[0], newCareer[1], newCareer[2]]]);

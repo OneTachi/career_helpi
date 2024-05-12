@@ -7,7 +7,7 @@ import pixel from "./assets/videos/pixel_rain.gif";
 export function Homepage({ page, setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
-      <div className="heading">8-Legged Career Quest</div>
+      <div className="heading">Career Weaver</div>
       <link href="https://fonts.cdnfonts.com/css/spacetype" rel="stylesheet"></link>
       <style>
       @import url('https://fonts.cdnfonts.com/css/spacetype');
@@ -53,7 +53,7 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
           importantly, have fun!
         </p>
 
-        <div className="subheading">Spin Your Web, Catch Your Career</div>
+        <div className="subheading">An 8-Legged Career Quest. Spin Your Web, Catch Your Career!</div>
       </div>
     </div>
   );
