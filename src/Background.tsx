@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Background.css';
 import { Button } from 'react-bootstrap';
 import { MultipleChoice } from './MultipleChoice';
@@ -13,7 +13,7 @@ import forest from "./assets/images/backgrounds/forest.png"
 import insideHouse from "./assets/images/backgrounds/insideHouse.png"
 import waterfall from "./assets/images/backgrounds/waterfall.gif"
 import garden from "./assets/images/backgrounds/garden.png"
-import spider0 from "./assets/images/characters/main/idle (main).gif";
+import spiderIdle from "./assets/images/characters/main/idle (main).gif";
 
 import { DetailedQ1 } from './DetailedQ1';
 import { DetailedQ2 } from './DetailedQ2';
@@ -59,18 +59,6 @@ export interface detailedQuestionProps{
     changeCompletionAmount: (newAmount: number) => void;
 }
 
-export interface playerSpiderProps{
-    pageNum: number;
-    
-    xCord: number;
-    changeXCord: (newXCord: number) => void;
-    currKey: number;
-    changeCurrKey: (newKey: number) => void;
-    pressingKey: boolean;
-    changePressingKey: (newPressing: boolean) => void;
-
-}
-
 //selectedAnswers is an array of the basic question multiple choice answers that have been selected, and is used to save the responses to each quetsion on different pages.
 //pageNumber - 1 in the array is the user's answer to that question.
 //
@@ -85,11 +73,6 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
     const [fields, changeFields] = useState<string[]>([]);
     const [jobs, changeJobs] = useState<string[][]>([]);
     const [descriptions, changeDescriptions] = useState<string[][]>([]);
-
-
-    const [xCord, changeXCord] = useState<number>(0);
-    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
-    const [pressingKey, changePressingKey] = useState<boolean>(false);
 
     const backgrounds = [insideHouse, forest, forest, forest, forest, waterfall, waterfall, garden];
 
@@ -185,18 +168,18 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
     }
 
     return(
-        <div>
+        <div style={{overflow:"hidden", position:"relative"}}>
             {pageType === "results" ? 
                 <Results fields={fields} jobs={jobs} descriptions={descriptions}></Results> 
                 : pageType === "basic" ?
                     <MultipleChoice question={questions[pageNumber - 1]} answers={answers[pageNumber - 1]} pageNum = {pageNumber} selectedAnswers={selectedAnswers} changeAnswer={changeAnswer} completionAmount = {completionAmount} changeCompletionAmount={changeCompletionAmount}></MultipleChoice> 
                     : getDetailedPage({pageNumber, selectedAnswers, changeAnswer, completionAmount, changeCompletionAmount})
             }
-            {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
+            {pageType !== "results" ? <img src = {backgrounds[pageNumber - 1]} id="back_image" alt = "Background Img" className="Background-Image"></img> : <img src = {garden} alt = "Results Background Img" className="Background-Image"></img>}
             {pageType !== "results" ? <ChangePage pageNumber={pageNumber} changePageNumber={changePageNumber} completionAmount = {completionAmount} pageType={pageType} updatePageType={updatePageType} getUnfinishedQuestionsString={getUnfinishedQuestionsString} quizType={quizType} apiKey={apiKey}></ChangePage> : ""}
             {pageType !== "results" ? <ProgressBar amountCompleted={completionAmount}></ProgressBar> : ""}
 
-            <SpiderPlayer pageNum={pageNumber} xCord={xCord} changeXCord={changeXCord} currKey={currKey} changeCurrKey={changeCurrKey} pressingKey={pressingKey} changePressingKey={changePressingKey}></SpiderPlayer>
+            {pageType !== "results" && <SpiderPlayer pageNum={pageNumber}></SpiderPlayer>}
         </div>
     );
 }
@@ -267,13 +250,20 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 }
 
 
-//export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
-export function SpiderPlayer({pageNum, xCord, changeXCord, currKey, changeCurrKey, pressingKey, changePressingKey}: playerSpiderProps): JSX.Element{
+export function SpiderPlayer({pageNum}: {pageNum: number}): JSX.Element{
+    const [xCord, changeXCord] = useState<number>(0);
+    const [currKey, changeCurrKey] = useState<number>(0); //-1 is left, 1 is right, 0 is any other key
+    const [currImg, changeCurrImg] = useState<string>(spiderIdle);
+    
     const speed: number = .5;
 
     //-1 = left, 1 = right
     function updateXCord(direction: number){
         changeXCord(xCord + (speed * direction));
+
+        if(Number(document.getElementById("player_spider")!.style.right) >= Number(document.getElementById("back_image")!.style.right)){ //Exclamation point basically means I'm telling it that it could never return null
+            console.log(document.getElementById("back_image")!.style.right)
+        }
     }
 
     document.onkeydown = function(event){
@@ -289,8 +279,8 @@ export function SpiderPlayer({pageNum, xCord, changeXCord, currKey, changeCurrKe
     }
 
     return(
-        <div style={{}}>
-            <img src={spider0} alt={"player spider img"} style={{position: "absolute", width: "20%", height: "10%", top:"50%", left:xCord.toString() + "%"}}></img>
+        <div style={{width: "100%", maxWidth: "100%"}}>
+            <img src={currImg} id="player_spider" alt={"player spider img"} style={{position: "absolute", width: "10%", height: "7.5%", top:"50%", left:xCord.toString() + "%"}}></img>
         </div>
     );
     
