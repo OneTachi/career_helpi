@@ -4,6 +4,11 @@ import { Button } from "react-bootstrap";
 import { test } from "./interfaces/page";
 import { QuizType } from "./interfaces/page";
 import { ChatCompletionMessageParam } from "openai/resources";
+import { single_answers, points } from "./basicQuestions";
+import {
+  detailedQuestions,
+  detailedPoints,
+} from "./interfaces/detailedQuestions";
 
 const openai = new OpenAI({
   apiKey: "",
@@ -19,6 +24,25 @@ let message_history: ChatCompletionMessageParam[] = [];
  * @returns Three careers within the same occupation field. The last element is the occupation field.
  */
 export async function requestCareers(
+  key: string,
+  quizType: QuizType,
+  userAnswers: string[]
+) {
+  if (quizType === "basic") {
+    processBasicAnswers(userAnswers);
+  } else {
+    processDetailedAnswers(userAnswers);
+  }
+  return requestMoreCareers(key, quizType);
+}
+
+/**
+ * Requests addional career data from ChatGPT based on attributes listed in the JSON files. 3 Careers in One Field.
+ * @param key The API Key for ChatGPT provided by the user
+ * @param quizType Whether you want ChatGPT to use data collected from the basic or detailed quiz
+ * @returns Three careers within the same occupation field. The last element is the occupation field.
+ */
+export async function requestMoreCareers(
   key: string,
   quizType: QuizType
 ): Promise<string[]> {
@@ -97,9 +121,9 @@ export function TestApiRequest({ apikey }: test): JSX.Element {
 
   const response = async () => {
     if (buttonText.length === 1) {
-      setButtonText(await requestCareers(newKey, "basic"));
+      setButtonText(await requestMoreCareers(newKey, "basic"));
     } else {
-      setButtonText(await requestCareers(newKey, "basic"));
+      setButtonText(await requestMoreCareers(newKey, "basic"));
     }
   };
   return (
@@ -261,4 +285,32 @@ export function initializeAttributes(): void {
   localStorage.getItem("detailed-quiz-results");
   localStorage.setItem("basic-quiz-results", JSON.stringify(quiz_format));
   localStorage.setItem("detailed-quiz-results", JSON.stringify(quiz_format));
+}
+
+/**
+ * Processes all answers from the basic quiz into points/attributes
+ * @param userAnswers Basic Answers from quiz, all strings
+ */
+export function processBasicAnswers(userAnswers: string[]): void {
+  [...userAnswers].forEach((value: string) => {
+    let results: { attributes: string[]; points: number[] } =
+      points[single_answers.indexOf(value)];
+    incrementAttributes(results.attributes, results.points, "basic");
+  });
+}
+/**
+ * Processes all answers from the basic quiz into points/attributes
+ * @param userAnswers Detailed Answers from quiz, all strings
+ */
+export function processDetailedAnswers(userAnswers: string[]): void {
+  const nonMessages: string[] = userAnswers.slice(0, 3);
+  const userMessages: string[] = userAnswers.slice(-4);
+  nonMessages.forEach((value: string) => {
+    let results: { attributes: string[]; points: number[] } =
+      detailedPoints[detailedQuestions.indexOf(value)];
+    incrementAttributes(results.attributes, results.points, "detailed");
+  });
+  userMessages.forEach((value: string) => {
+    incrementAttributesByMessage(value, "detailed");
+  });
 }
