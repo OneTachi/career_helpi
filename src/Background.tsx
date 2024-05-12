@@ -139,7 +139,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         let unfinishedPageNums: string[] = [];
 
         answers.map((answer: string) => {
-            /*  //This would work for every question if it wasn't for detailed question 2 needing to have exactly 3 boxes checked to be completed
+            /*  //This would work for every question if it wasn't for detailed question 2 needing to have exactly 3 boxes checked to be completed, and for detailed questions 4 and up needing at leats 10 character responses
             if(answer === ""){
                 unfinishedPageNums.push(currPageNum.toString());
             }
