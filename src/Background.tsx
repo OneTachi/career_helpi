@@ -204,14 +204,19 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
 
     return(
         <div>
-            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)} style={{fontSize:"30px"}}>
+            <link href="https://fonts.cdnfonts.com/css/spacetype" rel="stylesheet"></link>
+            <style>
+                @import url('https://fonts.cdnfonts.com/css/spacetype');
+            </style>
+
+            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)} style={{fontSize:"30px", fontFamily:"SpaceType, sans-serif"}}>
                 {"< Back"}
             </Button>}
-            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)} style={{fontSize:"30px"}}>
+            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)} style={{fontSize:"30px", fontFamily:"SpaceType, sans-serif"}}>
                 {"Next >"}
             </Button>}
 
-            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)} style={{fontSize:"30px"}}>
+            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)} style={{fontSize:"30px", fontFamily:"SpaceType, sans-serif"}} >
                 {"Finish"}
             </Button>
 
