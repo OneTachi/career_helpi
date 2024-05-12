@@ -6,15 +6,19 @@
 .Back-Button{
     top: 10%;
     width: 7.5%;
-	height: 5%;
+	height: 7%;
     left: 20%;
-    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(131, 58, 180, 1) 100%
+      );
     position: absolute;
 }
 
 .Back-Button:hover{
-	width: 150px;
-	height: 54px;
+	width: 10%;
+	height: 7%;
     font-size: 30px;
 	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
 	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
@@ -23,32 +27,41 @@
 .Next-Button{
     top: 10%;
     width: 7.5%;
-	height: 5%;
+	height: 7%;
     left: 80%;
-    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+    font-size: 30px;
+    background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(131, 58, 180, 1) 100%
+      );
     position: absolute;
 }
 
 .Next-Button:hover{
-    width: 150px;
-	height: 54px;
+    width: 10%;
+	height: 7%;
     font-size: 30px;
 	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
 	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 .Finish-Button{
-    top: 80%;
+    top: 78%;
     width: 7.5%;
-	height: 5%;
+	height: 7%;
     left: 80%;
-    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(131, 58, 180, 1) 100%
+      );
     position: absolute;
 }
 
 .Finish-Button:hover{
-    width: 150px;
-	height: 54px;
+    width: 10%;
+	height: 7%;
     font-size: 30px;
 	box-shadow: 1px 4px 8px 0 rgba(0,0,0,0.07);
 	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275);

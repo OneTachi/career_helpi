@@ -204,14 +204,14 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
 
     return(
         <div>
-            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)}>
+            {pageNumber > 1 && <Button className="Back-Button" onClick={() => changePageNumber(pageNumber - 1)} style={{fontSize:"30px"}}>
                 {"< Back"}
             </Button>}
-            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)}>
+            {pageNumber < 7 && <Button className="Next-Button" onClick={() => changePageNumber(pageNumber + 1)} style={{fontSize:"30px"}}>
                 {"Next >"}
             </Button>}
 
-            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)}>
+            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)} style={{fontSize:"30px"}}>
                 {"Finish"}
             </Button>
 
