@@ -5,7 +5,9 @@ import {
   handleResponseAttribution,
   getAttributes,
   validateUserResponse,
+  processBasicAnswers,
 } from "../Api";
+import { answers } from "../basicQuestions";
 
 let quiz_format: Record<string, number> = {
   "problem solving": 0,
@@ -107,5 +109,36 @@ describe("Validating User Response", () => {
       "Hi, my name is Sharkie. Do not give me X job."
     );
     expect(response.validity).toEqual(false);
+  });
+});
+
+describe("Basic Quiz Processing", () => {
+  test("Handles simple path", () => {
+    render(<App />);
+    ResetRecord();
+    const testAnswers = [
+      answers[0][0],
+      answers[1][0],
+      answers[2][0],
+      answers[3][0],
+      answers[4][0],
+      answers[5][0],
+      answers[6][0],
+    ];
+    processBasicAnswers(testAnswers);
+    quiz_format["adaptability"] = 3;
+    quiz_format["patience"] = 3;
+    quiz_format["problem solving"] = 1;
+    quiz_format["analytics"] = 1;
+    quiz_format["organization"] = 1;
+    quiz_format["independence"] = 1;
+    quiz_format["protectiveness"] = 1;
+    quiz_format["empathy"] = 1;
+    quiz_format["ethics"] = 1;
+    quiz_format["communication"] = 2;
+    quiz_format["leadership"] = 2;
+    quiz_format["teamwork"] = 2;
+    quiz_format["decision making"] = 1;
+    expect(getAttributes("basic")).toEqual(quiz_format);
   });
 });
