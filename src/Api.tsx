@@ -240,7 +240,11 @@ export function incrementAttributes(
   }
   quiz = JSON.parse(quizKey);
 
-  [...attr].map((att: string) => (quiz[att] += points[attr.indexOf(att)]));
+  [...attr].map((att: string) => {
+    quiz[att] += points[attr.indexOf(att)];
+    quiz[att] = Math.min(10, quiz[att]);
+    return quiz[att];
+  });
   localStorage.setItem(quizType + "-quiz-results", JSON.stringify(quiz));
 }
 /**
