@@ -248,7 +248,3 @@ function getDetailedPage({pageNumber: pageNum, selectedAnswers, changeAnswer, co
 
     return<div>ERROR</div> //Should never occur
 }
-
-function transitionPages(){
-    
-}
