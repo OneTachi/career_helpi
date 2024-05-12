@@ -139,7 +139,7 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
         let unfinishedPageNums: string[] = [];
 
         answers.map((answer: string) => {
-            /*  //This would work for every question if it wasn't for detailed question 2 needing to have exactly 3 boxes checked to be completed
+            /*  //This would work for every question if it wasn't for detailed question 2 needing to have exactly 3 boxes checked to be completed, and for detailed questions 4 and up needing at leats 10 character responses
             if(answer === ""){
                 unfinishedPageNums.push(currPageNum.toString());
             }
@@ -148,7 +148,10 @@ export function Background({quizType, apiKey}: {quizType: string, apiKey: string
             if(pageType === "detailed" && currPageNum === 2 && answers[1].split(",").length !== 3){ //Need this if statement to make sure exactly 3 boxes are selected for detailed question 2 when deciding if question 2 is complete (otherwise this if statement would be removed and the if statement above it would simply work for all questions
                 unfinishedPageNums.push(currPageNum.toString());
             }
-            else if(answer === "" && (pageType !== "detailed" || currPageNum !== 2)){
+            else if(pageType === "detailed" && currPageNum >= 4 && answer.length < 10){
+                unfinishedPageNums.push(currPageNum.toString());
+            }
+            else if(answer === "" && (pageType !== "detailed" || (currPageNum !== 2 && currPageNum < 4))){
                 unfinishedPageNums.push(currPageNum.toString());
             }
             
