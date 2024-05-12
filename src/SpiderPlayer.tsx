@@ -81,11 +81,6 @@ export function SpiderPlayer({pageNum, changePageNumber}: {pageNum: number, chan
         } 
     }
 
-    function tempy(){
-        console.log(document.getElementById("player_spider")!.style.right)
-    }
-    window.onload = tempy;
-
     return(
         <div style={{width: "100%", maxWidth: "100%"}}>
             <img src={currImg} id="player_spider" className={"Player-" + pageNum.toString()} alt={"player spider img"} style={{position: "absolute", width: spiderWidthPercent.toString() + "%", height: "7.5%", left:xCordPercent.toString() + "%", transform:"scaleX(" + ((-1 * Number(facingRight)) + Number(!facingRight)).toString() +")"}}></img>
@@ -189,11 +184,6 @@ export function SpiderPlayerFunny({pageNum, changePageNumber}: {pageNum: number,
             changeCurrImg(spiderIdle);
         } 
     }
-
-    function tempy(){
-        console.log(document.getElementById("player_spider")!.style.right)
-    }
-    window.onload = tempy;
 
     return(
         <div style={{width: "100%", maxWidth: "100%"}}>
