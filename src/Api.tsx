@@ -307,7 +307,12 @@ export function processBasicAnswers(userAnswers: string[]): void {
  * @param userAnswers Detailed Answers from quiz, all strings
  */
 export function processDetailedAnswers(userAnswers: string[]): void {
-  const nonMessages: string[] = userAnswers.slice(0, 3);
+  const separatedMessages: string[] = userAnswers[1].split(",");
+  separatedMessages.push(userAnswers[0]);
+  separatedMessages.push(userAnswers[2]);
+  const nonMessages: string[] = separatedMessages.map((value: string) =>
+    value.toUpperCase()
+  );
   const userMessages: string[] = userAnswers.slice(-4);
   nonMessages.forEach((value: string) => {
     let results: { attributes: string[]; points: number[] } =
