@@ -46,7 +46,7 @@ All files              |   15.13 |     6.76 |   16.12 |   15.25 |
   DetailedQ7.tsx       |       0 |        0 |       0 |       0 | 7-23                                   
   Footer.tsx           |      50 |      100 |      50 |      50 | 16                                     
   Homepage.tsx         |   33.33 |      100 |   33.33 |   33.33 | 23-42                                  
-  MultipleChoice.tsx   |       0 |        0 |       0 |       0 | 11-30                                  
+  MultipleChoice.tsx   |       0 |        0 |       0 |       0 | 11-31                                  
   Navbar.tsx           |   66.66 |      100 |      50 |   66.66 | 7                                      
   ProgressBar.tsx      |       0 |        0 |       0 |       0 | 13-26                                  
   Results.tsx          |       0 |        0 |       0 |       0 | 40-102                                 
@@ -62,5 +62,5 @@ All files              |   15.13 |     6.76 |   16.12 |   15.25 |
 Test Suites: 2 passed, 2 total
 Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        5.09 s
+Time:        5.193 s
 Ran all test suites.
