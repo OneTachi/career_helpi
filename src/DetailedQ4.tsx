@@ -20,7 +20,7 @@ export function DetailedQ4({pageNumber: pageNum, selectedAnswers, changeAnswer, 
   }
 
   // This is the View
-  return <div className = "Detailed-Question">
+  return <div className = "Detailed-Question" style={{fontFamily:"SpaceType, sans-serif"}}>
   
   <h3>Preferred Employment Tasks</h3>
   

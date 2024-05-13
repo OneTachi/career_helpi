@@ -20,7 +20,7 @@ export function DetailedQ7({pageNumber: pageNum, selectedAnswers, changeAnswer, 
   }
   
     // This is the View
-    return <div className = "Detailed-Question">
+    return <div className = "Detailed-Question" style={{fontFamily:"SpaceType, sans-serif"}}>
     
     <h3>Looking Forward</h3>
 
