@@ -17,7 +17,7 @@ export function Footer({
   }
 
   return (
-    <footer className="footer">
+    <footer className="footer" style={{fontFamily:"SpaceType, sans-serif"}}>
       <Container>
         <Row>
           <Col>

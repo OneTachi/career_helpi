@@ -24,6 +24,7 @@ export function MultipleChoice({question, answers, pageNum, selectedAnswers, cha
         <div
             data-testid="multichoice-question"
             className = "Multiple-Choice-Question"
+            style={{fontFamily:"SpaceType, sans-serif"}}
         >
             <h3>{question}</h3>
             {answers.map((answer: string) => (
