@@ -5,7 +5,8 @@ import spider1 from "./assets/images/characters/orange/idle (orange).gif";
 import spider2 from "./assets/images/characters/blue/idle (blue).gif";
 
 import backgroundWeb from "./assets/images/objects/result web.png";
-import flyImg from "./assets/images/objects/progress bar/fly.png";
+import flyImg from "./assets/images/objects/fly.png";
+import loadingBar from "./assets/images/objects/miniWeb.gif";
 
 interface selectedFieldProps{
     field: string;
@@ -63,7 +64,7 @@ export function Results({fields, jobs, descriptions}: {fields: string[], jobs: s
         );
     }
     else{
-        return(<div>loading</div>)
+        return(<LoadingScreen fields={fields}></LoadingScreen>)
     }
 }
 
@@ -96,3 +97,13 @@ export function JobFly({job, description, selectedJob, updateSelectedJob}: selec
         </div>
     );
 }
+
+export function LoadingScreen({fields}: {fields: string[]}){
+    return(<div>
+        <div className="Loading-Bar">
+            <img src={loadingBar} alt = "Loading Bar Web Img" className = "Loading-Gif"></img>
+        </div>
+        <div className = "Loading-Text">{"Loading..."}</div>
+    </div>);
+}
+//<div className = "Loading-Text">{"Loading... " + Math.round(fields.length / 3 * 100).toString() + "% Completed"}</div>

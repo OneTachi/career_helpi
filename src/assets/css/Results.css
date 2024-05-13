@@ -118,3 +118,45 @@
     opacity: .9;
     background-Color: turquoise;
 }
+
+
+
+.Loading-Bar{
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    top: 20%;
+    border: 3px solid;
+    border-color: purple;
+    border-radius: 25px;
+    background-color: black;
+    opacity: 100%;
+    transform: translate(-50%, 0%);
+    position: absolute;
+}
+
+.Loading-Gif{
+    width: 90% ;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    position: absolute
+}
+
+.Loading-Text{
+    color: purple;
+    font-size: 200%;
+    font-weight: 1000;
+    margin-left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    background-color: white;
+    border-color: purple;
+    border-radius: 15px;
+    opacity: 90%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
