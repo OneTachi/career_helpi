@@ -310,10 +310,12 @@ export function processDetailedAnswers(userAnswers: string[]): void {
   const separatedMessages: string[] = userAnswers[1].split(",");
   separatedMessages.push(userAnswers[0]);
   separatedMessages.push(userAnswers[2]);
-  const nonMessages: string[] = separatedMessages.map((value: string) =>
-    value.toUpperCase()
+  const nonMessages: string[] = separatedMessages.map(
+    (value: string) => value.charAt(0).toUpperCase() + value.slice(1)
   );
   const userMessages: string[] = userAnswers.slice(-4);
+  console.log(nonMessages.map((value: string) => value));
+  console.log(userMessages.map((value: string) => value));
   nonMessages.forEach((value: string) => {
     let results: { attributes: string[]; points: number[] } =
       detailedPoints[detailedQuestions.indexOf(value)];
