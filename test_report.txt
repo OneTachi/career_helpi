@@ -35,7 +35,7 @@ All files              |   15.13 |     6.76 |   16.12 |   15.25 |
  src                   |   14.71 |     6.76 |   16.12 |   14.82 |                                        
   Api.tsx              |      39 |       40 |   45.45 |   39.79 | 31-129,166-184,205,233,239,260,310-325 
   App.tsx              |   58.82 |    33.33 |   66.66 |   58.82 | 19,26-27,71-105                        
-  Background.tsx       |       0 |        0 |       0 |       0 | 68-252                                 
+  Background.tsx       |       0 |        0 |       0 |       0 | 68-257                                 
   Default.tsx          |       0 |        0 |       0 |       0 | 10-29                                  
   DetailedQ1.tsx       |    12.5 |        0 |       0 |    12.5 | 16-43                                  
   DetailedQ2.tsx       |       0 |        0 |       0 |       0 | 7-75                                   
@@ -62,5 +62,5 @@ All files              |   15.13 |     6.76 |   16.12 |   15.25 |
 Test Suites: 2 passed, 2 total
 Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        5.062 s
+Time:        5.09 s
 Ran all test suites.

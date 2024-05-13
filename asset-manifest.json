@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/career_helpi/static/css/main.58a030b7.css",
-    "main.js": "/career_helpi/static/js/main.4561dba9.js",
+    "main.css": "/career_helpi/static/css/main.5eff789a.css",
+    "main.js": "/career_helpi/static/js/main.c0adada2.js",
     "static/js/453.bad6c33a.chunk.js": "/career_helpi/static/js/453.bad6c33a.chunk.js",
     "static/media/pixel_rain.gif": "/career_helpi/static/media/pixel_rain.aedc2f0bc40b0464345d.gif",
     "static/media/result web.png": "/career_helpi/static/media/result web.19e2eca5a25b83e3a727.png",
@@ -18,12 +18,12 @@
     "static/media/progressWeb7.png": "/career_helpi/static/media/progressWeb7.633eb4e53e605ed517e1.png",
     "static/media/progressWeb6.png": "/career_helpi/static/media/progressWeb6.289c9eba9c277ddf6eac.png",
     "index.html": "/career_helpi/index.html",
-    "main.58a030b7.css.map": "/career_helpi/static/css/main.58a030b7.css.map",
-    "main.4561dba9.js.map": "/career_helpi/static/js/main.4561dba9.js.map",
+    "main.5eff789a.css.map": "/career_helpi/static/css/main.5eff789a.css.map",
+    "main.c0adada2.js.map": "/career_helpi/static/js/main.c0adada2.js.map",
     "453.bad6c33a.chunk.js.map": "/career_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.58a030b7.css",
-    "static/js/main.4561dba9.js"
+    "static/css/main.5eff789a.css",
+    "static/js/main.c0adada2.js"
   ]
 }
