@@ -6,6 +6,7 @@ import {
   getAttributes,
   validateUserResponse,
   processBasicAnswers,
+  incrementAttributes,
 } from "../Api";
 import { answers } from "../basicQuestions";
 
@@ -139,6 +140,16 @@ describe("Basic Quiz Processing", () => {
     quiz_format["leadership"] = 2;
     quiz_format["teamwork"] = 2;
     quiz_format["decision making"] = 1;
+    expect(getAttributes("basic")).toEqual(quiz_format);
+  });
+});
+
+describe("incrementAttributes", () => {
+  test("Maxes points at 10", () => {
+    render(<App />);
+    ResetRecord();
+    incrementAttributes(["ethics"], [11], "basic");
+    quiz_format["ethics"] = 10;
     expect(getAttributes("basic")).toEqual(quiz_format);
   });
 });

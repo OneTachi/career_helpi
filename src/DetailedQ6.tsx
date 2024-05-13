@@ -26,8 +26,8 @@ export function DetailedQ6({pageNumber: pageNum, selectedAnswers, changeAnswer, 
     
 
     <div>
-    Imagine you are a spider that somehow made it inside someone's house. T
-    hankfully they just wrapped you in a paper towel and put you back outside. 
+    Imagine you are a spider that somehow made it inside someone's house. 
+    Thankfully they just wrapped you in a paper towel and put you back outside. 
     However, you are now stranded in a completely different environment than you used to. 
     How do you feel you would react in this situation? {"(Type at least 10 characters)"}
     </div>
