@@ -216,9 +216,9 @@ export function ChangePage({pageNumber, changePageNumber, completionAmount, page
                 {"Next >"}
             </Button>}
 
-            <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)} style={{fontSize:"30px", fontFamily:"SpaceType, sans-serif"}} >
+            {(completionAmount === 7 || pageNumber === 7) && <Button className="Finish-Button" onClick={() => completionAmount === 7 ? updateQuizUnfinished(false) : updateQuizUnfinished(true)} style={{fontSize:"30px", fontFamily:"SpaceType, sans-serif"}} >
                 {"Finish"}
-            </Button>
+            </Button>}
 
             {quizUnfinished && <>{updateQuizUnfinished(false)}</>}
         </div>
