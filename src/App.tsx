@@ -27,12 +27,21 @@ function App() {
     window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
   }
 
+  function updatePage(newPage: Page){
+    if(newPage !== "home" && key === ""){
+      alert("Please enter a valid API key!");
+    }
+    else{
+      setPage(newPage);
+    }
+  }
+
   initializeAttributes();
 
   return LoadPage(
     {
       page,
-      setPage,
+      updatePage,
       key,
       setKey,
       handleSubmit,
@@ -47,7 +56,7 @@ function App() {
  * @returns Page shown to user
  */
 function LoadPage(
-  { page, setPage, key, setKey, handleSubmit }: PageKeyProps,
+  { page, updatePage, key, setKey, handleSubmit }: PageKeyProps,
   localKey: string
 ): JSX.Element {
   // Add JSX of page to corresponding page below.
@@ -55,11 +64,11 @@ function LoadPage(
     case "home": {
       return (
         <div>
-          <Navbar page={page} setPage={setPage}></Navbar>
-          <Homepage page={page} setPage={setPage}></Homepage>
+          <Navbar page={page} updatePage={updatePage}></Navbar>
+          <Homepage page={page} updatePage={updatePage}></Homepage>
           {Footer({
             page,
-            setPage,
+            updatePage,
             key,
             setKey,
             handleSubmit,
@@ -70,11 +79,11 @@ function LoadPage(
     case "basic": {
       return (
         <div>
-          <Navbar page={page} setPage={setPage}></Navbar>
+          <Navbar page={page} updatePage={updatePage}></Navbar>
           <Background quizType={"basic"} apiKey={key}></Background>
           {Footer({
               page,
-              setPage,
+              updatePage,
               key,
               setKey,
               handleSubmit,
@@ -85,11 +94,11 @@ function LoadPage(
     case "detailed": {
       return (
         <div>
-          <Navbar page={page} setPage={setPage}></Navbar>
+          <Navbar page={page} updatePage={updatePage}></Navbar>
           <Background quizType={"detailed"} apiKey={key}></Background>
           {Footer({
             page,
-            setPage,
+            updatePage,
             key,
             setKey,
             handleSubmit,

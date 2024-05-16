@@ -2,7 +2,7 @@ import "./assets/css/Navbar.css";
 import { Button } from "react-bootstrap";
 import { PageProps } from "./interfaces/page";
 
-export function Navbar({ page, setPage }: PageProps): JSX.Element {
+export function Navbar({ page, updatePage: setPage }: PageProps): JSX.Element {
   const linkHome = () => {
     setPage("home");
   };

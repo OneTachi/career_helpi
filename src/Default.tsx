@@ -5,7 +5,7 @@ import logo from "./logo.svg";
 import { Footer } from "./Footer";
 import { PageProps } from "./interfaces/page";
 
-export function Default({ page, setPage }: PageProps) {
+export function Default({ page, updatePage: setPage }: PageProps) {
   //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
   let keyData = "";
   const saveKeyData = "MYKEY";
@@ -28,7 +28,7 @@ export function Default({ page, setPage }: PageProps) {
   }
   return (
     <div className="App">
-      <Navbar page={page} setPage={setPage}></Navbar>
+      <Navbar page={page} updatePage={setPage}></Navbar>
       {page === "api" && (
         <>
           <div>Christopher Rasquin</div>
