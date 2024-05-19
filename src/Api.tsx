@@ -63,7 +63,7 @@ export async function requestMoreCareers(
   if (message_history.length === 0) {
     message = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career. Please indicate the field. Do not repeat any careers. If asked for another occupation field, do not repeat any occupation
+   Have the first line have just the career. Do not repeat any careers. If asked for another occupation field, do not repeat any occupation
    fields.\n`;
   }
 
@@ -79,7 +79,7 @@ export async function requestMoreCareers(
   careers.push(await requestCareerHelper(following_message));
   careers.push(
     await requestCareerHelper(
-      "What is the Occupation Field? Only include the title in the next response"
+      "What is the Occupation Field? Only include the field in the next response"
     )
   );
 
