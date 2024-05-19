@@ -63,22 +63,23 @@ export async function requestMoreCareers(
   if (message_history.length === 0) {
     message = `Based on the given set of attributes with each attribute having a max of 10 points indicating how inclined they are to that attribute,
    what career would you recommend? Please include a job description, the average salary for the position, and why you think this is best. 
-   Have the first line have just the career. Please indicate the field.\n`;
+   Have the first line have just the career. Do not repeat any careers. If asked for another occupation field, do not repeat any occupation
+   fields.\n`;
   }
 
-  const initial_message: string = message + getStorageData; // Combine message with data from quiz
   const following_message: string =
     "Give me another career with those attributes in the same field. If you cannot, give me another related career.";
 
   let careers: string[] = []; // List of careers we will return
 
+  message_history.push({ role: "system", content: message });
   // Creating our responses
-  careers.push(await requestCareerHelper(initial_message));
+  careers.push(await requestCareerHelper(getStorageData));
   careers.push(await requestCareerHelper(following_message));
   careers.push(await requestCareerHelper(following_message));
   careers.push(
     await requestCareerHelper(
-      "What is the Occupation Field? Only include the title in the next response"
+      "What is the Occupation Field? Only include the field in the next response"
     )
   );
 
@@ -90,7 +91,7 @@ export async function requestMoreCareers(
  * @param message The desired messaage to send to ChatGPT
  * @returns ChatGPT Response
  */
-async function requestCareerHelper(message: string) {
+async function requestCareerHelper(message: string): Promise<string> {
   // Add message to history so we can use just that variable to create response
   message_history.push({ role: "user", content: message });
   const chatCompletion = await openai.chat.completions.create({
@@ -162,15 +163,16 @@ export async function incrementAttributesByMessage(
   quizType: QuizType
 ): Promise<void> {
   // Create Question
-  const question: string =
-    `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
+  const question: string = `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
   Please only include the three attributes as your response separated by commas. Do not include anything outside the attribute list.\n
   Attributes: problem solving, protectiveness, creativity, empathy, leadership, communication, 
-  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n
-  Message: ` + message;
+  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n`;
 
   const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: question }],
+    messages: [
+      { role: "system", content: question },
+      { role: "user", content: message },
+    ],
     model: "gpt-3.5-turbo",
   });
   const response = chatCompletion.choices[0].message.content;
