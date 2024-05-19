@@ -152,4 +152,46 @@ describe("incrementAttributes", () => {
     quiz_format["ethics"] = 10;
     expect(getAttributes("basic")).toEqual(quiz_format);
   });
+  test("Maxes points at 10 detailed", () => {
+    render(<App />);
+    ResetRecord();
+    incrementAttributes(["ethics"], [11], "detailed");
+    quiz_format["ethics"] = 10;
+    expect(getAttributes("detailed")).toEqual(quiz_format);
+  });
+  test("Handles points too short", () => {
+    render(<App />);
+    ResetRecord();
+    expect(() => {
+      incrementAttributes(["ethics", "teamwork"], [11], "basic");
+    }).toThrow("Attribute list does not match point list");
+  });
+  test("Handles attributes too short", () => {
+    render(<App />);
+    ResetRecord();
+    expect(() => {
+      incrementAttributes(["ethics", "teamwork"], [11, 12, 13], "basic");
+    }).toThrow("Attribute list does not match point list");
+  });
+  test("Handles points too short detailed", () => {
+    render(<App />);
+    ResetRecord();
+    expect(() => {
+      incrementAttributes(["ethics", "teamwork"], [11], "detailed");
+    }).toThrow("Attribute list does not match point list");
+  });
+  test("Handles attributes too short detailed", () => {
+    render(<App />);
+    ResetRecord();
+    expect(() => {
+      incrementAttributes(["ethics", "teamwork"], [11, 12, 13], "detailed");
+    }).toThrow("Attribute list does not match point list");
+  });
+  test("Quiz Doesn't Exist", () => {
+    localStorage.removeItem("detailed-quiz-results");
+    ResetRecord();
+    expect(() => {
+      incrementAttributes(["ethics", "teamwork"], [11, 12], "detailed");
+    }).toThrow("Quiz doesn't exist");
+  });
 });

@@ -238,7 +238,7 @@ export function incrementAttributes(
   let quizKey = localStorage.getItem(quizType + "-quiz-results");
   let quiz: Record<string, number>;
   if (quizKey === null) {
-    return;
+    throw new Error("Quiz doesn't exist");
   }
   quiz = JSON.parse(quizKey);
 
