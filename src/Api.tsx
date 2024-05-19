@@ -162,15 +162,16 @@ export async function incrementAttributesByMessage(
   quizType: QuizType
 ): Promise<void> {
   // Create Question
-  const question: string =
-    `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
+  const question: string = `Based on the attributes below and the message below, please distribute 3 points to 3 different attributes. 
   Please only include the three attributes as your response separated by commas. Do not include anything outside the attribute list.\n
   Attributes: problem solving, protectiveness, creativity, empathy, leadership, communication, 
-  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n
-  Message: ` + message;
+  teamwork, patience, organization, decision making, adaptability, independence, ethics, analytics\n`;
 
   const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: question }],
+    messages: [
+      { role: "system", content: question },
+      { role: "user", content: message },
+    ],
     model: "gpt-3.5-turbo",
   });
   const response = chatCompletion.choices[0].message.content;
