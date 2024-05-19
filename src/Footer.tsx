@@ -6,7 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 export function Footer({
   page,
-  setPage,
+  updatePage: setPage,
   key,
   setKey,
   handleSubmit,

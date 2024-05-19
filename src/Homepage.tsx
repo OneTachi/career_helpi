@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import "./assets/css/Homepage.css";
 import pixel from "./assets/videos/pixel_rain.gif";
 
-export function Homepage({ page, setPage }: PageProps): JSX.Element {
+export function Homepage({ page, updatePage: setPage }: PageProps): JSX.Element {
   return (
     <div className="background">
       <div className="heading">Career Weaver</div>
@@ -24,13 +24,13 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
         >
           Basic Questions
         </Button>
-        <p className="basic-text">
+        <div className="basic-text">
           Our basic quiz is a multiple choice assessment that determines your
           strengths to find what you would be best at. Remember, there are no
           wrong answers.
-          <br />
+          
           Follow your heart, and you will get the results that are best for you!
-        </p>
+        </div>
       </div>
 
       <div className="Break"></div>
@@ -43,15 +43,16 @@ export function Homepage({ page, setPage }: PageProps): JSX.Element {
         >
           Detailed Questions
         </Button>
-        <p className="detailed-text">
+        <div className="detailed-text">
           Our complex quiz consists of open response boxes, sliders, and other
-          inputs. <br />
+          inputs.
           It allows you to truly unleash your inner creativity and be yourself!
           You can answer questions with anything you want, and do what you think
-          is best in each situation. <br />
+          is best in each situation. 
           Just trust yourself and do the first thing that comes to mind. Most
           importantly, have fun!
-        </p>
+        </div>
+        <div style={{height:"1%"}}></div>
 
         <div className="subheading">An 8-Legged Career Quest. Spin Your Web, Catch Your Career!</div>
       </div>
